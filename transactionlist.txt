@@ -90,3 +90,6 @@
 2022-58-05,Russell Geary,$22.25
 2022-59-05,Russell Geary,$22.25
 2022-02-05,Russell Geary,$22.25
+2022-11-05,Russell Geary,$22.25
+2022-35-05,Russell Geary,$22.25
+2022-53-05,Russell Geary,$22.25

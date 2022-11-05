@@ -8,14 +8,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class MomPopHomeController extends MomPopPizzaMain{
+public class MomPopsHomeController extends MomPopsPizzeriaMain {
 
 
     public void orderEntryForm() throws IOException {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("order-view.fxml"));
             Stage orderStage = new Stage();
-            orderStage.setTitle("Mom and Pop's Pizza App - Order Entry");
+            orderStage.setTitle("Mom and Pop's Pizzeria - Order Entry");
             orderStage.setScene(new Scene(root, 1200, 750));
             orderStage.show();
 
@@ -28,7 +28,7 @@ public class MomPopHomeController extends MomPopPizzaMain{
         try {
             Parent root = FXMLLoader.load(getClass().getResource("custLogin-view.fxml"));
             Stage customerLoginStage = new Stage();
-            customerLoginStage.setTitle("Mom and Pop's Pizza App - Customer Login");
+            customerLoginStage.setTitle("Mom and Pop's Pizzeria - Customer Login");
             customerLoginStage.setScene(new Scene(root, 1200, 750));
             customerLoginStage.show();
 
@@ -42,7 +42,7 @@ public class MomPopHomeController extends MomPopPizzaMain{
         try {
             Parent root = FXMLLoader.load(getClass().getResource("registration-view.fxml"));
             Stage customerRegistrationStage = new Stage();
-            customerRegistrationStage.setTitle("Mom and Pop's Pizza App - Customer Registration");
+            customerRegistrationStage.setTitle("Mom and Pop's Pizzeria - Customer Registration");
             customerRegistrationStage.setScene(new Scene(root, 1200, 750));
             customerRegistrationStage.show();
 

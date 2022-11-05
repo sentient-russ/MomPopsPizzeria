@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class OrderController extends MomPopPizzaMain implements Initializable {
+public class OrderController extends MomPopsPizzeriaMain implements Initializable {
 
     static String smallPizza = "Small Pizza";
     static String mediumPizza = "Medium Pizza";

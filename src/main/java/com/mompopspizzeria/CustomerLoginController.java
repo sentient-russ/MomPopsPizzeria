@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomerLoginController extends MomPopPizzaMain implements Initializable{
+public class CustomerLoginController extends MomPopsPizzeriaMain implements Initializable{
     @FXML
     Label custLoginValidationText;
     @FXML

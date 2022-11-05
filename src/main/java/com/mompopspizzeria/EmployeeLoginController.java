@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EmployeeLoginController extends MomPopPizzaMain implements Initializable {
+public class EmployeeLoginController extends MomPopsPizzeriaMain implements Initializable {
     @FXML
     private Label empLoginValidationText;
     @FXML

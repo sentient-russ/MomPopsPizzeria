@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  * @version 1.2, 10/26/2022
  *
  */
-public class MomPopPizzaMain extends Application {
+public class MomPopsPizzeriaMain extends Application {
     static DataAccessInterface<CustomerModel> dataAccess = new Data<>();
     static EmployeeModel authenticatedEmployee = new EmployeeModel();
     static CustomerModel authenticatedCustomer = new CustomerModel();
@@ -28,9 +28,9 @@ public class MomPopPizzaMain extends Application {
 
     public void start(Stage primaryStage) throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(MomPopPizzaMain.class.getResource("home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MomPopsPizzeriaMain.class.getResource("home-view.fxml"));
         Scene homeScene = new Scene(fxmlLoader.load(), 1200, 750);
-        primaryStage.setTitle("Mom and Pop's Pizza App - Home");
+        primaryStage.setTitle("Mom and Pop's Pizzeria - Home");
         primaryStage.setScene(homeScene);
         primaryStage.show();
 

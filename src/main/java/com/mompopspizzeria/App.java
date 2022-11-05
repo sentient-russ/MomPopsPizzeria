@@ -5,6 +5,6 @@ package com.mompopspizzeria;
  */
 public class App {
     public static void main(String[] args){
-        MomPopPizzaMain.main(args);
+        MomPopsPizzeriaMain.main(args);
     }
 }

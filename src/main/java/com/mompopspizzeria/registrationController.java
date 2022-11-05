@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class registrationController extends MomPopPizzaMain  implements Initializable{
+public class registrationController extends MomPopsPizzeriaMain implements Initializable{
 
     @FXML
     private Label custLoginValidationText;
