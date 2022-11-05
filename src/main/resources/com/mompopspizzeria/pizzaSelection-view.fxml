@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #015ab2; -fx-border-color: #015ab2; -fx-border-width: 1.5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mompopspizzeria.pizzaSelectionController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #267ed6;">
+            <children>
+                <Button fx:id="homeBtnOrderScene" layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeBtnActionOrderScene" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font></Button>
+                <ScrollPane layoutY="97.0" prefHeight="687.0" prefWidth="1195.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                            <children>
+                                <Button fx:id="addPizzaBtn" layoutX="414.0" layoutY="590.0" mnemonicParsing="false" onAction="#addPizzaBtnActionPizzaSelection" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add to Order">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font></Button>
+                                <Button fx:id="cancelBtnOrderScene" layoutX="610.0" layoutY="590.0" mnemonicParsing="false" onAction="#cancelBtnActionOrderScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font></Button>
+                                <Label alignment="CENTER" layoutX="380.0" layoutY="14.0" prefHeight="58.0" prefWidth="429.0" text="Pizza Selection">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </Label>
+                        <ComboBox fx:id="pizzaSize" layoutX="418.0" layoutY="100.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Pizza Size" />
+                        <Label layoutX="418.0" layoutY="65.0" text="Size:">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="pizzaCrust" layoutX="418.0" layoutY="179.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Crust Type" />
+                        <Label layoutX="418.0" layoutY="144.0" prefHeight="35.0" prefWidth="134.0" text="Crust:">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="418.0" layoutY="226.0" prefHeight="35.0" prefWidth="134.0" text="Toppings:">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="extraCheeseToppingChkBox" layoutX="357.0" layoutY="373.0" mnemonicParsing="false" text="Extra Cheese">
+                           <font>
+                              <Font size="24.0" />
+                           </font></CheckBox>
+                        <CheckBox fx:id="pepperoniToppingChkBox" layoutX="357.0" layoutY="431.0" mnemonicParsing="false" text="Pepperoni">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="sausageToppingChkBox" layoutX="357.0" layoutY="487.0" mnemonicParsing="false" text="Sausage">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="hamToppingChkBox" layoutX="565.0" layoutY="373.0" mnemonicParsing="false" text="Ham">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="greenPeppersToppingChkBox" layoutX="565.0" layoutY="431.0" mnemonicParsing="false" text="Green Peppers">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="onionsToppingChkBox" layoutX="565.0" layoutY="487.0" mnemonicParsing="false" text="Onions">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="tomatoSlicesToppingChkBox" layoutX="775.0" layoutY="373.0" mnemonicParsing="false" text="Tomato Slices">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="mushroomsToppingChkBox" layoutX="775.0" layoutY="431.0" mnemonicParsing="false" text="Mushrooms">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="pineappleToppingChkBox" layoutX="775.0" layoutY="487.0" mnemonicParsing="false" text="Pineapple">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </CheckBox>
+                        <Label layoutX="534.0" layoutY="231.0" prefHeight="27.0" prefWidth="371.0" text="First topping free.  Additional toppings are:  ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="534.0" layoutY="261.0" prefHeight="27.0" prefWidth="371.0" text="\$0.50 each on small pizzas">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="534.0" layoutY="288.0" prefHeight="27.0" prefWidth="371.0" text="\$0.75 each on medium pizzas">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="534.0" layoutY="315.0" prefHeight="27.0" prefWidth="371.0" text="\$1.00 each on large pizzas">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="534.0" layoutY="342.0" prefHeight="27.0" prefWidth="371.0" text="\$1.25 each on extra large pizzas">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="494.0" layoutY="538.0" text="Pizza Total: $" textFill="#a4beeb">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="634.0" layoutY="537.0" text="0.00" textFill="#a4beeb">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+                <Button fx:id="backBtnOrderScene" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtnActionOrderScene" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Back">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="98.0" fitWidth="189.0" layoutX="524.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Mom and Pops.gif" />
+                    </image>
+                </ImageView>
+            </children></AnchorPane>
+    </items>
+</SplitPane>

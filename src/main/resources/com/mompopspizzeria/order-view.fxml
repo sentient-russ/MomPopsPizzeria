@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #015ab2; -fx-border-color: #015ab2; -fx-border-width: 1.5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mompopspizzeria.OrderController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #267ed6;">
+            <children>
+                <Button fx:id="homeBtnOrderScene" layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeBtnActionOrderScene" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font></Button>
+                <ScrollPane layoutY="97.0" prefHeight="687.0" prefWidth="1195.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                            <children>
+                                <Button fx:id="payBtnOrderScene" layoutX="653.0" layoutY="566.0" mnemonicParsing="false" onAction="#payBtnActionOrderScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Complete / Pay">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font></Button>
+                                <Button fx:id="cancelBtnOrderScene" layoutX="849.0" layoutY="566.0" mnemonicParsing="false" onAction="#cancelBtnActionOrderScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font></Button>
+                                <Label alignment="CENTER" layoutX="380.0" layoutY="-2.0" prefHeight="58.0" prefWidth="429.0" text="Order Entry">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </Label>
+                        <RadioButton alignment="TOP_CENTER" layoutX="353.0" layoutY="53.0" mnemonicParsing="false" selected="true" text="Cary Out">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="orderTypeGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton alignment="TOP_CENTER" layoutX="540.0" layoutY="53.0" mnemonicParsing="false" text="Delivery" toggleGroup="$orderTypeGroup">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton alignment="TOP_CENTER" layoutX="724.0" layoutY="53.0" mnemonicParsing="false" text="Pick-Up" toggleGroup="$orderTypeGroup">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </RadioButton>
+                        <Button fx:id="addPizzaBtn" layoutX="186.0" layoutY="111.0" mnemonicParsing="false" onAction="#addPizzaBtnActionOrderScene" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Pizza">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="467.0" layoutY="111.0" mnemonicParsing="false" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Drinks">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="736.0" layoutY="111.0" mnemonicParsing="false" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Sides">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="186.0" layoutY="242.0" prefHeight="17.0" prefWidth="134.0" text="Order Summery">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane layoutX="186.0" layoutY="269.0" prefHeight="272.0" prefWidth="800.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="279.0" prefWidth="785.0">
+                                 <children>
+                                    <ListView fx:id="orderSummeryList" layoutX="1.0" prefHeight="393.0" prefWidth="785.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children></AnchorPane>
+                          </content>
+                        </ScrollPane>
+                        <Button fx:id="updateBtnOrderScene" layoutX="189.0" layoutY="566.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" text="Update Selected Item">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="listItemSelectedText" layoutX="584.0" layoutY="242.0" prefHeight="27.0" prefWidth="403.0" textFill="#e16f6f">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="listItemSelectedText1" layoutX="467.0" layoutY="242.0" text="Selected Item: ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+                <Button fx:id="backBtnOrderScene" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtnActionOrderScene" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Back">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="98.0" fitWidth="189.0" layoutX="524.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Mom and Pops.gif" />
+                    </image>
+                </ImageView>
+            </children></AnchorPane>
+    </items>
+</SplitPane>

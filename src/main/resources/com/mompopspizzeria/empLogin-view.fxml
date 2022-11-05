@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #015ab2; -fx-border-color: #015ab2; -fx-border-width: 1.5;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mompopspizzeria.EmployeeLoginController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #267ed6;">
+            <children>
+                <Button fx:id="homeButton" layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeBtnCustLogin" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font></Button>
+                <ScrollPane layoutY="97.0" prefHeight="687.0" prefWidth="1195.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                            <children>
+                                <Button fx:id="empLoginButton" layoutX="436.0" layoutY="462.0" mnemonicParsing="false" onAction="#empLoginAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Login">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font></Button>
+                                <Button fx:id="cancelButton" layoutX="615.0" layoutY="462.0" mnemonicParsing="false" onAction="#cancelBtnCustLogin" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font></Button>
+                                <Label layoutX="436.0" layoutY="401.0" prefHeight="46.0" prefWidth="119.0" text="Password: ">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <PasswordField fx:id="passwordEmployeeLogin" layoutX="555.0" layoutY="404.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
+                                <Label alignment="CENTER" layoutX="382.0" layoutY="245.0" prefHeight="58.0" prefWidth="429.0" text="Employee Login">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="246.0" fitWidth="383.0" layoutX="414.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Mom and Pops.gif" />
+                                    </image>
+                                </ImageView>
+                                <Label fx:id="empLoginValidationText" alignment="CENTER" layoutX="5.0" layoutY="305.0" prefHeight="31.0" prefWidth="1170.0" textFill="#ff3737">
+                                    <font>
+                                        <Font name="Book Antiqua" size="24.0" />
+                                    </font>
+                                </Label>
+                        <RadioButton fx:id="empLoginEmpRadioBtn" layoutX="436.0" layoutY="345.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" selected="true" text="Employee: ">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="btnGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="empLoginManagerRadioBtn" layoutX="611.0" layoutY="345.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Manager: " toggleGroup="$btnGroup">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </RadioButton>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+                <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtnCustLogin" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Back">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+            </children></AnchorPane>
+    </items>
+</SplitPane>
