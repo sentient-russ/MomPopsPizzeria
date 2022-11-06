@@ -1,7 +1,12 @@
 package com.mompopspizzeria;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -16,16 +21,7 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
     @FXML
     Label custLoginValidationText;
     @FXML
-    private Button backButton;
-    @FXML
-    private Button homeButton;
-    @FXML
-    private Button loginButton;
-    @FXML
-    private Button cancelButton;
-    @FXML
     private TextField areaCustLogin;
-
     @FXML
     private TextField prefixCustLogin;
     @FXML
@@ -36,23 +32,11 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
     private String custPhoneNum;
     @FXML
     private String custPassword = "";
+    @FXML
+    private Stage stage;
+    @FXML
+    private Scene scene;
 
-
-    @FXML
-    protected void cancelBtnCustLogin() {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
-    }
-    @FXML
-    protected void homeBtnCustLogin() {
-        Stage stage = (Stage) homeButton.getScene().getWindow();
-        stage.close();
-    }
-    @FXML
-    protected void backBtnCustLogin() {
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        stage.close();
-    }
     @FXML
     protected void loginBtnCustLogin() {
 
@@ -73,7 +57,21 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
                 custLoginValidationText.setText("Invalid combination.  Please try again.");
             }
         }
+    }
+    @FXML
+    private void returnHomeAction(ActionEvent event){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+            Scene scene = new Scene(root, 1200, 750);
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setTitle("Mom and Pop's Pizzeria - Home");
+            stage.setScene(scene);
+            stage.show();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
     @FXML
     protected void callKeyboard() {
@@ -84,7 +82,6 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
             throw new RuntimeException(e);
         }
     }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

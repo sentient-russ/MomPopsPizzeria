@@ -12,7 +12,7 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #267ed6;">
          <children>
-            <Button fx:id="empLoginBtn" layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#employeeLoginForm" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #2d86df; -fx-border-color: #015ab2; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Emp Login">
+            <Button layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#employeeLoginForm" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #2d86df; -fx-border-color: #015ab2; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Emp Login">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
@@ -20,20 +20,20 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                      <children>
-                        <ImageView fitHeight="325.0" fitWidth="496.0" layoutX="360.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="325.0" fitWidth="496.0" layoutX="360.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Mom and Pops.gif" />
                            </image>
                         </ImageView>
-                        <Button fx:id="guestButtonHome" layoutX="404.0" layoutY="351.0" mnemonicParsing="false" onAction="#orderEntryForm" prefHeight="115.0" prefWidth="383.0" style="-fx-background-color: #ffffff;" text="Guest Order" textAlignment="CENTER">
+                        <Button layoutX="404.0" layoutY="314.0" mnemonicParsing="false" onAction="#orderEntryForm" prefHeight="115.0" prefWidth="383.0" style="-fx-background-color: #ffffff;" text="Guest Order" textAlignment="CENTER">
                            <font>
                               <Font size="48.0" />
                            </font></Button>
-                        <Button fx:id="loginButtonHome" layoutX="405.0" layoutY="478.0" mnemonicParsing="false" onAction="#customerLoginForm" prefHeight="68.0" prefWidth="381.0" style="-fx-background-color: #ffffff;" text="Order with Customer Account" textAlignment="CENTER">
+                        <Button layoutX="405.0" layoutY="441.0" mnemonicParsing="false" onAction="#customerLoginForm" prefHeight="68.0" prefWidth="381.0" style="-fx-background-color: #ffffff;" text="Order with Customer Account" textAlignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font></Button>
-                        <Button fx:id="registerButtonHome" layoutX="406.0" layoutY="560.0" mnemonicParsing="false" onAction="#customerRegistrationForm" prefHeight="61.0" prefWidth="381.0" style="-fx-background-color: #ffffff;" text="Create Customer Account" textAlignment="CENTER">
+                        <Button layoutX="406.0" layoutY="523.0" mnemonicParsing="false" onAction="#customerRegistrationForm" prefHeight="61.0" prefWidth="381.0" style="-fx-background-color: #ffffff;" text="Create Customer Account" textAlignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font></Button>

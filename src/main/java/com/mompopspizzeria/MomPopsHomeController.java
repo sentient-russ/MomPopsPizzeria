@@ -1,50 +1,62 @@
 package com.mompopspizzeria;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class MomPopsHomeController extends MomPopsPizzeriaMain {
+public class MomPopsHomeController extends MomPopsPizzeriaMain implements Initializable {
+    private Stage stage;
+    private Scene scene;
 
-
-    public void orderEntryForm() throws IOException {
+    @FXML
+    public void orderEntryForm(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("order-view.fxml"));
-            Stage orderStage = new Stage();
-            orderStage.setTitle("Mom and Pop's Pizzeria - Order Entry");
-            orderStage.setScene(new Scene(root, 1200, 750));
-            orderStage.show();
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root,1200, 750);
+            stage.setTitle("Mom and Pop's Pizzeria - Order Entry");
+            stage.setScene(scene);
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
-    public void customerLoginForm() throws IOException {
+
+    @FXML
+    public void customerLoginForm(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("custLogin-view.fxml"));
-            Stage customerLoginStage = new Stage();
-            customerLoginStage.setTitle("Mom and Pop's Pizzeria - Customer Login");
-            customerLoginStage.setScene(new Scene(root, 1200, 750));
-            customerLoginStage.show();
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root,1200, 750);
+            stage.setTitle("Mom and Pop's Pizzeria - Customer Login");
+            stage.setScene(scene);
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
-
-    public void customerRegistrationForm() throws IOException {
+    @FXML
+    public void customerRegistrationForm(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("registration-view.fxml"));
-            Stage customerRegistrationStage = new Stage();
-            customerRegistrationStage.setTitle("Mom and Pop's Pizzeria - Customer Registration");
-            customerRegistrationStage.setScene(new Scene(root, 1200, 750));
-            customerRegistrationStage.show();
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root,1200, 750);
+            stage.setTitle("Mom and Pop's Pizzeria - Customer Registration");
+            stage.setScene(scene);
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,19 +64,26 @@ public class MomPopsHomeController extends MomPopsPizzeriaMain {
         }
 
     }
-    public void employeeLoginForm() throws IOException {
+    @FXML
+    public void employeeLoginForm(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("empLogin-view.fxml"));
-            Stage employeeLoginStage = new Stage();
-            employeeLoginStage.setTitle("Mom and Pop's Pizza App - Employee Login");
-            employeeLoginStage.setScene(new Scene(root, 1200, 750));
-            employeeLoginStage.show();
-
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root,1200, 750);
+            stage.setTitle("Mom and Pop's Pizzeria - Employee Login");
+            stage.setScene(scene);
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
 
 }

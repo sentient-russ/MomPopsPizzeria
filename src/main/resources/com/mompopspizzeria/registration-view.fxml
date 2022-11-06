@@ -15,30 +15,46 @@
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="949.0" prefWidth="1194.0" style="-fx-background-color: #267ed6;">
             <children>
-                <Button fx:id="regHomeBtn" layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#regHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font></Button>
-                <Button fx:id="regBackBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#regBackAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Back">
+                <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Back">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Button>
+                <Button layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font></Button>
                 <ScrollPane layoutY="97.0" prefHeight="660.0" prefWidth="1195.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="658.0" prefWidth="1178.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                             <children>
-                                <Button fx:id="regSaveBtn" layoutX="425.0" layoutY="554.0" mnemonicParsing="false" onAction="#regSaveAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Save">
-                                    <font>
-                                        <Font name="System Bold" size="18.0" />
-                                    </font>
-                        </Button>
-                                <Button fx:id="regCancelBtn" layoutX="610.0" layoutY="554.0" mnemonicParsing="false" onAction="#regCancelAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
-                                    <font>
-                                        <Font name="System Bold" size="18.0" />
-                                    </font>
-                        </Button>
+                        <TextField fx:id="regFirstName" layoutX="539.0" layoutY="114.0" prefHeight="40.0" prefWidth="200.0" promptText="First Name" />
+                        <TextField fx:id="regLastName" layoutX="539.0" layoutY="163.0" prefHeight="40.0" prefWidth="200.0" promptText="Last Name" />
+                        <TextField fx:id="regAddress1" layoutX="539.0" layoutY="212.0" prefHeight="40.0" prefWidth="200.0" promptText="Address Line 1" />
+                        <TextField fx:id="regAddress2" layoutX="539.0" layoutY="260.0" prefHeight="40.0" prefWidth="200.0" promptText="Address Line 2" />
+                        <TextField fx:id="regCity" layoutX="539.0" layoutY="308.0" prefHeight="40.0" prefWidth="200.0" promptText="City" />
+                        <TextField fx:id="regState" layoutX="540.0" layoutY="354.0" prefHeight="40.0" prefWidth="57.0" promptText="State" />
+                        <TextField fx:id="regZip" layoutX="649.0" layoutY="355.0" prefHeight="40.0" prefWidth="90.0" promptText="Zip" />
                                 <TextField fx:id="regPhoneArea" layoutX="540.0" layoutY="401.0" prefHeight="40.0" prefWidth="42.5" promptText="Area" />
+                                <TextField fx:id="regPhonePrefix" layoutX="587.0" layoutY="401.0" prefHeight="40.0" prefWidth="45.0" promptText="Num" />
+                                <TextField fx:id="regPhonePostfix" layoutX="637.0" layoutY="401.0" prefHeight="40.0" prefWidth="102.0" promptText="Num" />
+                                <PasswordField fx:id="regNewPassword" layoutX="539.0" layoutY="451.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
+                        <PasswordField fx:id="regConfirmPassword" layoutX="538.0" layoutY="497.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
+                                <Button layoutX="425.0" layoutY="554.0" mnemonicParsing="false" onAction="#regSaveAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Save">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                        </Button>
+                                <Button layoutX="610.0" layoutY="554.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                        </Button>
+                        <Label layoutX="604.0" layoutY="355.0" prefHeight="40.0" prefWidth="51.0" text="Zip:">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
                                 <Label layoutX="455.0" layoutY="401.0" prefHeight="40.0" prefWidth="80.0" text="Phone:" textAlignment="RIGHT">
                                     <font>
                                         <Font size="24.0" />
@@ -49,9 +65,6 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <PasswordField fx:id="regNewPassword" layoutX="539.0" layoutY="451.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
-                                <TextField fx:id="regPhonePrefix" layoutX="587.0" layoutY="401.0" prefHeight="40.0" prefWidth="45.0" promptText="Num" />
-                                <TextField fx:id="regPhonePostfix" layoutX="637.0" layoutY="401.0" prefHeight="40.0" prefWidth="102.0" promptText="Num" />
                                 <Label layoutX="417.0" layoutY="296.0" prefHeight="38.0" prefWidth="318.0" textFill="#ff4949">
                                     <font>
                                         <Font size="18.0" />
@@ -62,49 +75,36 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="regFirstName" layoutX="539.0" layoutY="114.0" prefHeight="40.0" prefWidth="200.0" promptText="First Name" />
                         <Label layoutX="420.0" layoutY="163.0" prefHeight="40.0" prefWidth="130.0" text="Last Name:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="regLastName" layoutX="539.0" layoutY="163.0" prefHeight="40.0" prefWidth="200.0" promptText="Last Name" />
                         <Label layoutX="483.0" layoutY="308.0" prefHeight="40.0" prefWidth="57.0" text="City:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="regCity" layoutX="539.0" layoutY="308.0" prefHeight="40.0" prefWidth="200.0" promptText="City" />
                         <Label layoutX="439.0" layoutY="212.0" prefHeight="40.0" prefWidth="100.0" text="Address:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="regAddress1" layoutX="539.0" layoutY="212.0" prefHeight="40.0" prefWidth="200.0" promptText="Address Line 1" />
                         <Label layoutX="473.0" layoutY="355.0" prefHeight="40.0" prefWidth="65.0" text="State:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="regState" layoutX="540.0" layoutY="354.0" prefHeight="40.0" prefWidth="57.0" promptText="State" />
                         <Label layoutX="439.0" layoutY="260.0" prefHeight="40.0" prefWidth="100.0" text="Address:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="regAddress2" layoutX="539.0" layoutY="260.0" prefHeight="40.0" prefWidth="200.0" promptText="Address Line 2" />
-                        <Label layoutX="604.0" layoutY="355.0" prefHeight="40.0" prefWidth="51.0" text="Zip:">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="regZip" layoutX="649.0" layoutY="355.0" prefHeight="40.0" prefWidth="90.0" promptText="Zip" />
                         <Label layoutX="332.0" layoutY="497.0" prefHeight="40.0" prefWidth="205.0" text="Confirm Password:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="regConfirmPassword" layoutX="538.0" layoutY="497.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
                                 <Label alignment="CENTER" layoutY="16.0" prefHeight="58.0" prefWidth="1177.0" text="Customer Registration">
                                     <font>
                                         <Font size="36.0" />
