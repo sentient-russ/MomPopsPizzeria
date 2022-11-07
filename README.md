@@ -1,7 +1,7 @@
 # MomPopsPizzeria
 Initial Commit
 
-Limited production exceeding project requirements for SWE3313.  The overall planning for this application was done as a group project.  All of the codes structure was planned and written by Russell Geary to become familiar with IntelliJ, Gluon and JavaFx.  A complete jar file will be available in the folders herein.
+Limited production exceeding project requirements for SWE3313. 
 
 All the best, Russell Geary
 
