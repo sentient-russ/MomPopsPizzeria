@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -51,8 +50,35 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
             stage.setScene(scene);
             stage.show();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+    @FXML
+    public void addDrinkBtnActionOrderScene(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("drinkSelection-view.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root,1200, 750);
+            stage.setTitle("Mom and Pop's Pizzeria - Drink Selection");
+            stage.setScene(scene);
+            stage.show();
 
-
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+    @FXML
+    public void addSideBtnActionOrderScene(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("sideSelection-view.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root,1200, 750);
+            stage.setTitle("Mom and Pop's Pizzeria - Side Selection");
+            stage.setScene(scene);
+            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
@@ -73,8 +99,21 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
             e.getCause();
         }
     }
+    @FXML
+    private void completePayBtnOrderEntryAction(ActionEvent event){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("customerPayment-view.fxml"));
+            Scene scene = new Scene(root, 1200, 750);
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setTitle("Mom and Pop's Pizzeria - Customer Payment");
+            stage.setScene(scene);
+            stage.show();
 
-
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
     @FXML
     protected void payBtnActionOrderScene() {
         Stage stage = (Stage) payBtnOrderScene.getScene().getWindow();

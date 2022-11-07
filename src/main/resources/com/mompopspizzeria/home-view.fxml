@@ -12,7 +12,7 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #267ed6;">
          <children>
-            <Button layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#employeeLoginForm" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #2d86df; -fx-border-color: #015ab2; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Emp Login">
+            <Button layoutX="1046.0" layoutY="14.0" mnemonicParsing="false" onAction="#employeeLoginForm" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #2d86df; -fx-border-color: #015ab2; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Emp Login">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>

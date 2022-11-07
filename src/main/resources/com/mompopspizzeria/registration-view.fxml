@@ -20,7 +20,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Button>
-                <Button layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
+                <Button layoutX="1046.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font></Button>
@@ -110,7 +110,7 @@
                                         <Font size="36.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="custLoginValidationText" alignment="CENTER" layoutY="74.0" prefHeight="27.0" prefWidth="1176.0" textFill="#ff3a3a">
+                        <Label fx:id="custLoginValidationText" alignment="CENTER" layoutY="74.0" prefHeight="27.0" prefWidth="1176.0" textFill="#a4beeb">
                            <font>
                               <Font size="24.0" />
                            </font>

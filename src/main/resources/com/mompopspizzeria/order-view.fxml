@@ -21,7 +21,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Button>
-                <Button layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
+                <Button layoutX="1046.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font></Button>
@@ -29,7 +29,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                             <children>
-                        <RadioButton alignment="TOP_CENTER" layoutX="353.0" layoutY="53.0" mnemonicParsing="false" selected="true" text="Cary Out">
+                        <RadioButton alignment="TOP_CENTER" layoutX="353.0" layoutY="66.0" mnemonicParsing="false" selected="true" text="Cary Out">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -37,27 +37,27 @@
                               <ToggleGroup fx:id="orderTypeGroup" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton alignment="TOP_CENTER" layoutX="540.0" layoutY="53.0" mnemonicParsing="false" text="Delivery" toggleGroup="$orderTypeGroup">
+                        <RadioButton alignment="TOP_CENTER" layoutX="540.0" layoutY="66.0" mnemonicParsing="false" text="Delivery" toggleGroup="$orderTypeGroup">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton alignment="TOP_CENTER" layoutX="724.0" layoutY="53.0" mnemonicParsing="false" text="Pick-Up" toggleGroup="$orderTypeGroup">
+                        <RadioButton alignment="TOP_CENTER" layoutX="724.0" layoutY="66.0" mnemonicParsing="false" text="Pick-Up" toggleGroup="$orderTypeGroup">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <Button fx:id="addPizzaBtn" layoutX="186.0" layoutY="111.0" mnemonicParsing="false" onAction="#addPizzaBtnActionOrderScene" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Pizza">
+                        <Button fx:id="addPizzaBtn" layoutX="186.0" layoutY="117.0" mnemonicParsing="false" onAction="#addPizzaBtnActionOrderScene" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Pizza">
                            <font>
                               <Font size="48.0" />
                            </font>
                         </Button>
-                        <Button layoutX="467.0" layoutY="111.0" mnemonicParsing="false" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Drinks">
+                        <Button layoutX="467.0" layoutY="117.0" mnemonicParsing="false" onAction="#addDrinkBtnActionOrderScene" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Drinks">
                            <font>
                               <Font size="48.0" />
                            </font>
                         </Button>
-                        <Button layoutX="736.0" layoutY="111.0" mnemonicParsing="false" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Sides">
+                        <Button layoutX="736.0" layoutY="117.0" mnemonicParsing="false" onAction="#addSideBtnActionOrderScene" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Sides">
                            <font>
                               <Font size="48.0" />
                            </font>
@@ -75,7 +75,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                                <Button layoutX="653.0" layoutY="566.0" mnemonicParsing="false" onAction="#payBtnActionOrderScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Complete / Pay">
+                                <Button layoutX="653.0" layoutY="566.0" mnemonicParsing="false" onAction="#completePayBtnOrderEntryAction" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Complete / Pay">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
@@ -83,7 +83,7 @@
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
-                                <Label alignment="CENTER" layoutX="374.0" layoutY="-6.0" prefHeight="58.0" prefWidth="429.0" text="Order Entry">
+                                <Label alignment="CENTER" layoutX="374.0" layoutY="12.0" prefHeight="58.0" prefWidth="429.0" text="Order Entry">
                                     <font>
                                         <Font size="36.0" />
                                     </font>
@@ -93,7 +93,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="listItemSelectedText" layoutX="584.0" layoutY="242.0" prefHeight="27.0" prefWidth="403.0" textFill="#e16f6f">
+                        <Label fx:id="listItemSelectedText" layoutX="584.0" layoutY="242.0" prefHeight="27.0" prefWidth="403.0" textFill="#a4beeb">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -107,7 +107,7 @@
                         </AnchorPane>
                     </content>
                 </ScrollPane>
-                <ImageView fitHeight="112.0" fitWidth="158.0" layoutX="510.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="131.0" fitWidth="188.0" layoutX="503.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@Mom and Pops.gif" />
                     </image>

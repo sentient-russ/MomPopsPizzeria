@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #015ab2; -fx-border-color: #015ab2; -fx-border-width: 1.5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mompopspizzeria.DrinkSelectionController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #267ed6;">
+            <children>
+                <Button fx:id="backBtnPizzaSelectionScene" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtnActionDrinkSelectionScene" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Back">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Button layoutX="1046.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeBtnActionDrinkSelectionScene" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font></Button>
+                <ScrollPane layoutY="97.0" prefHeight="687.0" prefWidth="1195.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                            <children>
+                                <ComboBox fx:id="drinkMenuDropdownAction1" layoutX="86.0" layoutY="186.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
+                                <ComboBox fx:id="drinkSizeDropdown1" layoutX="435.0" layoutY="185.0" prefHeight="37.0" prefWidth="188.0" promptText="Select Drink Size" />
+                                <Button fx:id="addPizzaBtn" layoutX="414.0" layoutY="576.0" mnemonicParsing="false" onAction="#addBtnActionDrinkSelectionScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add All Drinks">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font></Button>
+                                <Button fx:id="cancelBtnPizzaSelectionScene" layoutX="610.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancelBtnActionDrinkSelectionScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font></Button>
+                                <Label alignment="CENTER" layoutX="380.0" layoutY="14.0" prefHeight="58.0" prefWidth="429.0" text="Drink Selection">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="86.0" layoutY="151.0" prefHeight="35.0" prefWidth="182.0" text="1st Drink Flavor">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="435.0" layoutY="150.0" prefHeight="35.0" prefWidth="134.0" text="Size">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="483.0" layoutY="523.0" text="Drink Total: $" textFill="#a4beeb">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="pizzaTotalText" layoutX="627.0" layoutY="522.0" text="0.00" textFill="#a4beeb">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                        <ComboBox fx:id="drinkQtyDropdown1" layoutX="648.0" layoutY="185.0" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
+                        <Label layoutX="648.0" layoutY="150.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="794.0" layoutY="183.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="285.0" style="-fx-background-color: #ffffff;" text="Add Another Drink">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutX="-1.0" layoutY="72.0" prefHeight="35.0" prefWidth="1176.0" text="All flavors and sizes are $1.00 each!">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="drinkSelectionValidationText" alignment="CENTER" layoutX="1.0" layoutY="108.0" prefHeight="35.0" prefWidth="1176.0" textFill="#a4beeb">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="drinkMenuDropdown2" layoutX="87.0" layoutY="268.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
+                        <ComboBox fx:id="drinkSizeDropdown2" layoutX="436.0" layoutY="267.0" prefHeight="37.0" prefWidth="188.0" promptText="Select Drink Size" />
+                        <Label layoutX="87.0" layoutY="233.0" prefHeight="35.0" prefWidth="188.0" text="2nd Drink Flavor">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="436.0" layoutY="232.0" prefHeight="35.0" prefWidth="134.0" text="Size">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="drinkQtyDropdown2" layoutX="649.0" layoutY="267.0" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
+                        <Label layoutX="649.0" layoutY="232.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="795.0" layoutY="265.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" text="Add Another Drink">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <ComboBox fx:id="drinkMenuDropdown3" layoutX="88.0" layoutY="347.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
+                        <ComboBox fx:id="drinkSizeDropdown3" layoutX="437.0" layoutY="346.0" prefHeight="37.0" prefWidth="188.0" promptText="Select Drink Size" />
+                        <Label layoutX="88.0" layoutY="312.0" prefHeight="35.0" prefWidth="204.0" text="3rd Drink Flavor">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="437.0" layoutY="311.0" prefHeight="35.0" prefWidth="134.0" text="Size">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="drinkQtyDropdown3" layoutX="650.0" layoutY="346.0" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
+                        <Label layoutX="650.0" layoutY="311.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="796.0" layoutY="344.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" text="Add Another Drink">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <ComboBox fx:id="drinkMenuDropdown4" layoutX="88.0" layoutY="429.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
+                        <ComboBox fx:id="drinkSizeDropdown4" layoutX="437.0" layoutY="428.0" prefHeight="37.0" prefWidth="188.0" promptText="Select Drink Size" />
+                        <Label layoutX="88.0" layoutY="394.0" prefHeight="35.0" prefWidth="219.0" text="4rth Drink Flavor">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="437.0" layoutY="393.0" prefHeight="35.0" prefWidth="134.0" text="Size">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="drinkQtyDropdown4" layoutX="650.0" layoutY="428.0" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
+                        <Label layoutX="650.0" layoutY="393.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="796.0" layoutY="426.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" text="Add Another Drink">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="980.0" layoutY="265.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Remove Line">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="980.0" layoutY="346.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Remove Line">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="980.0" layoutY="428.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Remove Line">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+                <ImageView fitHeight="131.0" fitWidth="188.0" layoutX="493.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Mom and Pops.gif" />
+                    </image>
+                </ImageView>
+            </children></AnchorPane>
+    </items>
+</SplitPane>

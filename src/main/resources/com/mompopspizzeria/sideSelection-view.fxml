@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #015ab2; -fx-border-color: #015ab2; -fx-border-width: 1.5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mompopspizzeria.SideSelectionController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #267ed6;">
+            <children>
+                <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtnActionSideSelectionScene" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Back">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Button layoutX="1046.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeBtnActionSideSelectionScene" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font></Button>
+                <ScrollPane layoutY="97.0" prefHeight="687.0" prefWidth="1195.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                            <children>
+                                <Button layoutX="414.0" layoutY="576.0" mnemonicParsing="false" onAction="#addBtnActionSidSelectionScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add to Order">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font></Button>
+                                <Button layoutX="610.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancelBtnActionSideSelectionScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font></Button>
+                                <Label alignment="CENTER" layoutX="4.0" layoutY="14.0" prefHeight="58.0" prefWidth="1171.0" text="Side Selection">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="482.0" layoutY="524.0" text="Side Total: $" textFill="#a4beeb">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="pizzaTotalText" layoutX="622.0" layoutY="524.0" text="0.00" textFill="#a4beeb">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="164.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@BSticks.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="465.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@BBites.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="762.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@CCCookie.jpg" />
+                           </image>
+                        </ImageView>
+                        <ComboBox layoutX="232.0" layoutY="392.0" prefHeight="32.0" prefWidth="115.0" />
+                        <Label layoutX="275.0" layoutY="359.0" text="Qty">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <ComboBox layoutX="532.0" layoutY="393.0" prefHeight="32.0" prefWidth="115.0" />
+                        <Label layoutX="575.0" layoutY="360.0" text="Qty">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <ComboBox layoutX="830.0" layoutY="394.0" prefHeight="32.0" prefWidth="115.0" />
+                        <Label layoutX="873.0" layoutY="361.0" text="Qty">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+                <ImageView fitHeight="131.0" fitWidth="188.0" layoutX="503.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="503.0" AnchorPane.rightAnchor="503.0" AnchorPane.topAnchor="0.0">
+                    <image>
+                        <Image url="@Mom and Pops.gif" />
+                    </image>
+                </ImageView>
+            </children></AnchorPane>
+    </items>
+</SplitPane>

@@ -20,7 +20,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Button>
-                <Button layoutX="1035.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
+                <Button layoutX="1046.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font></Button>
@@ -141,7 +141,7 @@
                         </AnchorPane>
                     </content>
                 </ScrollPane>
-                <ImageView fitHeight="131.0" fitWidth="188.0" layoutX="491.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="131.0" fitWidth="188.0" layoutX="503.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="503.0" AnchorPane.rightAnchor="503.0" AnchorPane.topAnchor="0.0">
                     <image>
                         <Image url="@Mom and Pops.gif" />
                     </image>
