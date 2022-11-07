@@ -83,6 +83,21 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
+                        <Label alignment="CENTER" layoutX="165.0" layoutY="66.0" prefHeight="27.0" prefWidth="249.0" text="Bread Sticks">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="467.0" layoutY="66.0" prefHeight="27.0" prefWidth="249.0" text="Bread Bites">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="764.0" layoutY="66.0" prefHeight="27.0" prefWidth="249.0" text="Big Chocolate Chip Cookie">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
                             </children>
                         </AnchorPane>
                     </content>
