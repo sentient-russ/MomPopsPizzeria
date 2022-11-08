@@ -45,7 +45,7 @@
                            <children>
                                       <ScrollPane layoutY="4.0" prefHeight="272.0" prefWidth="800.0">
                                  <content>
-                                                <ListView fx:id="orderSummeryCustomerPaymentList" prefHeight="284.0" prefWidth="785.0" />
+                                                <ListView fx:id="orderSummeryList" prefHeight="284.0" prefWidth="785.0" />
                                  </content>
                                       </ScrollPane>
                            </children>
@@ -110,6 +110,16 @@
                            </font>
                         </Label>
                         <TextField fx:id="zipCustPaymentTextField" layoutX="783.0" layoutY="514.0" prefHeight="36.0" prefWidth="108.0" promptText="Zip Code" />
+                        <Label layoutX="252.0" layoutY="586.0" prefHeight="35.0" prefWidth="165.0" text="Amount Due: " textFill="#a4beeb">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="customerPaymentTotalText" layoutX="407.0" layoutY="586.0" prefHeight="35.0" prefWidth="110.0" text="\$0.00" textFill="#a4beeb">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
                             </children>
                         </AnchorPane>
                     </content>

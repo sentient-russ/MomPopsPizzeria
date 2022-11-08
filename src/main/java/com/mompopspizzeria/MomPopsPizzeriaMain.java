@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 /*
  * This is the driver class for the 'Mom & Pop's Pizza' application.
  * This class extends the helper class. Place all algo in the helper class or create a new class.
- * Setup project according to these instructions to be able to create executables .jar or .exe https://www.youtube.com/watch?v=0-bG2h2Xh1E
+ * Setup project IntelliJ IDE according to these instructions to be able to create executables .jar or .exe https://www.youtube.com/watch?v=0-bG2h2Xh1E
+ * Follow All Steps!
  *
  * @author Russell Geary
  * @author
@@ -37,13 +38,6 @@ public class MomPopsPizzeriaMain extends Application {
             e.getCause();
         }
     }
-/*        FXMLLoader fxmlLoader = new FXMLLoader(MomPopsPizzeriaMain.class.getResource("home-view.fxml"));
-        Scene homeScene = new Scene(fxmlLoader.load(), 1200, 750);
-        primaryStage.setTitle("Mom and Pop's Pizzeria - Home");
-        primaryStage.setScene(homeScene);
-        primaryStage.show();*/
-
-
 
     public static void main(String[] args) {
         launch(args);

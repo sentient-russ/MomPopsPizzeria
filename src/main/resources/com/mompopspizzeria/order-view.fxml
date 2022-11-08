@@ -70,7 +70,7 @@
                                  </children></AnchorPane>
                           </content>
                         </ScrollPane>
-                        <Button layoutX="189.0" layoutY="566.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" text="Update Selected Item">
+                        <Button layoutX="189.0" layoutY="566.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" text="Remove Selected Item">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -94,11 +94,6 @@
                            </font>
                         </Label>
                         <Label fx:id="listItemSelectedText" layoutX="584.0" layoutY="242.0" prefHeight="27.0" prefWidth="403.0" textFill="#a4beeb">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="listItemSelectedText1" layoutX="467.0" layoutY="242.0" text="Selected Item: ">
                            <font>
                               <Font size="18.0" />
                            </font>

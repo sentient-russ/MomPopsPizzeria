@@ -1,7 +1,8 @@
 package com.mompopspizzeria;
 /*
- * This object is insantiated at the begining of the ordering process and passed from one view to the next until the order is complete.
- * The order total is calculated autmatically herein based on the lines objects that are passed to it.
+ * This object is instantiated in MomPopsPizzeriaMain and remains accessible in the applications controllers through
+ * the extension of MomPopsPizzeriaMain.
+ * The order total is calculated automatically herein based on the lines objects that are passed to it.
  * @author Russell Geary
  * @version 1.1 10/24/2022
  */
@@ -18,6 +19,7 @@ public class OrderModel extends Data {
 	double orderTotal;
 	boolean pickup = false;
 	boolean delivery = false;
+	boolean carryOut = false;
 
 	public OrderModel(CustomerModel customerIn) {
 		orderId = getNextOrderId();
@@ -37,7 +39,24 @@ public class OrderModel extends Data {
 		}
 		return orderTotal;
 	}
-	
+	public ArrayList<LineItemModel> getLineItems(){
+		ArrayList<LineItemModel> resultsArray = new ArrayList<>();
+		resultsArray = lineItems;
+		return resultsArray;
+	}
+	public boolean isPickup(){
+		return  pickup;
+	}
+	public boolean isDelivery(){
+		return delivery;
+	}
+	public boolean isCarryOut() {
+		return carryOut;
+	}
+	public int getNextLineId(){
+
+		return lineItems.size() - 1;
+	}
 }
 
 	

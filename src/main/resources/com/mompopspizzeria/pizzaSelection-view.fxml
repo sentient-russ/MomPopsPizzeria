@@ -28,48 +28,48 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                             <children>
-                        <ComboBox fx:id="pizzaMenuDropdown" layoutX="418.0" layoutY="100.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Pizza Size" />
-                        <ComboBox fx:id="pizzaCrust" layoutX="418.0" layoutY="179.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Crust Type" />
-                        <CheckBox fx:id="extraCheeseToppingChkBox" layoutX="357.0" layoutY="373.0" mnemonicParsing="false" text="Extra Cheese">
+                        <ComboBox fx:id="pizzaMenuDropdown" layoutX="418.0" layoutY="98.0" onAction="#pizzaPriceUpdate" prefHeight="37.0" prefWidth="327.0" promptText="Select Pizza Size" />
+                        <ComboBox fx:id="pizzaCrust" layoutX="418.0" layoutY="171.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Crust Type" />
+                        <CheckBox fx:id="extraCheeseToppingChkBox" layoutX="357.0" layoutY="373.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Extra Cheese">
                            <font>
                               <Font size="24.0" />
                            </font></CheckBox>
-                        <CheckBox fx:id="hamToppingChkBox" layoutX="565.0" layoutY="373.0" mnemonicParsing="false" text="Ham">
+                        <CheckBox fx:id="hamToppingChkBox" layoutX="565.0" layoutY="373.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Ham">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="tomatoSlicesToppingChkBox" layoutX="775.0" layoutY="373.0" mnemonicParsing="false" text="Tomato Slices">
+                        <CheckBox fx:id="tomatoSlicesToppingChkBox" layoutX="775.0" layoutY="373.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Tomato Slices">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="pepperoniToppingChkBox" layoutX="357.0" layoutY="420.0" mnemonicParsing="false" text="Pepperoni">
+                        <CheckBox fx:id="pepperoniToppingChkBox" layoutX="357.0" layoutY="420.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Pepperoni">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="greenPeppersToppingChkBox" layoutX="565.0" layoutY="420.0" mnemonicParsing="false" text="Green Peppers">
+                        <CheckBox fx:id="greenPeppersToppingChkBox" layoutX="565.0" layoutY="420.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Green Peppers">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="mushroomsToppingChkBox" layoutX="775.0" layoutY="420.0" mnemonicParsing="false" text="Mushrooms">
+                        <CheckBox fx:id="mushroomsToppingChkBox" layoutX="775.0" layoutY="420.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Mushrooms">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="sausageToppingChkBox" layoutX="357.0" layoutY="469.0" mnemonicParsing="false" text="Sausage">
+                        <CheckBox fx:id="sausageToppingChkBox" layoutX="357.0" layoutY="469.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Sausage">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="onionsToppingChkBox" layoutX="565.0" layoutY="469.0" mnemonicParsing="false" text="Onions">
+                        <CheckBox fx:id="onionsToppingChkBox" layoutX="565.0" layoutY="469.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Onions">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="pineappleToppingChkBox" layoutX="775.0" layoutY="469.0" mnemonicParsing="false" text="Pineapple">
+                        <CheckBox fx:id="pineappleToppingChkBox" layoutX="775.0" layoutY="469.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Pineapple">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -92,47 +92,52 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="418.0" layoutY="144.0" prefHeight="35.0" prefWidth="134.0" text="Crust:">
+                        <Label layoutX="418.0" layoutY="136.0" prefHeight="35.0" prefWidth="134.0" text="Crust:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="418.0" layoutY="226.0" prefHeight="35.0" prefWidth="134.0" text="Toppings:">
+                        <Label layoutX="418.0" layoutY="212.0" prefHeight="35.0" prefWidth="134.0" text="Toppings:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="534.0" layoutY="231.0" prefHeight="27.0" prefWidth="371.0" text="First topping free.  Additional toppings are:  ">
+                        <Label layoutX="534.0" layoutY="217.0" prefHeight="27.0" prefWidth="371.0" text="First topping free.  Additional toppings are:  ">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="534.0" layoutY="261.0" prefHeight="27.0" prefWidth="371.0" text="\$0.50 each on small pizzas">
+                        <Label layoutX="534.0" layoutY="247.0" prefHeight="27.0" prefWidth="371.0" text="\$0.50 each on small pizzas">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="534.0" layoutY="288.0" prefHeight="27.0" prefWidth="371.0" text="\$0.75 each on medium pizzas">
+                        <Label layoutX="534.0" layoutY="274.0" prefHeight="27.0" prefWidth="371.0" text="\$0.75 each on medium pizzas">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="534.0" layoutY="315.0" prefHeight="27.0" prefWidth="371.0" text="\$1.00 each on large pizzas">
+                        <Label layoutX="534.0" layoutY="301.0" prefHeight="27.0" prefWidth="371.0" text="\$1.00 each on large pizzas">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="534.0" layoutY="342.0" prefHeight="27.0" prefWidth="371.0" text="\$1.25 each on extra large pizzas">
+                        <Label layoutX="534.0" layoutY="328.0" prefHeight="27.0" prefWidth="371.0" text="\$1.25 each on extra large pizzas">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="483.0" layoutY="523.0" text="Pizza Total: $" textFill="#a4beeb">
+                        <Label layoutX="483.0" layoutY="536.0" text="Pizza Total: $" textFill="#a4beeb">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="pizzaTotalText" layoutX="625.0" layoutY="523.0" text="0.00" textFill="#a4beeb">
+                        <Label fx:id="pizzaTotalText" layoutX="625.0" layoutY="536.0" text="0.00" textFill="#a4beeb">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="pizzaSelectionValidationText" alignment="CENTER" layoutX="2.0" layoutY="506.0" prefHeight="35.0" prefWidth="1174.0" textFill="#a4beeb">
                            <font>
                               <Font size="24.0" />
                            </font>

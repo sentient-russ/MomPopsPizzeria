@@ -29,7 +29,7 @@
                             <children>
                                 <ComboBox fx:id="drinkMenuDropdownAction1" layoutX="86.0" layoutY="186.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
                                 <ComboBox fx:id="drinkSizeDropdown1" layoutX="435.0" layoutY="185.0" prefHeight="37.0" prefWidth="188.0" promptText="Select Drink Size" />
-                                <Button fx:id="addPizzaBtn" layoutX="414.0" layoutY="576.0" mnemonicParsing="false" onAction="#addBtnActionDrinkSelectionScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add All Drinks">
+                                <Button fx:id="addPizzaBtn" layoutX="414.0" layoutY="576.0" mnemonicParsing="false" onAction="#addAllBtnActionDrinkSelectionScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add All Drinks">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
@@ -52,12 +52,12 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="483.0" layoutY="523.0" text="Drink Total: $" textFill="#a4beeb">
+                                <Label layoutX="483.0" layoutY="523.0" text="Drink Total: " textFill="#a4beeb">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="pizzaTotalText" layoutX="627.0" layoutY="522.0" text="0.00" textFill="#a4beeb">
+                                <Label fx:id="drinkSelectionTotalText" layoutX="627.0" layoutY="522.0" text="\$0.00" textFill="#a4beeb">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
@@ -68,7 +68,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Button layoutX="794.0" layoutY="183.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="285.0" style="-fx-background-color: #ffffff;" text="Add Another Drink">
+                        <Button fx:id="addSingleBtnDrinkSelectionScene1" layoutX="794.0" layoutY="183.0" mnemonicParsing="false" onAction="#addSingleBtnActionDrinkSelectionScene1" prefHeight="39.0" prefWidth="285.0" style="-fx-background-color: #ffffff;" text="Add Line">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -83,86 +83,86 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="drinkMenuDropdown2" layoutX="87.0" layoutY="268.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
+                        <ComboBox fx:id="drinkMenuDropdownAction2" layoutX="87.0" layoutY="268.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
                         <ComboBox fx:id="drinkSizeDropdown2" layoutX="436.0" layoutY="267.0" prefHeight="37.0" prefWidth="188.0" promptText="Select Drink Size" />
-                        <Label layoutX="87.0" layoutY="233.0" prefHeight="35.0" prefWidth="188.0" text="2nd Drink Flavor">
+                        <Label fx:id="drinkFlavorText2" layoutX="87.0" layoutY="233.0" prefHeight="35.0" prefWidth="188.0" text="2nd Drink Flavor">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="436.0" layoutY="232.0" prefHeight="35.0" prefWidth="134.0" text="Size">
+                        <Label fx:id="sizeText2" layoutX="436.0" layoutY="232.0" prefHeight="35.0" prefWidth="134.0" text="Size">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
                         <ComboBox fx:id="drinkQtyDropdown2" layoutX="649.0" layoutY="267.0" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
-                        <Label layoutX="649.0" layoutY="232.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
+                        <Label fx:id="qtyText2" layoutX="649.0" layoutY="232.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Button layoutX="795.0" layoutY="265.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" text="Add Another Drink">
+                        <Button fx:id="addSingleBtnDrinkSelectionScene2" layoutX="795.0" layoutY="265.0" mnemonicParsing="false" onAction="#addSingleBtnActionDrinkSelectionScene2" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" text="Add Line">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <ComboBox fx:id="drinkMenuDropdown3" layoutX="88.0" layoutY="347.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
+                        <ComboBox fx:id="drinkMenuDropdownAction3" layoutX="88.0" layoutY="347.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
                         <ComboBox fx:id="drinkSizeDropdown3" layoutX="437.0" layoutY="346.0" prefHeight="37.0" prefWidth="188.0" promptText="Select Drink Size" />
-                        <Label layoutX="88.0" layoutY="312.0" prefHeight="35.0" prefWidth="204.0" text="3rd Drink Flavor">
+                        <Label fx:id="drinkFlavorText3" layoutX="88.0" layoutY="312.0" prefHeight="35.0" prefWidth="204.0" text="3rd Drink Flavor">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="437.0" layoutY="311.0" prefHeight="35.0" prefWidth="134.0" text="Size">
+                        <Label fx:id="sizeText3" layoutX="437.0" layoutY="311.0" prefHeight="35.0" prefWidth="134.0" text="Size">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
                         <ComboBox fx:id="drinkQtyDropdown3" layoutX="650.0" layoutY="346.0" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
-                        <Label layoutX="650.0" layoutY="311.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
+                        <Label fx:id="qtyText3" layoutX="650.0" layoutY="311.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Button layoutX="796.0" layoutY="344.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" text="Add Another Drink">
+                        <Button fx:id="addSingleBtnDrinkSelectionScene3" layoutX="796.0" layoutY="344.0" mnemonicParsing="false" onAction="#addSingleBtnActionDrinkSelectionScene3" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" text="Add Line">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <ComboBox fx:id="drinkMenuDropdown4" layoutX="88.0" layoutY="429.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
+                        <ComboBox fx:id="drinkMenuDropdownAction4" layoutX="88.0" layoutY="429.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
                         <ComboBox fx:id="drinkSizeDropdown4" layoutX="437.0" layoutY="428.0" prefHeight="37.0" prefWidth="188.0" promptText="Select Drink Size" />
-                        <Label layoutX="88.0" layoutY="394.0" prefHeight="35.0" prefWidth="219.0" text="4rth Drink Flavor">
+                        <Label fx:id="drinkFlavorText4" layoutX="88.0" layoutY="394.0" prefHeight="35.0" prefWidth="219.0" text="4rth Drink Flavor">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="437.0" layoutY="393.0" prefHeight="35.0" prefWidth="134.0" text="Size">
+                        <Label fx:id="sizeText4" layoutX="437.0" layoutY="393.0" prefHeight="35.0" prefWidth="134.0" text="Size">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
                         <ComboBox fx:id="drinkQtyDropdown4" layoutX="650.0" layoutY="428.0" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
-                        <Label layoutX="650.0" layoutY="393.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
+                        <Label fx:id="qtyText4" layoutX="650.0" layoutY="393.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Button layoutX="796.0" layoutY="426.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" text="Add Another Drink">
+                        <Button fx:id="addSingleBtnDrinkSelectionScene4" layoutX="796.0" layoutY="426.0" mnemonicParsing="false" onAction="#addSingleBtnActionDrinkSelectionScene4" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #ffffff;" text="Add Line">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="980.0" layoutY="265.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Remove Line">
+                        <Button fx:id="removeSingleBtnDrinkSelectionScene2" layoutX="980.0" layoutY="265.0" mnemonicParsing="false" onAction="#removesingelLineActionDrinkSelectionScene2" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Remove Line">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="980.0" layoutY="346.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Remove Line">
+                        <Button fx:id="removeSingleBtnDrinkSelectionScene3" layoutX="980.0" layoutY="346.0" mnemonicParsing="false" onAction="#removesingelLineActionDrinkSelectionScene3" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Remove Line">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="980.0" layoutY="428.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Remove Line">
+                        <Button fx:id="removeSingleBtnDrinkSelectionScene4" layoutX="980.0" layoutY="428.0" mnemonicParsing="false" onAction="#removesingelLineActionDrinkSelectionScene4" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Remove Line">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>

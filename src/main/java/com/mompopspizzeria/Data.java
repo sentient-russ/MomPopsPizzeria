@@ -294,14 +294,14 @@ public class Data<T> implements DataAccessInterface<T> {
 	 * this object class is used to build the static menu drinks ArrayList
 	 */
 	public void loadDrinks() {
-		DrinkModel pepsi = new DrinkModel("Pepsi", 1.00);
-		DrinkModel dietPepsi = new DrinkModel("Diet Pepsi", 1.00);
-		DrinkModel orange = new DrinkModel("Orange", 1.00);
-		DrinkModel dietOrange = new DrinkModel("Diet Orange", 1.00);
-		DrinkModel rootbeer = new DrinkModel("Rootbeer", 1.00);
-		DrinkModel dietRootbeer = new DrinkModel("Diet Rootbeer", 1.00);
-		DrinkModel sierramist = new DrinkModel("Sierra Mist", 1.00);
-		DrinkModel lemonade = new DrinkModel("Lemonade", 1.00);
+		DrinkModel pepsi = new DrinkModel("Pepsi", 0.00);
+		DrinkModel dietPepsi = new DrinkModel("Diet Pepsi", 0.00);
+		DrinkModel orange = new DrinkModel("Orange", 0.00);
+		DrinkModel dietOrange = new DrinkModel("Diet Orange", 0.00);
+		DrinkModel rootbeer = new DrinkModel("Rootbeer", 0.00);
+		DrinkModel dietRootbeer = new DrinkModel("Diet Rootbeer", 0.00);
+		DrinkModel sierramist = new DrinkModel("Sierra Mist", 0.00);
+		DrinkModel lemonade = new DrinkModel("Lemonade", 0.00);
 
 		drinks.add(pepsi);
 		drinks.add(dietPepsi);
@@ -317,9 +317,9 @@ public class Data<T> implements DataAccessInterface<T> {
 	 * this object class is used to build the static menu drink size ArrayList
 	 */
 	public void loadDrinkSizes() {
-		DrinkSizeModel small = new DrinkSizeModel("Small", 0.00);
-		DrinkSizeModel medium = new DrinkSizeModel("Medium", 0.00);
-		DrinkSizeModel large = new DrinkSizeModel("Large", 0.00);
+		DrinkSizeModel small = new DrinkSizeModel("Small", 1.00);
+		DrinkSizeModel medium = new DrinkSizeModel("Medium", 1.00);
+		DrinkSizeModel large = new DrinkSizeModel("Large", 1.00);
 		drinkSizes.add(small);
 		drinkSizes.add(medium);
 		drinkSizes.add(large);

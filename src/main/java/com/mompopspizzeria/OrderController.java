@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -21,14 +22,6 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
     @FXML
     private final ToggleGroup orderTypeGroup = new ToggleGroup();//do not delete. Used by Gluon
 
-    @FXML
-    private Button backBtnOrderScene;
-    @FXML
-    private Button homeBtnOrderScene;
-    @FXML
-    private Button cancelBtnOrderScene;
-    @FXML
-    private Button payBtnOrderScene;
     @FXML
     private Button addPizzaBtn;
     @FXML
@@ -114,19 +107,30 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
             e.getCause();
         }
     }
-    @FXML
-    protected void payBtnActionOrderScene() {
-        Stage stage = (Stage) payBtnOrderScene.getScene().getWindow();
-        stage.close();
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String[] list = {"Medium Pizza Panned Sausage Mushrooms Pineapple Onions $8.25", "Bread Sticks $4.00","Pepesi Small $1.00","Medium Pizza Panned Cheese $6.00"};
-        for(String s: list){
-            orderSummeryList.getItems().add(s);
-        }
+        ArrayList<LineItemModel> lineArray = currentOrder.getLineItems();
+        for (int i = 0; i < lineArray.size(); i++) {
 
+            if (lineArray.get(i).isPizza) {
+                String newLine = (i + 1) + ".) Pizza: " + lineArray.get(i).pizza + ", ";
+                ArrayList<String> toppingsArray = new ArrayList<>();
+                toppingsArray = lineArray.get(i).toppings;
+                    for (int t = 0; t < toppingsArray.size(); t++) {
+                        newLine = newLine + toppingsArray.get(t) + ", ";
+                    }
+                newLine = newLine + "Qty: 1" + ", Price: " + DecimalFormat.getCurrencyInstance().format(lineArray.get(i).lineTotal);
+                orderSummeryList.getItems().add(newLine);
+            } else if (lineArray.get(i).isDrink) {
+
+                String newLine = (i + 1) + ".) Drink: " + lineArray.get(i).drink + ", Size: " + lineArray.get(i).drinkSize + ", Qty: " + lineArray.get(i).drinkQuantity + ", Price:  " + DecimalFormat.getCurrencyInstance().format(lineArray.get(i).lineTotal);
+                orderSummeryList.getItems().add(newLine);
+            } else if (lineArray.get(i).isSide) {
+                String newLine = (i + 1) + ".) Side: " + lineArray.get(i).side + ", Qty: " + lineArray.get(i).sideQuantity + ", Price: " + DecimalFormat.getCurrencyInstance().format(lineArray.get(i).lineTotal);
+                orderSummeryList.getItems().add(newLine);
+            }
+        }
     }
 
 }

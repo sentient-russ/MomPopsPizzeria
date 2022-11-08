@@ -6,10 +6,9 @@ package com.mompopspizzeria;
  */
 import java.util.ArrayList;
 
-public class LineItemModel {
+public class LineItemModel extends MomPopsPizzeriaMain{
 	
-	int orderId;
-	int lineId;
+
 	
 	String pizza;
 	String crust;
@@ -23,7 +22,8 @@ public class LineItemModel {
 	double sidePrice;
 	double drinkPrice;			
 	double lineTotal;
-	
+	int drinkQuantity;
+	int sideQuantity;
 	
 	boolean isPizza = false;
 	boolean isDrink = false;
@@ -61,25 +61,31 @@ public class LineItemModel {
 		lineTotal = toppingsCount * this.toppingPrice + pizzaPrice;	
 		
 	}
-	public void addSide(String sideIn) {
+	public void addSide(String sideIn, int qtyIn) {
 		this.side = sideIn;
 		if(sideIn.equals("Bread Stick Bites")) {
 			sidePrice = 2.00;
+			sideQuantity = qtyIn;
 		}
 		if(sideIn.equals("Bread Sticks")) {
 			sidePrice = 4.00;
+			sideQuantity = qtyIn;
 		} 
 		if(sideIn.equals("Big Chocolate Chip Cookie")) {
 			sidePrice = 4.00;
+			sideQuantity = qtyIn;
 		} 
-		lineTotal = sidePrice;
+		lineTotal = sidePrice * qtyIn;
 		isSide = true;
 	}
-	public void addDrink(String drinkIn, String drinkSizeIn) {
+	public double addDrink(String drinkIn, String drinkSizeIn, int drinkQuantityIn) {
 		this.drink = drinkIn;
 		this.drinkSize = drinkSizeIn;
 			drinkPrice = 1.00;
+			drinkQuantity = drinkQuantityIn;
 			isDrink = true;
-			lineTotal = drinkPrice;			
+			lineTotal = drinkPrice * drinkQuantity;
+			return lineTotal;
 	}
+
 }

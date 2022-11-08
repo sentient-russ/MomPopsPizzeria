@@ -85,6 +85,7 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
     }
     /*
      *Phone number validation number of characters that represent integers

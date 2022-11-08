@@ -11,6 +11,7 @@ package com.mompopspizzeria;
         import javafx.stage.Stage;
 
         import java.net.URL;
+        import java.text.DecimalFormat;
         import java.util.ArrayList;
         import java.util.ResourceBundle;
 
@@ -19,6 +20,8 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
 
     @FXML
     ListView<String> orderSummeryList;
+    @FXML
+    protected Label customerPaymentTotalText;
     private Stage stage;
     private Scene scene;
     @FXML
@@ -118,16 +121,32 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
             e.getCause();
         }
     }
-
-
+    @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String[] list = {"Medium Pizza Panned Sausage Mushrooms Pineapple Onions $8.25", "Bread Sticks $4.00","Pepesi Small $1.00","Medium Pizza Panned Cheese $6.00"};
-        for(String s: list){
-            orderSummeryCustomerPaymentList.getItems().add(s);
+        double orderTotalDouble = currentOrder.orderTotal;
+        customerPaymentTotalText.setText(DecimalFormat.getCurrencyInstance().format(orderTotalDouble));
+        ArrayList<LineItemModel> lineArray = currentOrder.getLineItems();
+        for (int i = 0; i < lineArray.size(); i++) {
+
+            if (lineArray.get(i).isPizza) {
+                String newLine = (i + 1) + ".) Pizza: " + lineArray.get(i).pizza + ", ";
+                ArrayList<String> toppingsArray = new ArrayList<>();
+                toppingsArray = lineArray.get(i).toppings;
+                for (int t = 0; t < toppingsArray.size(); t++) {
+                    newLine = newLine + toppingsArray.get(t) + ", ";
+                }
+                newLine = newLine + " Price: " + DecimalFormat.getCurrencyInstance().format(lineArray.get(i).lineTotal);
+                orderSummeryList.getItems().add(newLine);
+            } else if (lineArray.get(i).isDrink) {
+
+                String newLine = (i + 1) + ".) Drink: " + lineArray.get(i).drink + " " + lineArray.get(i).drinkSize + " Price:  " + DecimalFormat.getCurrencyInstance().format(lineArray.get(i).lineTotal);
+                orderSummeryList.getItems().add(newLine);
+            } else if (lineArray.get(i).isSide) {
+                String newLine = (i + 1) + ".) Side: " + lineArray.get(i).side + ", Qty: " + lineArray.get(i).sideQuantity + ", Price: " + DecimalFormat.getCurrencyInstance().format(lineArray.get(i).lineTotal);
+                orderSummeryList.getItems().add(newLine);
+            }
         }
-
     }
-
 }
 
