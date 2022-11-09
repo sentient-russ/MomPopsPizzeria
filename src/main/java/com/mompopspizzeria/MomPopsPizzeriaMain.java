@@ -39,7 +39,7 @@ public class MomPopsPizzeriaMain extends Application {
         currentCustomer.state = "GA";
         currentCustomer.zip = "30064";
         CustomerModel checkedCustomerModel = dataAccess.authenticateCustomer(currentCustomer.phoneNumber, currentCustomer.password);
-        if(checkedCustomerModel.customerId != -1){
+        if(checkedCustomerModel.customerId == -1){
             dataAccess.addCustomer(currentCustomer);
         }else{
             currentCustomer = checkedCustomerModel;
