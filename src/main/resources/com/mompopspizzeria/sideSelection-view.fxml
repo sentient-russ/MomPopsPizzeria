@@ -40,12 +40,12 @@
                                         <Font size="36.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="482.0" layoutY="524.0" text="Side Total: $" textFill="#a4beeb">
+                                <Label layoutX="482.0" layoutY="524.0" text="Side Total:" textFill="#a4beeb">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="sideTotalText" layoutX="622.0" layoutY="524.0" text="0.00" textFill="#a4beeb">
+                                <Label fx:id="sideTotalText" layoutX="607.0" layoutY="524.0" prefHeight="35.0" prefWidth="142.0" text="\$0.00" textFill="#a4beeb">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
@@ -104,9 +104,19 @@
                 </ScrollPane>
                 <ImageView fitHeight="131.0" fitWidth="188.0" layoutX="503.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="503.0" AnchorPane.rightAnchor="503.0" AnchorPane.topAnchor="0.0">
                     <image>
-                        <Image url="@Mom and Pops.gif" />
+                        <Image url="@MomAndPopsPizzeria.gif" />
                     </image>
                 </ImageView>
+                <Label layoutX="170.0" layoutY="14.0" prefHeight="27.0" prefWidth="121.0" text="Current User:">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="currentUserTextGlobal" layoutX="285.0" layoutY="15.0" prefHeight="27.0" prefWidth="236.0" text="Guest">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
             </children></AnchorPane>
     </items>
 </SplitPane>

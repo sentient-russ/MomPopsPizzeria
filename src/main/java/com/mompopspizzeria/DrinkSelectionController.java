@@ -29,6 +29,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
     static String dietRootbeer = "Diet Rootbeer";
     static String sierraMist = "Sierra Mist";
     static String lemonade = "Lemonade";
+    private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
     @FXML
     protected Button addSingleBtnDrinkSelectionScene1;
     @FXML
@@ -70,6 +71,8 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
     @FXML
     protected ComboBox<String> drinkQtyDropdown4;
     @FXML
+    private Label currentUserTextGlobal;
+    @FXML
     protected Label drinkSelectionValidationText;
     @FXML
     protected Label drinkSelectionTotalText;
@@ -104,6 +107,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
 
     private int totalDrinkQtyOrdered = 0;
     private double pricePerDrink = 1.00;
+   @FXML
     private void updateDisplayedTotal(){
         double currentDrinkTotal;
         currentDrinkTotal = totalDrinkQtyOrdered * pricePerDrink;
@@ -157,6 +161,55 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         }
     }
     @FXML
+    private void qtyUpdateTextTotal1(){
+        String lineDrinkSize = drinkSizeDropdown1.getValue();
+        String lineDrinkSizeWithoutPrice = lineDrinkSize.replace(" $1.00", "");
+        String lineFlavor = drinkMenuDropdownAction1.getValue();
+        int lineQty = Integer.parseInt(drinkQtyDropdown1.getValue());
+        totalDrinkQtyOrdered = totalDrinkQtyOrdered + lineQty;
+        LineItemModel line1 = new LineItemModel();
+        line1.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
+        this.line1 = line1;
+        updateTextTotal();
+    }
+    @FXML
+    private void qtyUpdateTextTotal2(){
+        String lineDrinkSize = drinkSizeDropdown1.getValue();
+        String lineDrinkSizeWithoutPrice = lineDrinkSize.replace(" $1.00", "");
+        String lineFlavor = drinkMenuDropdownAction2.getValue();
+        int lineQty = Integer.parseInt(drinkQtyDropdown2.getValue());
+        totalDrinkQtyOrdered = totalDrinkQtyOrdered + lineQty;
+        LineItemModel line1 = new LineItemModel();
+        line2.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
+        this.line2 = line2;
+        updateTextTotal();
+    }
+    @FXML
+    private void qtyUpdateTextTotal3(){
+        String lineDrinkSize = drinkSizeDropdown3.getValue();
+        String lineDrinkSizeWithoutPrice = lineDrinkSize.replace(" $1.00", "");
+        String lineFlavor = drinkMenuDropdownAction3.getValue();
+        int lineQty = Integer.parseInt(drinkQtyDropdown3.getValue());
+        totalDrinkQtyOrdered = totalDrinkQtyOrdered + lineQty;
+        LineItemModel line3 = new LineItemModel();
+        line3.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
+        this.line3 = line3;
+        updateTextTotal();
+    }
+    @FXML
+    private void qtyUpdateTextTotal4(){
+        String lineDrinkSize = drinkSizeDropdown4.getValue();
+        String lineDrinkSizeWithoutPrice = lineDrinkSize.replace(" $1.00", "");
+        String lineFlavor = drinkMenuDropdownAction4.getValue();
+        int lineQty = Integer.parseInt(drinkQtyDropdown4.getValue());
+        totalDrinkQtyOrdered = totalDrinkQtyOrdered + lineQty;
+        LineItemModel line4 = new LineItemModel();
+        line4.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
+        this.line4 = line4;
+        updateTextTotal();
+    }
+
+    @FXML
     private void addSingleBtnActionDrinkSelectionScene1(){
         if(drinkMenuDropdownAction1.getValue() == null || drinkSizeDropdown1.getValue() == null || drinkQtyDropdown1.getValue() == null) {
             drinkSelectionValidationText.setText("Flavor, Size and a Quantity must be selected.");
@@ -169,9 +222,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             LineItemModel line1 = new LineItemModel();
             line1.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
             this.line1 = line1;
-
             updateTextTotal();
-
 
             drinkMenuDropdownAction2.setVisible(true);
             drinkMenuDropdownAction2.setDisable(false);
@@ -205,7 +256,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             line2.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
             this.line2 = line2;
             updateTextTotal();
-
+            removeSingleBtnDrinkSelectionScene2.setDisable(true);
             drinkMenuDropdownAction3.setVisible(true);
             drinkMenuDropdownAction3.setDisable(false);
             drinkSizeDropdown3.setVisible(true);
@@ -238,7 +289,8 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             this.line3 = line3;
             updateTextTotal();
 
-            drinkSelectionValidationText.setText("");
+
+            removeSingleBtnDrinkSelectionScene3.setDisable(true);
             drinkMenuDropdownAction4.setVisible(true);
             drinkMenuDropdownAction4.setDisable(false);
             drinkSizeDropdown4.setVisible(true);
@@ -252,7 +304,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             drinkFlavorText4.setVisible(true);
             sizeText4.setVisible(true);
             qtyText4.setVisible(true);
-
+            drinkSelectionValidationText.setText("");
         }
     }
     @FXML
@@ -281,9 +333,13 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
     }
     @FXML
     private void removesingelLineActionDrinkSelectionScene2(ActionEvent event){
-        LineItemModel blankLine = new LineItemModel();
-        line2 = blankLine;//////////////////////////////////////////////////////////////////////////////////Look here.
+        LineItemModel newline2 = new LineItemModel();
+        line2 = newline2;
+        line2.drinkQuantity = 0;
         updateTextTotal();
+        //drinkMenuDropdownAction2.setValue(null);
+        //drinkSizeDropdown2.setValue(null);
+        //drinkQtyDropdown2.setValue("0");
         drinkMenuDropdownAction2.setVisible(false);
         drinkMenuDropdownAction2.setDisable(true);
         drinkSizeDropdown2.setVisible(false);
@@ -300,9 +356,14 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
     }
     @FXML
     private void removesingelLineActionDrinkSelectionScene3(ActionEvent event){
-        LineItemModel blankLine = new LineItemModel();
-        line3 = blankLine;
+        LineItemModel newline3 = new LineItemModel();
+        line3 = newline3;
+        line3.drinkQuantity = 0;
         updateTextTotal();
+        //drinkMenuDropdownAction3.setValue(null);
+        //drinkSizeDropdown3.setValue(null);
+        //drinkQtyDropdown3.setValue("0");
+        removeSingleBtnDrinkSelectionScene2.setDisable(false);
         drinkMenuDropdownAction3.setVisible(false);
         drinkMenuDropdownAction3.setDisable(true);
         drinkSizeDropdown3.setVisible(false);
@@ -319,9 +380,14 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
     }
     @FXML
     private void removesingelLineActionDrinkSelectionScene4(ActionEvent event){
-        LineItemModel blankLine = new LineItemModel();
-        line4 = blankLine;
+        LineItemModel newline4 = new LineItemModel();
+        line4 = newline4;
+        line4.drinkQuantity = 0;
         updateTextTotal();
+        //drinkMenuDropdownAction4.setValue(null);
+       // drinkSizeDropdown4.setValue(null);
+        //drinkQtyDropdown4.setValue("0");
+        removeSingleBtnDrinkSelectionScene3.setDisable(false);
         drinkMenuDropdownAction4.setVisible(false);
         drinkMenuDropdownAction4.setDisable(true);
         drinkSizeDropdown4.setVisible(false);
@@ -343,18 +409,28 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         if(this.line1 == null){
             //error enter a drink selection
         }else if(this.line1  != null && this.line2 == null && this.line3 == null && this.line4 == null){
+            addSingleBtnActionDrinkSelectionScene1();
             currentOrder.addLineItem(this.line1);
             backToOrderOptions(event);
         }else if(this.line1  != null && this.line2 != null && this.line3 == null && this.line4 == null) {
+            addSingleBtnActionDrinkSelectionScene1();
+            addSingleBtnActionDrinkSelectionScene2();
             currentOrder.addLineItem(this.line1);
             currentOrder.addLineItem(this.line2);
             backToOrderOptions(event);
         }else if(this.line1  != null && this.line2 != null && this.line3 != null && this.line4 == null) {
+            addSingleBtnActionDrinkSelectionScene1();
+            addSingleBtnActionDrinkSelectionScene2();
+            addSingleBtnActionDrinkSelectionScene3();
             currentOrder.addLineItem(this.line1);
             currentOrder.addLineItem(this.line2);
             currentOrder.addLineItem(this.line3);
             backToOrderOptions(event);
         }else if(this.line1  != null && this.line2 != null && this.line3 != null && this.line4 != null) {
+            addSingleBtnActionDrinkSelectionScene1();
+            addSingleBtnActionDrinkSelectionScene2();
+            addSingleBtnActionDrinkSelectionScene3();
+            addSingleBtnActionDrinkSelectionScene4();
             currentOrder.addLineItem(this.line1);
             currentOrder.addLineItem(this.line2);
             currentOrder.addLineItem(this.line3);
@@ -407,6 +483,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             drinkQtyDropdown3.getItems().add(String.valueOf(i));
             drinkQtyDropdown4.getItems().add(String.valueOf(i));
         }
+        currentUserTextGlobal.setText(currentUserGlobal);
     }
     @FXML
     private void hideFields(){

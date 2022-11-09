@@ -22,10 +22,30 @@ import javafx.stage.Stage;
 public class MomPopsPizzeriaMain extends Application {
     static DataAccessInterface<CustomerModel> dataAccess = new Data<>();
     static EmployeeModel authenticatedEmployee = new EmployeeModel();
-    static CustomerModel authenticatedCustomer = new CustomerModel();
-    static OrderModel currentOrder = new OrderModel(authenticatedCustomer);
+    static CustomerModel currentCustomer = new CustomerModel();
+    static OrderModel currentOrder = new OrderModel(currentCustomer);
+    static String currentUserGlobal = "";
 
     public void start(Stage stage) {
+
+        //set current customer to guest which can be updated later if a customer logs in. Adds the customer to the db file
+        //if they do not already exist.
+        currentCustomer.firstName = "Guest";
+        currentCustomer.lastName = "Customer";
+        currentCustomer.phoneNumber = "1112224444";
+        currentCustomer.password = "Password";
+        currentCustomer.address1 = "123 Nowhere Ln";
+        currentCustomer.city = "Hometown";
+        currentCustomer.state = "GA";
+        currentCustomer.zip = "30064";
+        CustomerModel checkedCustomerModel = dataAccess.authenticateCustomer(currentCustomer.phoneNumber, currentCustomer.password);
+        if(checkedCustomerModel.customerId != -1){
+            dataAccess.addCustomer(currentCustomer);
+        }else{
+            currentCustomer = checkedCustomerModel;
+        }
+        currentUserGlobal = " " + currentCustomer.firstName + " " + currentCustomer.lastName;
+
         try {
             Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
             Scene scene = new Scene(root, 1200, 750);
@@ -38,10 +58,12 @@ public class MomPopsPizzeriaMain extends Application {
             e.getCause();
         }
     }
-
     public static void main(String[] args) {
         launch(args);
-
+    }
+    public void updateCurrentCustomer(CustomerModel customerIn){
+        currentCustomer = customerIn;
+        currentUserGlobal = " " + currentCustomer.firstName + " " + currentCustomer.lastName;
     }
 
 }

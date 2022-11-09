@@ -21,6 +21,7 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
     static String cookie = "Big Chocolate Chip Cookie";
     static double sideTotalDouble;
     static String sideTotalString = "$0.00";
+    private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
 
     LineItemModel lineBreadSticks = new LineItemModel();
     LineItemModel lineBreadBites = new LineItemModel();
@@ -33,6 +34,8 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
     protected ComboBox<Integer> sideQtyDropdown3;
     @FXML
     private Label sideTotalText;
+    @FXML
+    private Label currentUserTextGlobal;
     @FXML
     private Stage stage;
     @FXML
@@ -155,5 +158,7 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
         sideQtyDropdown1.setValue(0);
         sideQtyDropdown2.setValue(0);
         sideQtyDropdown3.setValue(0);
+        currentUserTextGlobal.setText(currentUserGlobal);
     }
+
 }

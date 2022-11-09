@@ -90,7 +90,7 @@ public class Data<T> implements DataAccessInterface<T> {
 	/*
 	 * pass in the customer model to add to the database
 	 * @param complete CustomerModel to add to the database
-	 * @return complete CustomerModel with an updated customerId >= 0 If custmerId < 0 the record was not added
+	 * @return complete CustomerModel with an updated customerId >= 0 If customerId < 0 the record was not added
 	 */
 	@Override
 	public CustomerModel addCustomer(CustomerModel customerIn) {
@@ -98,9 +98,10 @@ public class Data<T> implements DataAccessInterface<T> {
 		// checks to make sure the customer is not already in the list based on phone number and firstname. Returns a blank
 		// model if they are
 		for (CustomerModel evalCustomer : customers) {
-			if (evalCustomer.getPhoneNumber().equals(customerIn.getPhoneNumber()) && evalCustomer.getFirstName().equals(customerIn.getFirstName())) {
-				// returns a blank customer model if the customer already exhists
+			if (evalCustomer.getPhoneNumber().equals(customerIn.getPhoneNumber())) {
+				// returns a blank customer model if the customer already exists
 				CustomerModel blankCustomerModel = new CustomerModel();
+				blankCustomerModel.customerId = -1;
 				return blankCustomerModel;
 			}
 		}
@@ -258,7 +259,7 @@ public class Data<T> implements DataAccessInterface<T> {
 	 * this object class is used to build the static menu toppings ArrayList
 	 */
 	public void loadToppings() {
-		ToppingModel cheese = new ToppingModel("Cheese", 0.50);
+		ToppingModel cheese = new ToppingModel("Extra Cheese", 0.50);
 		ToppingModel pepperoni = new ToppingModel("Pepperoni", 0.50);
 		ToppingModel sausage = new ToppingModel("Sausage", 0.50);
 		ToppingModel ham = new ToppingModel("Ham", 0.50);
@@ -401,7 +402,7 @@ public class Data<T> implements DataAccessInterface<T> {
 	}
 	/*
 	 * gets the current list of system transactions  
-	 * @return ArrayList of Transactions contianing ID, Date, Customer, Transaction
+	 * @return ArrayList of Transactions containing ID, Date, Customer, Transaction
 	 * Total Amount
 	 */
 

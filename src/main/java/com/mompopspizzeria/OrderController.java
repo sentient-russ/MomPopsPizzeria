@@ -26,10 +26,14 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
     private Button addPizzaBtn;
     @FXML
     private Label listItemSelectedText;
+
     @FXML
     private Button updateBtnOrderScene;
     @FXML
     ListView<String> orderSummeryList;
+    @FXML
+    private Label currentUserTextGlobal;
+    private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
     private Stage stage;
     private Scene scene;
     @FXML
@@ -131,6 +135,7 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
                 orderSummeryList.getItems().add(newLine);
             }
         }
+        currentUserTextGlobal.setText(currentUserGlobal);
     }
 
 }

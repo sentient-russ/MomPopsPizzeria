@@ -23,7 +23,7 @@ public class pizzaSelectionController extends MomPopsPizzeriaMain implements Ini
     static String thin = "Thin Crust";
     static String handTossed = "Hand Tossed";
     static String panned = "Panned";
-    static String cheese = "Cheese";
+    static String cheese = "Extra Cheese";
     static String pepperoni = "Pepperoni";
     static String sausage = "Sausage";
     static String ham = "Ham";
@@ -32,7 +32,10 @@ public class pizzaSelectionController extends MomPopsPizzeriaMain implements Ini
     static String tomatos = "Tomato Slices";
     static String mushrooms = "Mushrooms";
     static String pineapple = "Pineapple";
-
+    public int toppingsCount = 0;
+    private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
+    @FXML
+    private Label currentUserTextGlobal;
     @FXML
     private Label pizzaSelectionValidationText;
     @FXML
@@ -118,79 +121,79 @@ public class pizzaSelectionController extends MomPopsPizzeriaMain implements Ini
         }
     }
 
+    /*
+     *Disables check boxes if called br a checkbox click to see if the dropdowns are null.  Displays
+     * message and sets all checkboxes to unselected if null.
+     *
+     *
+     */
     @FXML
-    protected void pizzaPriceUpdate(){
-
-        //forces pizza and crust selection before calculating toppings price.  not doing so results in a null pointer exception
-        if(pizzaMenuDropdown.getValue() == null || pizzaCrust.getValue() == null) {
-            pizzaSelectionValidationText.setText("Please select a pizza size and crust before selecting your toppings");
-            if (extraCheeseToppingChkBox.isSelected()) {
-                extraCheeseToppingChkBox.setSelected(false);
-            }
-            if (pepperoniToppingChkBox.isSelected()) {
-                pepperoniToppingChkBox.setSelected(false);
-            }
-            if (sausageToppingChkBox.isSelected()) {
-                sausageToppingChkBox.setSelected(false);
-            }
-            if (hamToppingChkBox.isSelected()) {
-                hamToppingChkBox.setSelected(false);
-            }
-            if (greenPeppersToppingChkBox.isSelected()) {
-                greenPeppersToppingChkBox.setSelected(false);
-            }
-            if (onionsToppingChkBox.isSelected()) {
-                onionsToppingChkBox.setSelected(false);
-            }
-            if (tomatoSlicesToppingChkBox.isSelected()) {
-                tomatoSlicesToppingChkBox.setSelected(false);
-            }
-            if (mushroomsToppingChkBox.isSelected()) {
-                mushroomsToppingChkBox.setSelected(false);
-            }
-            if (pineappleToppingChkBox.isSelected()) {
-                pineappleToppingChkBox.setSelected(false);
-            }
+    protected void checkboxValidationPizzaScene(){
+        if(pizzaMenuDropdown.getValue() == null || pizzaCrust.getValue() == null){
+            if (extraCheeseToppingChkBox.isSelected()) {extraCheeseToppingChkBox.setSelected(false);}
+            if (pepperoniToppingChkBox.isSelected()) {pepperoniToppingChkBox.setSelected(false);}
+            if (sausageToppingChkBox.isSelected()) {sausageToppingChkBox.setSelected(false);}
+            if (hamToppingChkBox.isSelected()) {hamToppingChkBox.setSelected(false);}
+            if (greenPeppersToppingChkBox.isSelected()) {greenPeppersToppingChkBox.setSelected(false);}
+            if (onionsToppingChkBox.isSelected()) {onionsToppingChkBox.setSelected(false);}
+            if (tomatoSlicesToppingChkBox.isSelected()) {tomatoSlicesToppingChkBox.setSelected(false);}
+            if (mushroomsToppingChkBox.isSelected()) {mushroomsToppingChkBox.setSelected(false);}
+            if (pineappleToppingChkBox.isSelected()) {pineappleToppingChkBox.setSelected(false);}
+            pizzaSelectionValidationText.setText("Please select a size and crust first.");
 
         }else {
+            pizzaSelectionValidationText.setText("");
+            pizzaPriceUpdate();
+        }
+    }
+    @FXML
+    protected void pizzaPriceUpdate(){
+        toppingsCount = 0;
+        //forces pizza and crust selection before calculating toppings price.  not doing so results in a null pointer exception
+        if(pizzaMenuDropdown.getValue() != null || pizzaCrust.getValue() != null) {
             try {
-                int toppingsCount = 0;
+                if (extraCheeseToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
+                if (pepperoniToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
+                if (sausageToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
+                if (hamToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
+                if (greenPeppersToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
+                if (onionsToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
+                if (tomatoSlicesToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
+                if (mushroomsToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
+                if (pineappleToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
 
-                if (extraCheeseToppingChkBox.isSelected()) {
-                    toppingsCount = toppingsCount + 1;
-                }
-                if (pepperoniToppingChkBox.isSelected()) {
-                    toppingsCount = toppingsCount + 1;
-                }
-                if (sausageToppingChkBox.isSelected()) {
-                    toppingsCount = toppingsCount + 1;
-                }
-                if (hamToppingChkBox.isSelected()) {
-                    toppingsCount = toppingsCount + 1;
-                }
-                if (greenPeppersToppingChkBox.isSelected()) {
-                    toppingsCount = toppingsCount + 1;
-                }
-                if (onionsToppingChkBox.isSelected()) {
-                    toppingsCount = toppingsCount + 1;
-                }
-                if (tomatoSlicesToppingChkBox.isSelected()) {
-                    toppingsCount = toppingsCount + 1;
-                }
-                if (mushroomsToppingChkBox.isSelected()) {
-                    toppingsCount = toppingsCount + 1;
-                }
-                if (pineappleToppingChkBox.isSelected()) {
-                    toppingsCount = toppingsCount + 1;
-                }
                 //removing the price text from the dropdown menu
                 String pizzaWithPrice = pizzaMenuDropdown.getValue();
-                String pizzaDiscription = pizzaWithPrice.replace(" $4.00", "")
-                        .replace(" $6.00", "").replace(" $8.00", "")
-                        .replace(" $10.00", "");
+                String pizzaDiscription = pizzaWithPrice.replace(" $4.00", "").replace(" $6.00", "").replace(" $8.00", "").replace(" $10.00", "");
+
                 //adjust toppings billed so the first topping is free.
-                if(toppingsCount >= 1){
-                    toppingsCount = toppingsCount - 1;
+                if (toppingsCount == 4) {
+                    pizzaSelectionValidationText.setText("You have arrived; at the maximum number of toppings!");
+                    if (!extraCheeseToppingChkBox.isSelected()) {extraCheeseToppingChkBox.setDisable(true);}
+                    if (!pepperoniToppingChkBox.isSelected()) {pepperoniToppingChkBox.setDisable(true);}
+                    if (!sausageToppingChkBox.isSelected()) {sausageToppingChkBox.setDisable(true);}
+                    if (!hamToppingChkBox.isSelected()) {hamToppingChkBox.setDisable(true);}
+                    if (!greenPeppersToppingChkBox.isSelected()) {greenPeppersToppingChkBox.setDisable(true);}
+                    if (!onionsToppingChkBox.isSelected()) {onionsToppingChkBox.setDisable(true);}
+                    if (!tomatoSlicesToppingChkBox.isSelected()) {tomatoSlicesToppingChkBox.setDisable(true);}
+                    if (!mushroomsToppingChkBox.isSelected()) {mushroomsToppingChkBox.setDisable(true);}
+                    if (!pineappleToppingChkBox.isSelected()) {pineappleToppingChkBox.setDisable(true);}
+                }
+                if (toppingsCount < 4) {
+                    pizzaSelectionValidationText.setText("");
+                    if (!extraCheeseToppingChkBox.isSelected()) {extraCheeseToppingChkBox.setDisable(false);}
+                    if (!pepperoniToppingChkBox.isSelected()) {pepperoniToppingChkBox.setDisable(false);}
+                    if (!sausageToppingChkBox.isSelected()) {sausageToppingChkBox.setDisable(false);}
+                    if (!hamToppingChkBox.isSelected()) {hamToppingChkBox.setDisable(false);}
+                    if (!greenPeppersToppingChkBox.isSelected()) {greenPeppersToppingChkBox.setDisable(false);}
+                    if (!onionsToppingChkBox.isSelected()) {onionsToppingChkBox.setDisable(false);}
+                    if (!tomatoSlicesToppingChkBox.isSelected()) {tomatoSlicesToppingChkBox.setDisable(false);}
+                    if (!mushroomsToppingChkBox.isSelected()) {mushroomsToppingChkBox.setDisable(false);}
+                    if (!pineappleToppingChkBox.isSelected()) {pineappleToppingChkBox.setDisable(false);}
+                    pizzaSelectionValidationText.setText("");
+                }
+                if (toppingsCount >= 1) {
+                    this.toppingsCount = this.toppingsCount - 1;
                 }
                 double pizzaPrice;
                 double toppingPrice;
@@ -226,13 +229,12 @@ public class pizzaSelectionController extends MomPopsPizzeriaMain implements Ini
                     pizzaTotalText.setText(totalAsString);
                     pizzaSelectionValidationText.setText("");
                 }
-            }catch (NullPointerException e){
-                pizzaSelectionValidationText.setText("Please select a pizza size and crust to see price updates.");
+
+            } catch (NullPointerException e) {
+                pizzaSelectionValidationText.setText("Select a pizza size and crust to see price updates.");
             }
         }
     }
-
-
     @FXML
     private Stage stage;
     @FXML
@@ -297,5 +299,6 @@ public class pizzaSelectionController extends MomPopsPizzeriaMain implements Ini
             String menuItem = crusts.get(i).description + " " + DecimalFormat.getCurrencyInstance().format(crusts.get(i).price);
             pizzaCrust.getItems().add(menuItem);
         }
+        currentUserTextGlobal.setText(currentUserGlobal);
     }
 }

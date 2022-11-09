@@ -28,111 +28,111 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                             <children>
-                        <ComboBox fx:id="pizzaMenuDropdown" layoutX="418.0" layoutY="98.0" onAction="#pizzaPriceUpdate" prefHeight="37.0" prefWidth="327.0" promptText="Select Pizza Size" />
-                        <ComboBox fx:id="pizzaCrust" layoutX="418.0" layoutY="171.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Crust Type" />
-                        <CheckBox fx:id="extraCheeseToppingChkBox" layoutX="357.0" layoutY="373.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Extra Cheese">
+                        <ComboBox fx:id="pizzaMenuDropdown" layoutX="431.0" layoutY="98.0" onAction="#pizzaPriceUpdate" prefHeight="37.0" prefWidth="327.0" promptText="Select Pizza Size" />
+                        <ComboBox fx:id="pizzaCrust" layoutX="431.0" layoutY="171.0" onAction="#pizzaPriceUpdate" prefHeight="37.0" prefWidth="327.0" promptText="Select Crust Type" />
+                        <CheckBox fx:id="extraCheeseToppingChkBox" layoutX="369.0" layoutY="373.0" mnemonicParsing="false" onMouseClicked="#checkboxValidationPizzaScene" text="Extra Cheese">
                            <font>
                               <Font size="24.0" />
                            </font></CheckBox>
-                        <CheckBox fx:id="hamToppingChkBox" layoutX="565.0" layoutY="373.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Ham">
+                        <CheckBox fx:id="hamToppingChkBox" layoutX="578.0" layoutY="373.0" mnemonicParsing="false" onMouseClicked="#checkboxValidationPizzaScene" text="Ham">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="tomatoSlicesToppingChkBox" layoutX="775.0" layoutY="373.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Tomato Slices">
+                        <CheckBox fx:id="tomatoSlicesToppingChkBox" layoutX="788.0" layoutY="373.0" mnemonicParsing="false" onMouseClicked="#checkboxValidationPizzaScene" text="Tomato Slices">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="pepperoniToppingChkBox" layoutX="357.0" layoutY="420.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Pepperoni">
+                        <CheckBox fx:id="pepperoniToppingChkBox" layoutX="370.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#checkboxValidationPizzaScene" text="Pepperoni">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="greenPeppersToppingChkBox" layoutX="565.0" layoutY="420.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Green Peppers">
+                        <CheckBox fx:id="greenPeppersToppingChkBox" layoutX="578.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#checkboxValidationPizzaScene" text="Green Peppers">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="mushroomsToppingChkBox" layoutX="775.0" layoutY="420.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Mushrooms">
+                        <CheckBox fx:id="mushroomsToppingChkBox" layoutX="788.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#checkboxValidationPizzaScene" text="Mushrooms">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="sausageToppingChkBox" layoutX="357.0" layoutY="469.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Sausage">
+                        <CheckBox fx:id="sausageToppingChkBox" layoutX="370.0" layoutY="469.0" mnemonicParsing="false" onMouseClicked="#checkboxValidationPizzaScene" text="Sausage">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="onionsToppingChkBox" layoutX="565.0" layoutY="469.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Onions">
+                        <CheckBox fx:id="onionsToppingChkBox" layoutX="578.0" layoutY="469.0" mnemonicParsing="false" onMouseClicked="#checkboxValidationPizzaScene" text="Onions">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox fx:id="pineappleToppingChkBox" layoutX="775.0" layoutY="469.0" mnemonicParsing="false" onAction="#pizzaPriceUpdate" text="Pineapple">
+                        <CheckBox fx:id="pineappleToppingChkBox" layoutX="788.0" layoutY="469.0" mnemonicParsing="false" onMouseClicked="#checkboxValidationPizzaScene" text="Pineapple">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                                <Button fx:id="addPizzaBtn" layoutX="414.0" layoutY="576.0" mnemonicParsing="false" onAction="#addPizzaBtnActionPizzaSelection" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add to Order">
+                                <Button fx:id="addPizzaBtn" layoutX="420.0" layoutY="576.0" mnemonicParsing="false" onAction="#addPizzaBtnActionPizzaSelection" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add to Order">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
-                                <Button fx:id="cancelBtnPizzaSelectionScene" layoutX="610.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancelBtnActionPizzaSelectionScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                <Button fx:id="cancelBtnPizzaSelectionScene" layoutX="616.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancelBtnActionPizzaSelectionScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
-                                <Label alignment="CENTER" layoutX="380.0" layoutY="14.0" prefHeight="58.0" prefWidth="429.0" text="Pizza Selection">
+                                <Label alignment="CENTER" layoutX="-6.0" layoutY="14.0" prefHeight="58.0" prefWidth="1200.0" text="Pizza Selection">
                                     <font>
                                         <Font size="36.0" />
                                     </font>
                                 </Label>
-                        <Label layoutX="418.0" layoutY="65.0" text="Size:">
+                        <Label layoutX="431.0" layoutY="65.0" text="Size:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="418.0" layoutY="136.0" prefHeight="35.0" prefWidth="134.0" text="Crust:">
+                        <Label layoutX="431.0" layoutY="136.0" prefHeight="35.0" prefWidth="134.0" text="Crust:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="418.0" layoutY="212.0" prefHeight="35.0" prefWidth="134.0" text="Toppings:">
+                        <Label layoutX="431.0" layoutY="212.0" prefHeight="35.0" prefWidth="134.0" text="Toppings:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label layoutX="534.0" layoutY="217.0" prefHeight="27.0" prefWidth="371.0" text="First topping free.  Additional toppings are:  ">
+                        <Label layoutX="547.0" layoutY="217.0" prefHeight="27.0" prefWidth="371.0" text="First topping free.  Additional toppings are:  ">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="534.0" layoutY="247.0" prefHeight="27.0" prefWidth="371.0" text="\$0.50 each on small pizzas">
+                        <Label layoutX="547.0" layoutY="247.0" prefHeight="27.0" prefWidth="371.0" text="\$0.50 each on small pizzas">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="534.0" layoutY="274.0" prefHeight="27.0" prefWidth="371.0" text="\$0.75 each on medium pizzas">
+                        <Label layoutX="547.0" layoutY="274.0" prefHeight="27.0" prefWidth="371.0" text="\$0.75 each on medium pizzas">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="534.0" layoutY="301.0" prefHeight="27.0" prefWidth="371.0" text="\$1.00 each on large pizzas">
+                        <Label layoutX="547.0" layoutY="301.0" prefHeight="27.0" prefWidth="371.0" text="\$1.00 each on large pizzas">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="534.0" layoutY="328.0" prefHeight="27.0" prefWidth="371.0" text="\$1.25 each on extra large pizzas">
+                        <Label layoutX="547.0" layoutY="328.0" prefHeight="27.0" prefWidth="371.0" text="\$1.25 each on extra large pizzas">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="483.0" layoutY="536.0" text="Pizza Total: $" textFill="#a4beeb">
+                        <Label layoutX="478.0" layoutY="536.0" text="Pizza Total: " textFill="#a4beeb">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="pizzaTotalText" layoutX="625.0" layoutY="536.0" text="0.00" textFill="#a4beeb">
+                        <Label fx:id="pizzaTotalText" layoutX="617.0" layoutY="536.0" prefHeight="35.0" prefWidth="134.0" text="\$0.00" textFill="#a4beeb">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -148,9 +148,19 @@
                 </ScrollPane>
                 <ImageView fitHeight="131.0" fitWidth="188.0" layoutX="503.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="503.0" AnchorPane.rightAnchor="503.0" AnchorPane.topAnchor="0.0">
                     <image>
-                        <Image url="@Mom and Pops.gif" />
+                        <Image url="@MomAndPopsPizzeria.gif" />
                     </image>
                 </ImageView>
+                <Label layoutX="170.0" layoutY="14.0" prefHeight="27.0" prefWidth="121.0" text="Current User:">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="currentUserTextGlobal" layoutX="285.0" layoutY="15.0" prefHeight="27.0" prefWidth="238.0" text="Guest">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
             </children></AnchorPane>
     </items>
 </SplitPane>

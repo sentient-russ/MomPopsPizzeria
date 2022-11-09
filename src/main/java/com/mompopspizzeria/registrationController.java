@@ -46,7 +46,7 @@ public class registrationController extends MomPopsPizzeriaMain implements Initi
     private Stage stage;
     private Scene scene;
     @FXML
-    protected void regSaveAction() {
+    protected void regSaveAction(ActionEvent event) {
 
         String fName = regFirstName.getText();
         String lName = regLastName.getText();
@@ -74,12 +74,30 @@ public class registrationController extends MomPopsPizzeriaMain implements Initi
                 newCustomer.zip = zip;
                 newCustomer.phoneNumber = phoneNum;
                 newCustomer.password = password;
-                CustomerModel addedCustomer = new CustomerModel();
-                addedCustomer = dataAccess.addCustomer(newCustomer);
-                //open next scene having passed in the addedCustomerModel
+                CustomerModel addedCustomer = dataAccess.addCustomer(newCustomer);
+                if(addedCustomer.customerId == -1){
+                    custLoginValidationText.setText("Phone number already exists in the data base. Please use another number or speak with the store manager.");
+                }else {
+                    updateCurrentCustomer(addedCustomer);
+                    proceedToOrder(event);
+                }
             }
         }
+        @FXML
+        private void proceedToOrder(ActionEvent event){
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("order-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Order Entry");
+                stage.setScene(scene);
+                stage.show();
 
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        }
         @FXML
         private void returnHomeAction(ActionEvent event){
             try {
@@ -131,7 +149,7 @@ public class registrationController extends MomPopsPizzeriaMain implements Initi
             String state = stateIn.toUpperCase();
 
             for (String s : states) {
-                if (state.equals(s)) {
+                if (stateIn.equals(s)) {
                     stateFound = true;
                 }
 
@@ -146,8 +164,8 @@ public class registrationController extends MomPopsPizzeriaMain implements Initi
                 result = false;
                 return result;
             }
-            if(cityIn.length() > 2){
-                custLoginValidationText.setText("Valid 2 character city required.");
+            if(cityIn.length() > 20){
+                custLoginValidationText.setText("No cities are larger that 20 characters. Try again.");
                 result = false;
                 return result;
             }

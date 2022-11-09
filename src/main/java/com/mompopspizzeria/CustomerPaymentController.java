@@ -21,6 +21,8 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     @FXML
     ListView<String> orderSummeryList;
     @FXML
+    private Label currentUserTextGlobal;
+    @FXML
     protected Label customerPaymentTotalText;
     private Stage stage;
     private Scene scene;
@@ -46,7 +48,7 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     private TextField zipCustPaymentTextField;
     @FXML
     private ListView orderSummeryCustomerPaymentList;
-
+    private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
 
     @FXML
     public void payNowBtnActionCuPaymentScene(ActionEvent event) {
@@ -147,6 +149,7 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
                 orderSummeryList.getItems().add(newLine);
             }
         }
+        currentUserTextGlobal.setText(currentUserGlobal);
     }
 }
 

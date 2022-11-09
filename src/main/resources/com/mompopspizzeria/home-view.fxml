@@ -22,7 +22,7 @@
                      <children>
                         <ImageView fitHeight="325.0" fitWidth="496.0" layoutX="360.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Mom and Pops.gif" />
+                              <Image url="@MomAndPopsPizzeria.gif" />
                            </image>
                         </ImageView>
                         <Button layoutX="404.0" layoutY="314.0" mnemonicParsing="false" onAction="#orderEntryForm" prefHeight="115.0" prefWidth="383.0" style="-fx-background-color: #ffffff;" text="Guest Order" textAlignment="CENTER">

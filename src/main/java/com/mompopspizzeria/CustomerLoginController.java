@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -38,7 +37,7 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
     private Scene scene;
 
     @FXML
-    protected void loginBtnCustLogin() {
+    protected void loginBtnCustLogin(ActionEvent event) {
 
         if(!checkPhoneIsValid(areaCustLogin.getText(), prefixCustLogin.getText(), postfixCustLogin.getText())){
             custLoginValidationText.setText("Invalid phone number. Please try again.");
@@ -50,12 +49,30 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
 
             if(currentCustomer.customerId >= 0){
                 custLoginValidationText.setText("Customer Authenticated!");
-                authenticatedCustomer = currentCustomer;
-                //Stub call method for order entry window and pass customer model.
+                updateCurrentCustomer(currentCustomer);
+                proceedToOrder(event);
+
+
+
 
             } else {
                 custLoginValidationText.setText("Invalid combination.  Please try again.");
             }
+        }
+    }
+    @FXML
+    private void proceedToOrder(ActionEvent event){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("order-view.fxml"));
+            Scene scene = new Scene(root, 1200, 750);
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setTitle("Mom and Pop's Pizzeria - Order Entry");
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
         }
     }
     @FXML
@@ -88,8 +105,7 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
 
     }
     /*
-     *Phone number validation number of characters that represent integers
-     *@author Russell Geary
+     *Phone number validation. Checks the number of characters and makes sure they represent integers.
      *@param area the area code
      *@param prefix the second three characters of the number
      *@param postfix the last four characters of the number

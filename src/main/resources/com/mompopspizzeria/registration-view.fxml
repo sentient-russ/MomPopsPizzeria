@@ -121,7 +121,7 @@
                 </ScrollPane>
             <ImageView fitHeight="96.0" fitWidth="253.0" layoutX="526.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Mom%20and%20Pops.gif" />
+                  <Image url="@MomAndPopsPizzeria.gif" />
                </image>
             </ImageView>
             </children></AnchorPane>

@@ -63,7 +63,7 @@
                                 </Label>
                                 <ImageView fitHeight="262.0" fitWidth="373.0" layoutX="407.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@Mom and Pops.gif" />
+                                        <Image url="@MomAndPopsPizzeria.gif" />
                                     </image>
                                 </ImageView>
                                 <Label fx:id="empLoginValidationText" alignment="CENTER" layoutX="5.0" layoutY="286.0" prefHeight="31.0" prefWidth="1170.0" textFill="#a4beeb">
