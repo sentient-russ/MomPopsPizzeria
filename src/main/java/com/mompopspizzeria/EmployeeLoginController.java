@@ -20,12 +20,7 @@ public class EmployeeLoginController extends MomPopsPizzeriaMain implements Init
 
     @FXML
     private Label empLoginValidationText;
-    @FXML
-    private Button backButton;
-    @FXML
-    private Button homeButton;
-    @FXML
-    private Button cancelButton;
+
     @FXML
     private RadioButton empLoginEmpRadioBtn;
     @FXML
@@ -40,37 +35,24 @@ public class EmployeeLoginController extends MomPopsPizzeriaMain implements Init
     }
 
     @FXML
-    protected void cancelBtnCustLogin() {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
-    }
-    @FXML
-    protected void homeBtnCustLogin() {
-        Stage stage = (Stage) homeButton.getScene().getWindow();
-        stage.close();
-    }
-    @FXML
-    protected void backBtnCustLogin() {
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        stage.close();
-    }
-    @FXML
-    protected void empLoginAction() {
+    protected void empLoginAction(ActionEvent event) {
         empLoginValidationText.setText("Please Wait!");
         try {
             String password = passwordEmployeeLogin.getText();
             if (empLoginEmpRadioBtn.isSelected() && authenticatedEmployee.checkEmployeePassword(password)) {
                 authenticatedEmployee.isEmployee = true;
                 empLoginValidationText.setText("Success! - Logged in as Employee");
-
-                //Stub call method to transition to order stage
-
+                CustomerModel employee = dataAccess.authenticateCustomer(emplyeePhoneNumber,employeePassword);
+                employee.isEmployee = true;
+                updateCurrentCustomer(employee);
+                orderEntryForm(event);
             } else if (empLoginManagerRadioBtn.isSelected() && authenticatedEmployee.checkManagerPassword(password)) {
                 authenticatedEmployee.isManager = true;
                 empLoginValidationText.setText("Success! - Logged in as Manager");
-
-                //Stub call method to open reports menu
-
+                CustomerModel employee = dataAccess.authenticateCustomer(emplyeePhoneNumber, employeePassword);
+                employee.isManager = true;
+                updateCurrentCustomer(employee);
+                managementMenuAction(event);
             } else {
                 empLoginValidationText.setText("Login Failed! - Temporary notification: Employee Password = 2345 Manager Password = 9876");
             }
@@ -99,20 +81,36 @@ public class EmployeeLoginController extends MomPopsPizzeriaMain implements Init
             e.getCause();
         }
     }
-
-
-
-
     @FXML
-    protected void callKeyboard() {
+    public void orderEntryForm(ActionEvent event) {
         try {
-            Runtime.getRuntime().exec("cmd /c osk");
+            Parent root = FXMLLoader.load(getClass().getResource("order-view.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root,1200, 750);
+            stage.setTitle("Mom and Pop's Pizzeria - Order Entry");
+            stage.setScene(scene);
+            stage.show();
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
         }
     }
+    @FXML
+    public void managementMenuAction(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("manager-view.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root,1200, 750);
+            stage.setTitle("Mom and Pop's Pizzeria - Management Menu");
+            stage.setScene(scene);
+            stage.show();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

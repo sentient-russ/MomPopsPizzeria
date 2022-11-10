@@ -57,6 +57,10 @@ public class OrderModel extends Data {
 
 		return lineItems.size() - 1;
 	}
+	public ArrayList<LineItemModel> removeLine(int indexToRemoveIn){
+		lineItems.remove(indexToRemoveIn);
+		return lineItems;
+	}
 }
 
 	

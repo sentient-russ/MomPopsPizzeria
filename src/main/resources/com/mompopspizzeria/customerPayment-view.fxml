@@ -28,11 +28,11 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                             <children>
-                                <Button layoutX="557.0" layoutY="566.0" mnemonicParsing="false" onAction="#payNowBtnActionCuPaymentScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Pay Now">
+                                <Button layoutX="557.0" layoutY="586.0" mnemonicParsing="false" onAction="#payNowBtnActionCuPaymentScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Pay Now">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
-                                <Button layoutX="753.0" layoutY="566.0" mnemonicParsing="false" onAction="#cancelBtnActionCuPaymentScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                <Button layoutX="753.0" layoutY="586.0" mnemonicParsing="false" onAction="#cancelBtnActionCuPaymentScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
@@ -41,83 +41,88 @@
                                         <Font size="36.0" />
                                     </font>
                                 </Label>
-                                  <AnchorPane layoutX="196.0" layoutY="80.0" minHeight="0.0" minWidth="0.0" prefHeight="279.0" prefWidth="785.0">
+                                  <AnchorPane layoutX="248.0" layoutY="97.0" minHeight="0.0" minWidth="0.0" prefHeight="277.0" prefWidth="633.0">
                            <children>
-                                      <ScrollPane layoutY="4.0" prefHeight="272.0" prefWidth="800.0">
+                                      <ScrollPane layoutX="3.0" layoutY="8.0" prefHeight="269.0" prefWidth="636.0">
                                  <content>
-                                                <ListView fx:id="orderSummeryList" prefHeight="284.0" prefWidth="785.0" />
+                                                <ListView fx:id="orderSummeryList" prefHeight="279.0" prefWidth="620.0" />
                                  </content>
                                       </ScrollPane>
                            </children>
                         </AnchorPane>
-                        <Label layoutX="196.0" layoutY="371.0" prefHeight="35.0" prefWidth="188.0" text="Visa/Mastercard: ">
+                        <Label layoutX="252.0" layoutY="392.0" prefHeight="35.0" prefWidth="121.0" text="Visa/MC: ">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="cardNumCustPaymentTextField" layoutX="378.0" layoutY="371.0" prefHeight="36.0" prefWidth="198.0" promptText="Enter Credit Card Number Here" />
-                        <Label layoutX="584.0" layoutY="373.0" prefHeight="35.0" prefWidth="114.0" text="Exp Date: ">
+                        <TextField fx:id="cardNumCustPaymentTextField" layoutX="378.0" layoutY="391.0" prefHeight="36.0" prefWidth="198.0" promptText="Enter Credit Card Number Here" />
+                        <Label layoutX="584.0" layoutY="392.0" prefHeight="35.0" prefWidth="114.0" text="Exp Date: ">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="expDateCustPaymentTextField" layoutX="692.0" layoutY="372.0" prefHeight="36.0" prefWidth="67.0" promptText="Exp. Date" />
-                        <Label layoutX="768.0" layoutY="374.0" prefHeight="35.0" prefWidth="61.0" text="CVV: ">
+                        <TextField fx:id="expDateCustPaymentTextField" layoutX="692.0" layoutY="392.0" prefHeight="36.0" prefWidth="67.0" promptText="Exp. Date" />
+                        <Label layoutX="768.0" layoutY="393.0" prefHeight="35.0" prefWidth="61.0" text="CVV: ">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="cvvCodeCustPaymentTextField" layoutX="825.0" layoutY="371.0" prefHeight="36.0" prefWidth="67.0" promptText="CVV Code" />
-                        <Label layoutX="252.0" layoutY="423.0" prefHeight="35.0" prefWidth="134.0" text="First Name: ">
+                        <TextField fx:id="cvvCodeCustPaymentTextField" layoutX="825.0" layoutY="391.0" prefHeight="36.0" prefWidth="67.0" promptText="CVV Code" />
+                        <Label layoutX="252.0" layoutY="442.0" prefHeight="35.0" prefWidth="134.0" text="First Name: ">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="firstNameCustPaymentTextField" layoutX="379.0" layoutY="423.0" prefHeight="36.0" prefWidth="172.0" promptText="First Name" />
-                        <Label layoutX="593.0" layoutY="423.0" prefHeight="35.0" prefWidth="126.0" text="Last Name: ">
+                        <TextField fx:id="firstNameCustPaymentTextField" layoutX="379.0" layoutY="443.0" prefHeight="36.0" prefWidth="172.0" promptText="First Name" />
+                        <Label layoutX="593.0" layoutY="442.0" prefHeight="35.0" prefWidth="126.0" text="Last Name: ">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="lastNameCustPaymentTextField" layoutX="720.0" layoutY="423.0" prefHeight="36.0" prefWidth="172.0" promptText="Last Name" />
-                        <Label layoutX="252.0" layoutY="468.0" prefHeight="35.0" prefWidth="134.0" text="Address:">
+                        <TextField fx:id="lastNameCustPaymentTextField" layoutX="720.0" layoutY="443.0" prefHeight="36.0" prefWidth="172.0" promptText="Last Name" />
+                        <Label layoutX="252.0" layoutY="487.0" prefHeight="35.0" prefWidth="134.0" text="Address:">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="addr1CustPaymentTextField" layoutX="379.0" layoutY="468.0" prefHeight="36.0" prefWidth="172.0" promptText="Address Line 1" />
-                        <Label layoutX="593.0" layoutY="468.0" prefHeight="35.0" prefWidth="101.0" text="Address: ">
+                        <TextField fx:id="addr1CustPaymentTextField" layoutX="379.0" layoutY="488.0" prefHeight="36.0" prefWidth="172.0" promptText="Address Line 1" />
+                        <Label layoutX="593.0" layoutY="487.0" prefHeight="35.0" prefWidth="101.0" text="Address: ">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="addr2CustPaymentTextField" layoutX="720.0" layoutY="468.0" prefHeight="36.0" prefWidth="172.0" promptText="Address Line 2" />
-                        <Label layoutX="252.0" layoutY="514.0" prefHeight="35.0" prefWidth="134.0" text="City: ">
+                        <TextField fx:id="addr2CustPaymentTextField" layoutX="720.0" layoutY="488.0" prefHeight="36.0" prefWidth="172.0" promptText="Address Line 2" />
+                        <Label layoutX="252.0" layoutY="533.0" prefHeight="35.0" prefWidth="134.0" text="City: ">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="cityCustPaymentTextField" layoutX="379.0" layoutY="514.0" prefHeight="36.0" prefWidth="172.0" promptText="City" />
-                        <Label layoutX="593.0" layoutY="514.0" prefHeight="35.0" prefWidth="71.0" text="State: ">
+                        <TextField fx:id="cityCustPaymentTextField" layoutX="379.0" layoutY="534.0" prefHeight="36.0" prefWidth="172.0" promptText="City" />
+                        <Label layoutX="593.0" layoutY="533.0" prefHeight="35.0" prefWidth="71.0" text="State: ">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="stateCustPaymentTextField" layoutX="658.0" layoutY="514.0" prefHeight="36.0" prefWidth="64.0" promptText="State" />
-                        <Label layoutX="736.0" layoutY="515.0" prefHeight="35.0" prefWidth="51.0" text="Zip: ">
+                        <TextField fx:id="stateCustPaymentTextField" layoutX="658.0" layoutY="534.0" prefHeight="36.0" prefWidth="64.0" promptText="State" />
+                        <Label layoutX="736.0" layoutY="534.0" prefHeight="35.0" prefWidth="51.0" text="Zip: ">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="zipCustPaymentTextField" layoutX="783.0" layoutY="514.0" prefHeight="36.0" prefWidth="108.0" promptText="Zip Code" />
-                        <Label layoutX="252.0" layoutY="586.0" prefHeight="35.0" prefWidth="165.0" text="Amount Due: " textFill="#a4beeb">
+                        <TextField fx:id="zipCustPaymentTextField" layoutX="783.0" layoutY="534.0" prefHeight="36.0" prefWidth="108.0" promptText="Zip Code" />
+                        <Label layoutX="252.0" layoutY="606.0" prefHeight="35.0" prefWidth="165.0" text="Amount Due: " textFill="#a4beeb">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="customerPaymentTotalText" layoutX="407.0" layoutY="586.0" prefHeight="35.0" prefWidth="110.0" text="\$0.00" textFill="#a4beeb">
+                        <Label fx:id="customerPaymentTotalText" layoutX="407.0" layoutY="606.0" prefHeight="35.0" prefWidth="110.0" text="\$0.00" textFill="#a4beeb">
                            <font>
                               <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="custPaymentValidationText" alignment="CENTER" layoutX="-4.0" layoutY="62.0" prefHeight="17.0" prefWidth="1194.0" textFill="#a4beeb">
+                           <font>
+                              <Font size="24.0" />
                            </font>
                         </Label>
                             </children>
@@ -134,7 +139,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="currentUserTextGlobal" layoutX="285.0" layoutY="15.0" prefHeight="27.0" prefWidth="240.0" text="Guest">
+                <Label fx:id="currentUserTextGlobal" layoutX="285.0" layoutY="15.0" prefHeight="27.0" prefWidth="240.0">
                     <font>
                         <Font size="18.0" />
                     </font>

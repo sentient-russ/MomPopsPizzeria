@@ -4,7 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import javax.swing.*;
+import java.nio.file.Paths;
 
 /*
  * This is the driver class for the 'Mom & Pop's Pizza' application.
@@ -25,19 +29,39 @@ public class MomPopsPizzeriaMain extends Application {
     static CustomerModel currentCustomer = new CustomerModel();
     static OrderModel currentOrder = new OrderModel(currentCustomer);
     static String currentUserGlobal = "";
+    static String emplyeePhoneNumber= "1234567890";
+    static String employeePassword = "S1o2M3t4H5i6N7g8C9o0M1p2L3i4C5a6T7eD8";
+    static String guestPhoneNumber = "1112224444";
+    static String guestPassword = "ESM1Po2M3t4H5i6N7g8CoMpLiCaTeD";
 
     public void start(Stage stage) {
 
-        //set current customer to guest which can be updated later if a customer logs in. Adds the customer to the db file
+        boolean employeeExists;
+        CustomerModel employee = dataAccess.authenticateCustomer(emplyeePhoneNumber,employeePassword);
+        if(employee.customerId == -1){
+            employee.firstName = "COMPANY";
+            employee.lastName = "EMPLOYEE";
+            employee.address1 = "680 Arntson Rd";
+            employee.address2 = "suite 161";
+            employee.city = "Marietta";
+            employee.state = "GA";
+            employee.zip = "30060";
+            employee.phoneNumber = emplyeePhoneNumber;
+            employee.password = employeePassword;
+            dataAccess.addCustomer(employee);
+
+        }
+        //set current customer to guest which can be updated later if a customer logs in. Adds/Seeds the customer to the db file
         //if they do not already exist.
         currentCustomer.firstName = "Guest";
         currentCustomer.lastName = "Customer";
-        currentCustomer.phoneNumber = "1112224444";
-        currentCustomer.password = "Password";
-        currentCustomer.address1 = "123 Nowhere Ln";
-        currentCustomer.city = "Hometown";
+        currentCustomer.phoneNumber = guestPhoneNumber;
+        currentCustomer.password = guestPassword;
+        currentCustomer.address1 = "680 Arntson Rd";
+        currentCustomer.address2 = "suite 161";
+        currentCustomer.city = "Marietta";
         currentCustomer.state = "GA";
-        currentCustomer.zip = "30064";
+        currentCustomer.zip = "30060";
         CustomerModel checkedCustomerModel = dataAccess.authenticateCustomer(currentCustomer.phoneNumber, currentCustomer.password);
         if(checkedCustomerModel.customerId == -1){
             dataAccess.addCustomer(currentCustomer);
@@ -50,6 +74,7 @@ public class MomPopsPizzeriaMain extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
             Scene scene = new Scene(root, 1200, 750);
             stage.setTitle("Mom and Pop's Pizzeria - Home");
+            stage.getIcons().add(new Image("file:"+String.valueOf(Paths.get(System.getProperty("user.dir"),"res","MomAndPopsPizzeriaIcon.png"))));
             stage.setScene(scene);
             stage.show();
 

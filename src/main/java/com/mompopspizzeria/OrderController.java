@@ -1,5 +1,7 @@
 package com.mompopspizzeria;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +38,7 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
     private Stage stage;
     private Scene scene;
+
     @FXML
     public void addPizzaBtnActionOrderScene(ActionEvent event)  {
 
@@ -111,9 +114,27 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
             e.getCause();
         }
     }
+public int removeIndex;
+    @FXML
+    public void removeSelectedItemPayBtnOrderEntryAction(ActionEvent event){
+        System.out.println(removeIndex);
+        currentOrder.removeLine(removeIndex);
+        orderEntryForm(event);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadOrderedList(url, resourceBundle);
+        orderSummeryList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                removeIndex =  orderSummeryList.getSelectionModel().getSelectedIndex();
+
+            }
+        });
+        currentUserTextGlobal.setText(currentUserGlobal);
+    }
+    public void loadOrderedList(URL url, ResourceBundle resourceBundle){
         ArrayList<LineItemModel> lineArray = currentOrder.getLineItems();
         for (int i = 0; i < lineArray.size(); i++) {
 
@@ -121,9 +142,9 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
                 String newLine = (i + 1) + ".) Pizza: " + lineArray.get(i).pizza + ", ";
                 ArrayList<String> toppingsArray = new ArrayList<>();
                 toppingsArray = lineArray.get(i).toppings;
-                    for (int t = 0; t < toppingsArray.size(); t++) {
-                        newLine = newLine + toppingsArray.get(t) + ", ";
-                    }
+                for (int t = 0; t < toppingsArray.size(); t++) {
+                    newLine = newLine + toppingsArray.get(t) + ", ";
+                }
                 newLine = newLine + "Qty: 1" + ", Price: " + DecimalFormat.getCurrencyInstance().format(lineArray.get(i).lineTotal);
                 orderSummeryList.getItems().add(newLine);
             } else if (lineArray.get(i).isDrink) {
@@ -135,7 +156,21 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
                 orderSummeryList.getItems().add(newLine);
             }
         }
-        currentUserTextGlobal.setText(currentUserGlobal);
+    }
+    @FXML
+    public void orderEntryForm(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("order-view.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root,1200, 750);
+            stage.setTitle("Mom and Pop's Pizzeria - Order Entry");
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 
 }

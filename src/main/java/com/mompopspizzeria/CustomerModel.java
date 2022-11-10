@@ -16,6 +16,8 @@ public class CustomerModel {
 	public String zip;
 	public String phoneNumber;
 	public String password;
+	boolean isEmployee = false;
+	boolean isManager = false;
 	
 	//default constructor.  Sets customerId to -1 to indicate the customer is not in the database
 	public CustomerModel() {

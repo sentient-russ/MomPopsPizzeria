@@ -29,7 +29,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                             <children>
-                        <RadioButton alignment="TOP_CENTER" layoutX="353.0" layoutY="66.0" mnemonicParsing="false" selected="true" text="Cary Out">
+                        <RadioButton alignment="TOP_CENTER" layoutX="353.0" layoutY="66.0" mnemonicParsing="false" selected="true" text="Carry Out">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -70,7 +70,7 @@
                                  </children></AnchorPane>
                           </content>
                         </ScrollPane>
-                        <Button layoutX="189.0" layoutY="566.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" text="Remove Selected Item">
+                        <Button layoutX="189.0" layoutY="566.0" mnemonicParsing="false" onAction="#removeSelectedItemPayBtnOrderEntryAction" prefHeight="55.0" prefWidth="218.0" style="-fx-background-color: #ffffff;" text="Remove Selected Item">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
