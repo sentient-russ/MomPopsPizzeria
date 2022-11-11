@@ -56,10 +56,10 @@ public interface DataAccessInterface<T> {
 	 */
 	public ArrayList<DrinkSizeModel> getDrinkSizes();
 	/*
-	 * adds and saves an order
+	 * saves an order
 	 * @return true if added, false if not
 	 */
-	public boolean addOrder(OrderModel orderIn);
+	public boolean saveOrder(OrderModel orderIn);
 	/*
 	 *retreives all transaction history from thransactionlist.txt. Note data stored as strings so they will need to be converted to be filtered and sorted
 	 * @return an array list of transaction history models containing Date, Customer Name, Amount

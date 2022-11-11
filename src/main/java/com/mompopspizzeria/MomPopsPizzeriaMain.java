@@ -28,6 +28,9 @@ public class MomPopsPizzeriaMain extends Application {
     static EmployeeModel authenticatedEmployee = new EmployeeModel();
     static CustomerModel currentCustomer = new CustomerModel();
     static OrderModel currentOrder = new OrderModel(currentCustomer);
+    static merchantServicesConnector<String> ccProcessor = new merchantServicesConnector<>();
+
+
     static String currentUserGlobal = "";
     static String emplyeePhoneNumber= "1234567890";
     static String employeePassword = "S1o2M3t4H5i6N7g8C9o0M1p2L3i4C5a6T7eD8";

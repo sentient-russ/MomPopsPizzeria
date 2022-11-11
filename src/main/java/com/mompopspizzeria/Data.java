@@ -394,7 +394,7 @@ public class Data<T> implements DataAccessInterface<T> {
 	 * @return true if added, false if not
 	 */
 	@Override
-	public boolean addOrder(OrderModel orderIn) {
+	public boolean saveOrder(OrderModel orderIn) {
 		boolean result = false;
 		orders.add(orderIn);
 		saveToTransactionFile(orderIn);

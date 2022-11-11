@@ -9,10 +9,13 @@ package com.mompopspizzeria;
         import javafx.scene.Scene;
         import javafx.scene.control.*;
         import javafx.stage.Stage;
+
+        import java.text.SimpleDateFormat;
         import java.time.LocalDate;
         import java.net.URL;
         import java.text.DecimalFormat;
         import java.util.ArrayList;
+        import java.util.Date;
         import java.util.ResourceBundle;
 
 public class CustomerPaymentController extends MomPopsPizzeriaMain implements Initializable {
@@ -26,13 +29,13 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     protected Label customerPaymentTotalText;
     @FXML
     protected Label custPaymentValidationText;
-
+    @FXML
+    protected DatePicker dateCustomerPaymentDatePicker;
     private Stage stage;
     private Scene scene;
     @FXML
     private TextField cardNumCustPaymentTextField;
-    @FXML
-    private TextField expDateCustPaymentTextField;
+
     @FXML
     private TextField cvvCodeCustPaymentTextField;
     @FXML
@@ -49,14 +52,15 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     private TextField stateCustPaymentTextField;
     @FXML
     private TextField zipCustPaymentTextField;
-    @FXML
-    private ListView orderSummeryCustomerPaymentList;
+
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
+    private String orderTotalString;
+
 
     @FXML
     public void payNowBtnActionCuPaymentScene(ActionEvent event) {
         String cardNum = cardNumCustPaymentTextField.getText();
-        String expDate = expDateCustPaymentTextField.getText();
+        String expDate = String.valueOf(dateCustomerPaymentDatePicker.getValue());
         String cvvCode = cvvCodeCustPaymentTextField.getText();
         String firstName = firstNameCustPaymentTextField.getText();
         String lastName = lastNameCustPaymentTextField.getText();
@@ -69,14 +73,36 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
         if (cardIsValid(cardNum, expDate, cvvCode, firstName,
                 lastName, addr1, addr2, city,
                 state, zip)) {
-            //print reciepts
-            //prompt to create account
+            //stub print receipt
+            //stub prompt to create account
+            //stub display success animation
+
             //save order details
+            if(currentCustomer.firstName == null) {
+                currentCustomer.firstName = firstName;
+                currentCustomer.lastName = lastName;
+                currentCustomer.address1 = addr1;
+                currentCustomer.address2 = addr2;
+                currentCustomer.city = city;
+                currentCustomer.state = state;
+                currentCustomer.zip = zip;
+            }
+            //stub prompt to create account
+            boolean desiresAccount = false;
+            String newPhoneNumber = "";
+            String newPassword = "";
+            if(desiresAccount == true){
+                currentCustomer.phoneNumber = newPhoneNumber; //Stub add number from dialog
+                currentCustomer.password = newPassword; //Stub add number from dialog
+            }
+
+            ccProcessor.merchantServicesConnector(firstName, lastName, cardNum, expDate, cvvCode, orderTotalString);
+            dataAccess.saveOrder(currentOrder);
+
             //reset global order and customer instances
-            //display success animation
-            //return to home screen
-
-
+            CustomerModel nextGuest = dataAccess.authenticateCustomer(guestPhoneNumber,guestPassword);
+            updateCurrentCustomer(nextGuest);
+            currentOrder = new OrderModel(currentCustomer);
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -90,10 +116,8 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
                 e.getCause();
             }
         }
-        custPaymentValidationText.setText("Valid information required.");
+
     }
-
-
     @FXML
     public void backBtnActionCuPaymentScene(ActionEvent event) {
         try {
@@ -145,9 +169,14 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String todaysDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+        dateCustomerPaymentDatePicker.setValue(LocalDate.parse(todaysDate));
         double orderTotalDouble = currentOrder.orderTotal;
-        customerPaymentTotalText.setText(DecimalFormat.getCurrencyInstance().format(orderTotalDouble));
+        orderTotalString = DecimalFormat.getCurrencyInstance().format(orderTotalDouble);
+        customerPaymentTotalText.setText(orderTotalString);
         ArrayList<LineItemModel> lineArray = currentOrder.getLineItems();
+
         for (int i = 0; i < lineArray.size(); i++) {
 
             if (lineArray.get(i).isPizza) {
@@ -172,15 +201,18 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     }
 
     /*
-     *Credit card numbers must be exactly 16 numeric characters
-     *Expiration date must be in the future. It will be passed in as a string of characters
-     *Must be three or four characters. No more, no less.
-     *First name must be more than 1 character and less than or equal to 5 characters
-     *Last name must be more than 1 character and less than or equal to 5 characters
-     *Address must begin with a number character and be no less than 3 characters and less than or equal to 25 characters
-     *City must be more than 2 characters and less than 25 characters with no numbers
-     *State must be in the states array.
-     *Zip code is exactly five numbers
+     *Validation method
+     * @param cardNumIn card number to be validated as a string
+     * @param expDateIn expiration date of the credit card as a string
+     * @param cvvCodeIn 3-4 digit numerical value representing the cvv code per product specifications
+     * @param firstNameIn the cardholders first name as a string
+     * @param lastnameIn the cardholders last name as a string
+     * @param addr1In the address line one as a string
+     * @param addr2Ln the address line two as a string
+     * @param cityIn the city name as a string
+     * @param state the two character state abbreviation as a string
+     * @param zipIn the five-digit zip code as a string
+     * @return true if the card is validated and false if not
      */
     @FXML
     public boolean cardIsValid(String cardNumIn, String expDateIn, String cvvCodeIn, String firstNameIn,
@@ -194,75 +226,74 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
                 "R", "S", "T", "U", "V", "W", "Z", "Y", "z", "", "\"", "\'", "`", "~", "!", "@", "#", "#", "$", "%", "^", "&",
                 "*", "(", ")", "[", "]", "{", "}", "\\", ":", ":", "<", ">", ".", "/", "?", "", "", ""};
         String[] numbers = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+        boolean firstCharacterIsNumber = false;
+        String addrFirstCharacter = addr1In.split("")[0];
+        boolean stateFound = false;
 
-            //CC Num
-            if (cardNumIn.equals("") || cardNumIn.length() < 16 || cardNumIn.length() > 16) {
-                custPaymentValidationText.setText("The credit card number is invalid.");
-                result = false;
-                return result;
-            }
-            //first name
-            if (firstNameIn.equals("") || firstNameIn.length() < 2 || firstNameIn.length() > 20) {
+
+        if(currentOrder.lineItems.size() == 0){
+            custPaymentValidationText.setText("Please go back and add items to your order.");
+            return result;
+        }else if (cardNumIn.equals("") || cardNumIn.length() < 16 || cardNumIn.length() > 16) {
+            custPaymentValidationText.setText("The credit card number is not invalid.");
+            return result;
+        } else if(cvvCodeIn.length() > 4 || cvvCodeIn.length() < 3 ) {
+            custPaymentValidationText.setText("The CVV is not invalid. It is the 3 or 4 digits on the back of the card.");
+            return result;
+        } else if (firstNameIn.equals("") || firstNameIn.length() < 2 || firstNameIn.length() > 20) {
                 custPaymentValidationText.setText("Valid first name required.");
-                result = false;
                 return result;
-            }
-            //last name
-            if (lastNameIn.equals("") || lastNameIn.length() < 2 || lastNameIn.length() > 20) {
+            } else if (lastNameIn.equals("") || lastNameIn.length() < 2 || lastNameIn.length() > 20) {
                 custPaymentValidationText.setText("Valid last name required.");
-                result = false;
                 return result;
-            }
-            //addr 1
-            if (addr1In.equals("") || addr1In.length() < 2 || addr1In.length() > 25) {
+            }else if (addr1In.equals("") || addr1In.length() < 2 || addr1In.length() > 25) {
                 custPaymentValidationText.setText("Valid address line one required.");
-                result = false;
                 return result;
-            }
-            boolean firstCharacterIsNumber = false;
-            String addrFirstCharacter = addr1In.split("")[0];
-            try {
+            }else try {
                 int number = Integer.parseInt(addrFirstCharacter);
             } catch (NumberFormatException e) {
+            e.getCause();
+            return result;
+        }
+
+        if (addr2In != ""){
+            if(addr2In.length() > 25){
+                custPaymentValidationText.setText("Address line 2 in invalid.");
+                return result;
+            }
+        } else if (cityIn.length() > 1 || cityIn.length() < 25) {
+            custPaymentValidationText.setText("The city name is invalid");
+            return result;
+        }
+        String upperCaseState = stateIn.toUpperCase();
+        for (String s : states) {
+            if (upperCaseState.equals(s)) {
+                stateFound = true;
+            }
+        }
+        if (!stateFound) {
+            custPaymentValidationText.setText("Valid state required.");
+            return result;
+        }else try {
+            int numeral = Integer.parseInt(zipIn);
+            } catch (NumberFormatException e) {
                 e.getCause();
-                return result = false;
-            }
-            //adr line 2
-            if (addr2In.equals("") || addr2In.length() > 25) {
-                custPaymentValidationText.setText("Address line 2 in invalid");
-                result = false;
+                custPaymentValidationText.setText("Valid zipcode required.");
                 return result;
             }
-            //adr line 2
-            if (cityIn.equals("") || cityIn.length() < 25) {
-                custPaymentValidationText.setText("The city name is invalid");
-                result = false;
-                return result;
-            }
-            //state
-            boolean stateFound = false;
-            String upperCaseState = stateIn.toUpperCase();
-            for (String s : states) {
-                if (upperCaseState.equals(s)) {
-                    stateFound = true;
-                }
-            }
-            if (stateFound == false) {
-                custPaymentValidationText.setText("Valid state required.");
-                result = false;
-                return result;
-            }
-            //zip
-            boolean zipFound = false;
-            String upperCaseZip = stateIn.toUpperCase();
-            for (String n : letersAndSymbols) {
-                if (upperCaseZip.equals(n)) {
-                    return result = false;
-                }
-            }
-            //Put in check for expiration date and your done with this.
-
-
-        return result = true;
+        if(zipIn.length() < 5 || zipIn.length() > 5){
+            custPaymentValidationText.setText("Valid zipcode required.");
+            return result;
+        }
+        String todaysDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        LocalDate currentDate = LocalDate.parse(todaysDate);
+        LocalDate inputDate = LocalDate.parse(expDateIn);
+        if(currentDate.isAfter(inputDate)){
+            custPaymentValidationText.setText("Expiration date must be in the future.");
+        }
+        custPaymentValidationText.setText("Valid");
+        result = true;
+        return result;
     }
+
 }
