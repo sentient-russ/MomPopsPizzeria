@@ -7,20 +7,16 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.nio.file.Paths;
 
 /*
- * This is the driver class for the 'Mom & Pop's Pizza' application.
- * This class extends the helper class. Place all algo in the helper class or create a new class.
- * Setup project IntelliJ IDE according to these instructions to be able to create executables .jar or .exe https://www.youtube.com/watch?v=0-bG2h2Xh1E
- * Follow All Steps!
+ * This is the main class for the 'Mom & Pop's Pizza' application.
+ * Setup project IntelliJ IDE according to these instructions to be able to create executables .jar or .exe
+ * https://www.youtube.com/watch?v=0-bG2h2Xh1E
+ * All steps are required for this project to run.
  *
  * @author Russell Geary
- * @author
- * @author
- * @author
- * @version 1.4, 10.05.2022
+ * @version 1.6, 11.11.2022
  *
  */
 public class MomPopsPizzeriaMain extends Application {
@@ -28,7 +24,7 @@ public class MomPopsPizzeriaMain extends Application {
     static EmployeeModel authenticatedEmployee = new EmployeeModel();
     static CustomerModel currentCustomer = new CustomerModel();
     static OrderModel currentOrder = new OrderModel(currentCustomer);
-    static merchantServicesConnector<String> ccProcessor = new merchantServicesConnector<>();
+    static MerchantServicesConnector<String> ccProcessor = new MerchantServicesConnector<>();
 
 
     static String currentUserGlobal = "";

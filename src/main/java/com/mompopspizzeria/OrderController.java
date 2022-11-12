@@ -25,19 +25,13 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
     private final ToggleGroup orderTypeGroup = new ToggleGroup();//do not delete. Used by Gluon
 
     @FXML
-    private Button addPizzaBtn;
-    @FXML
-    private Label listItemSelectedText;
-
-    @FXML
-    private Button updateBtnOrderScene;
-    @FXML
     ListView<String> orderSummeryList;
     @FXML
     private Label currentUserTextGlobal;
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
     private Stage stage;
     private Scene scene;
+
 
     @FXML
     public void addPizzaBtnActionOrderScene(ActionEvent event)  {
@@ -101,18 +95,35 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
     }
     @FXML
     private void completePayBtnOrderEntryAction(ActionEvent event){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("customerPayment-view.fxml"));
-            Scene scene = new Scene(root, 1200, 750);
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setTitle("Mom and Pop's Pizzeria - Customer Payment");
-            stage.setScene(scene);
-            stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
+        if(currentCustomer.isEmployee){
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("employeePayment-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Employee Payment Terminal");
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        }else{
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("customerPayment-view.fxml"));
+                Scene scene2 = new Scene(root, 1200, 750);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Customer Payment");
+                stage.setScene(scene2);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
         }
+
     }
 public int removeIndex;
     @FXML
@@ -124,6 +135,7 @@ public int removeIndex;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         loadOrderedList(url, resourceBundle);
         orderSummeryList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override

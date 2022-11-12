@@ -7,11 +7,11 @@ import java.util.ArrayList;
  *Later implementation to include an actual SSL connection to the Merchant Services API.
  *Prints each transaction the console for testing as it's entered.
  */
-public class merchantServicesConnector <String> {
+public class MerchantServicesConnector<String> {
     ArrayList<String> transactions = new ArrayList<>();
 
 
-    public merchantServicesConnector(){
+    public MerchantServicesConnector(){
 
     }
     public boolean merchantServicesConnector(String firstNameIn, String lastNameIn, String cardNumIn, String cardExpIn,String cardCVVIn, String totalAmountIn){

@@ -1,0 +1,3 @@
+2022-00-10,null null,$4.0
+2022-17-10,null null,$4.0
+2022-41-10,Russell Geary,$11.0

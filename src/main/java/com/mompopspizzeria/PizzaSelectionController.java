@@ -15,7 +15,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class pizzaSelectionController extends MomPopsPizzeriaMain implements Initializable {
+public class PizzaSelectionController extends MomPopsPizzeriaMain implements Initializable {
     static String smallPizza = "Small Pizza";
     static String mediumPizza = "Medium Pizza";
     static String largePizza = "Large Pizza";

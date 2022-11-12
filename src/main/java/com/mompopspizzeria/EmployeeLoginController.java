@@ -45,6 +45,7 @@ public class EmployeeLoginController extends MomPopsPizzeriaMain implements Init
                 CustomerModel employee = dataAccess.authenticateCustomer(emplyeePhoneNumber,employeePassword);
                 employee.isEmployee = true;
                 updateCurrentCustomer(employee);
+                currentCustomer.isEmployee =  true;
                 orderEntryForm(event);
             } else if (empLoginManagerRadioBtn.isSelected() && authenticatedEmployee.checkManagerPassword(password)) {
                 authenticatedEmployee.isManager = true;

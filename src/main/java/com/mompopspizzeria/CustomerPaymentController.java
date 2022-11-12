@@ -1,23 +1,24 @@
 package com.mompopspizzeria;
 
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.fxml.FXMLLoader;
-        import javafx.fxml.Initializable;
-        import javafx.scene.Node;
-        import javafx.scene.Parent;
-        import javafx.scene.Scene;
-        import javafx.scene.control.*;
-        import javafx.stage.Stage;
-
-        import java.text.SimpleDateFormat;
-        import java.time.LocalDate;
-        import java.net.URL;
-        import java.text.DecimalFormat;
-        import java.util.ArrayList;
-        import java.util.Date;
-        import java.util.ResourceBundle;
-
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.net.URL;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.ResourceBundle;
+/*
+ *This controller class provides functionality to the customer payment screen.
+ */
 public class CustomerPaymentController extends MomPopsPizzeriaMain implements Initializable {
 
 
@@ -56,7 +57,9 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
     private String orderTotalString;
 
-
+    /*
+     *This method initiates payment processing and prompts the user to save the cc information in a new account.
+     */
     @FXML
     public void payNowBtnActionCuPaymentScene(ActionEvent event) {
         String cardNum = cardNumCustPaymentTextField.getText();
@@ -77,25 +80,20 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
             //stub prompt to create account
             //stub display success animation
 
-            //save order details
-            if(currentCustomer.firstName == null) {
-                currentCustomer.firstName = firstName;
-                currentCustomer.lastName = lastName;
-                currentCustomer.address1 = addr1;
-                currentCustomer.address2 = addr2;
-                currentCustomer.city = city;
-                currentCustomer.state = state;
-                currentCustomer.zip = zip;
-            }
+
             //stub prompt to create account
             boolean desiresAccount = false;
             String newPhoneNumber = "";
             String newPassword = "";
+
             if(desiresAccount == true){
                 currentCustomer.phoneNumber = newPhoneNumber; //Stub add number from dialog
                 currentCustomer.password = newPassword; //Stub add number from dialog
+                dataAccess.addCustomer(currentCustomer);
             }
 
+            currentOrder.customerFirstName = firstName; //adding billing first name to transaction file
+            currentOrder.customerLastName = lastName; //adding billing last name to transaction file
             ccProcessor.merchantServicesConnector(firstName, lastName, cardNum, expDate, cvvCode, orderTotalString);
             dataAccess.saveOrder(currentOrder);
 
@@ -118,6 +116,9 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
         }
 
     }
+    /*
+     * Method causes the scene to change back to order entry from the customer payment scene
+     */
     @FXML
     public void backBtnActionCuPaymentScene(ActionEvent event) {
         try {
@@ -133,7 +134,9 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
             e.getCause();
         }
     }
-
+    /*
+     * Method cancels the payment and returns the customer to the order scene.
+     */
     @FXML
     public void cancelBtnActionCuPaymentScene(ActionEvent event) {
         try {
@@ -149,7 +152,9 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
             e.getCause();
         }
     }
-
+    /*
+     *Method returns the user to the home scene after confirmation to make sure that they wish to cancel the order.
+     */
     @FXML
     private void homeBtnActionCuPaymentScene(ActionEvent event) {
         try {
@@ -165,7 +170,9 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
             e.getCause();
         }
     }
-
+    /*
+     *Method populates the listview with the current order in addition to setting up the date field.
+     */
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -201,7 +208,7 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     }
 
     /*
-     *Validation method
+     *Validation method for the customer payment form
      * @param cardNumIn card number to be validated as a string
      * @param expDateIn expiration date of the credit card as a string
      * @param cvvCodeIn 3-4 digit numerical value representing the cvv code per product specifications
@@ -261,7 +268,7 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
                 custPaymentValidationText.setText("Address line 2 in invalid.");
                 return result;
             }
-        } else if (cityIn.length() > 1 || cityIn.length() < 25) {
+        } else if (cityIn.length() < 1 || cityIn.length() > 25) {
             custPaymentValidationText.setText("The city name is invalid");
             return result;
         }
