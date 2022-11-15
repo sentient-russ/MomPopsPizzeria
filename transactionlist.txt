@@ -1,3 +1,3 @@
-2022-00-10,null null,$4.0
-2022-17-10,null null,$4.0
-2022-41-10,Russell Geary,$11.0
+2022-14-15,Company Employee,$6.00
+2022-15-15,Russ Geary,$20.75
+2022-16-15,Company Employee,$8.25

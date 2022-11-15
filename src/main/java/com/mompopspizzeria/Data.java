@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -86,6 +87,18 @@ public class Data<T> implements DataAccessInterface<T> {
 		CustomerModel returnCustomerModel = new CustomerModel();
 		return returnCustomerModel;
 	}
+	@Override
+	public CustomerModel customerCheckPhoneNum(String customerPhoneNumberIn){
+		for (CustomerModel evalCustomer : customers) {
+			if (evalCustomer.getPhoneNumber().equals(customerPhoneNumberIn)) {
+				// returns the customer model for the customer if found with a customerId >= 1
+				return evalCustomer;
+			}
+		}
+		// sends back a blant customer model with a customerId of -1 if not found
+		CustomerModel returnCustomerModel = new CustomerModel();
+		return returnCustomerModel;
+	}
 
 	/*
 	 * pass in the customer model to add to the database
@@ -96,15 +109,14 @@ public class Data<T> implements DataAccessInterface<T> {
 	public CustomerModel addCustomer(CustomerModel customerIn) {
 		// adds the customer with an updated customerId
 		// checks to make sure the customer is not already in the list based on phone number and firstname. Returns a blank
-		// model if they are
-		for (CustomerModel evalCustomer : customers) {
-			if (evalCustomer.getPhoneNumber().equals(customerIn.getPhoneNumber())) {
-				// returns a blank customer model if the customer already exists
-				CustomerModel blankCustomerModel = new CustomerModel();
-				blankCustomerModel.customerId = -1;
-				return blankCustomerModel;
+		// model if they are found
+		for (CustomerModel evalCu : customers) {
+			if (evalCu.phoneNumber.equals(customerIn.phoneNumber)) {
+				evalCu.customerId = -1;
+				return evalCu;
 			}
 		}
+
 		customerIn.customerId = customers.size();
 		customers.add(customerIn);
 
@@ -414,11 +426,12 @@ public class Data<T> implements DataAccessInterface<T> {
 	 * Saves the transaction as Date, Customer, Amount to the transactionlist.txt record file.
 	 */
 	public void saveToTransactionFile(OrderModel orderIn){
-			
+
 			Date date = Calendar.getInstance().getTime();  
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
 			String strDate = dateFormat.format(date); 
-			String outputText = strDate + "," + orderIn.customerFirstName + " " + orderIn.customerLastName + ",$" + String.valueOf(orderIn.orderTotal) + "\n";
+			String outputText = strDate + "," + orderIn.customerFirstName + " " + orderIn.customerLastName + ","
+					+ DecimalFormat.getCurrencyInstance().format(orderIn.orderTotal) + "\n";
 			
 			try {
 				saveToFile("transactionlist.txt", outputText, true);

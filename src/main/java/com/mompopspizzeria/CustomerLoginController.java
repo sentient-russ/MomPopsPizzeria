@@ -14,7 +14,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/*
+ * this object class is used to build the menu crusts ArrayList
+ * @author Russell Geary
+ * @version 7.1 11/15/2022
+ */
 public class CustomerLoginController extends MomPopsPizzeriaMain implements Initializable{
     @FXML
     Label custLoginValidationText;
@@ -34,10 +38,11 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
     private Stage stage;
     @FXML
     private Scene scene;
-
+    /*
+     *Action method for handling the login button on action click event
+     */
     @FXML
     protected void loginBtnCustLogin(ActionEvent event) {
-
         if(!checkPhoneIsValid(areaCustLogin.getText(), prefixCustLogin.getText(), postfixCustLogin.getText())){
             custLoginValidationText.setText("Invalid phone number. Please try again.");
         }else{
@@ -45,20 +50,19 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
             custPassword = passwordCustLogin.getText();
             CustomerModel currentCustomer = new CustomerModel();
             currentCustomer = dataAccess.authenticateCustomer(custPhoneNum, custPassword);
-
             if(currentCustomer.customerId >= 0){
                 custLoginValidationText.setText("Customer Authenticated!");
                 updateCurrentCustomer(currentCustomer);
                 proceedToOrder(event);
-
-
-
-
             } else {
                 custLoginValidationText.setText("Invalid combination.  Please try again.");
             }
         }
     }
+    /*
+     * Action method for handling the proceed to order action event.  It is called if the customer is authenticated
+     * @param event ActionEvent
+     */
     @FXML
     private void proceedToOrder(ActionEvent event){
         try {
@@ -68,12 +72,15 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
             stage.setTitle("Mom and Pop's Pizzeria - Order Entry");
             stage.setScene(scene);
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
+    /*
+     * Action method for handling the home button onAction event.  Returns the user to the home screen.
+     * @param event FXML on ActionEvent
+     */
     @FXML
     private void returnHomeAction(ActionEvent event){
         try {
@@ -89,15 +96,11 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
             e.getCause();
         }
     }
-    @FXML
-    protected void callKeyboard() {
-        try {
-            Runtime.getRuntime().exec("cmd /c osk");
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    /*
+     * Method required in order to impliment initilizable class
+     * @param location the FXML URL object
+     * @param resources the ResourceBundle object
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -108,7 +111,7 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
      *@param area the area code
      *@param prefix the second three characters of the number
      *@param postfix the last four characters of the number
-     *@return true if the number is valid.  false if not
+     *@return true if the number is valid; false if not
      */
     static boolean checkPhoneIsValid(String areaIn, String preFixIn, String postFixIn ) {
         boolean result = false;

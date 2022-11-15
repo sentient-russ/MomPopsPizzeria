@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #015ab2; -fx-border-color: #015ab2; -fx-border-width: 1.5;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mompopspizzeria.OrderConfirmationController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #267ed6;">
+            <children>
+                <Button disable="true" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Back">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Button layoutX="1046.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-border-width: 1.5; -fx-border-radius: 3;" text="Home">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font></Button>
+                <ScrollPane layoutY="97.0" prefHeight="687.0" prefWidth="1195.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
+                            <children>
+                                <Label alignment="CENTER" layoutX="-3.0" layoutY="27.0" prefHeight="58.0" prefWidth="1195.0" text="Success!">
+                                    <font>
+                                        <Font size="36.0" />
+                                    </font>
+                                </Label>
+                                <Label alignment="CENTER" layoutX="-7.0" layoutY="77.0" prefHeight="27.0" prefWidth="1195.0" text="Thank you for your order.  It will ready in shortly!">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                        <ScrollPane layoutX="318.0" layoutY="118.0" prefHeight="397.0" prefWidth="553.0">
+                           <content>
+                                          <ListView fx:id="orderSummeryList" prefHeight="571.0" prefWidth="537.0" style="-fx-background-color: #267ed6;" />
+                           </content>
+                        </ScrollPane>
+                        <Button layoutX="319.0" layoutY="535.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="555.0" style="-fx-background-color: #ffffff;" text="PLACE NEW ORDER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+                <ImageView fitHeight="131.0" fitWidth="188.0" layoutX="503.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@MomAndPopsPizzeria.gif" />
+                    </image>
+                </ImageView>
+                <Label layoutX="170.0" layoutY="14.0" prefHeight="27.0" prefWidth="121.0" text="Current User:">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="currentUserTextGlobal" layoutX="285.0" layoutY="15.0" prefHeight="27.0" prefWidth="221.0" text="Guest">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children></AnchorPane>
+    </items>
+</SplitPane>

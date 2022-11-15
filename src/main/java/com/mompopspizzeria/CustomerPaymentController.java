@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -62,6 +63,7 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
      */
     @FXML
     public void payNowBtnActionCuPaymentScene(ActionEvent event) {
+
         String cardNum = cardNumCustPaymentTextField.getText();
         String expDate = String.valueOf(dateCustomerPaymentDatePicker.getValue());
         String cvvCode = cvvCodeCustPaymentTextField.getText();
@@ -94,6 +96,9 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
 
             currentOrder.customerFirstName = firstName; //adding billing first name to transaction file
             currentOrder.customerLastName = lastName; //adding billing last name to transaction file
+            lastCustomer = currentCustomer;
+            lastOrder = currentOrder;
+            String orderTotalString = DecimalFormat.getCurrencyInstance().format(currentOrder.orderTotal);
             ccProcessor.merchantServicesConnector(firstName, lastName, cardNum, expDate, cvvCode, orderTotalString);
             dataAccess.saveOrder(currentOrder);
 
@@ -102,10 +107,10 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
             updateCurrentCustomer(nextGuest);
             currentOrder = new OrderModel(currentCustomer);
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("orderConfirmation-view.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root, 1200, 750);
-                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setTitle("Mom and Pop's Pizzeria - Success!  Here is your order confirmation");
                 stage.setScene(scene);
                 stage.show();
 

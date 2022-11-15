@@ -16,6 +16,7 @@ public class OrderModel extends Data {
 	int customerId;
 	String customerFirstName;
 	String customerLastName;
+	String currentOrderChargeAmount;
 	double orderTotal;
 	boolean pickup = false;
 	boolean delivery = false;

@@ -16,7 +16,13 @@ public interface DataAccessInterface<T> {
 	 * @return the complete CustomerModel of the customer that was found if not found customer id will be -1
 	 */
 	public CustomerModel authenticateCustomer(String customerPhoneNumber, String customerPassword);
-	
+	/*
+	 * pass in the phone number and first name as strings to check to see if they are found in the database
+	 * @param customerPhoneNum the customers number as a string
+	 * @param customerFirstName the customers first name as string
+	 * @return the complete CustomerModel of the customer that was found if not found customer id will be -1
+	 */
+	public CustomerModel customerCheckPhoneNum(String customerPhoneNumber);
 	
 	/*
 	 * pass in the customer model to add to the database

@@ -23,7 +23,9 @@ public class MomPopsPizzeriaMain extends Application {
     static DataAccessInterface<CustomerModel> dataAccess = new Data<>();
     static EmployeeModel authenticatedEmployee = new EmployeeModel();
     static CustomerModel currentCustomer = new CustomerModel();
+    static CustomerModel lastCustomer = new CustomerModel();
     static OrderModel currentOrder = new OrderModel(currentCustomer);
+    static OrderModel lastOrder = new OrderModel(lastCustomer);
     static MerchantServicesConnector<String> ccProcessor = new MerchantServicesConnector<>();
 
 
@@ -32,9 +34,11 @@ public class MomPopsPizzeriaMain extends Application {
     static String employeePassword = "S1o2M3t4H5i6N7g8C9o0M1p2L3i4C5a6T7eD8";
     static String guestPhoneNumber = "1112224444";
     static String guestPassword = "ESM1Po2M3t4H5i6N7g8CoMpLiCaTeD";
+    public Stage parentStage;
+    public Scene parentScene;
 
     public void start(Stage stage) {
-
+        parentStage = stage;
         boolean employeeExists;
         CustomerModel employee = dataAccess.authenticateCustomer(emplyeePhoneNumber,employeePassword);
         if(employee.customerId == -1){
@@ -84,6 +88,7 @@ public class MomPopsPizzeriaMain extends Application {
     }
     public static void main(String[] args) {
         launch(args);
+
     }
     public void updateCurrentCustomer(CustomerModel customerIn){
         currentCustomer = customerIn;

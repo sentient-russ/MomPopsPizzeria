@@ -148,7 +148,7 @@ public class RegistrationController extends MomPopsPizzeriaMain implements Initi
             String state = stateIn.toUpperCase();
 
             for (String s : states) {
-                if (stateIn.equals(s)) {
+                if (state.equals(s)) {
                     stateFound = true;
                 }
 

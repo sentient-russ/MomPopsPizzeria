@@ -16,6 +16,9 @@ public class CustomerModel {
 	public String zip;
 	public String phoneNumber;
 	public String password;
+	public String cardNumber;
+	public String expDate;
+	public String CVV;
 	boolean isEmployee = false;
 	boolean isManager = false;
 	

@@ -62,7 +62,7 @@
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                        <ComboBox fx:id="drinkQtyDropdown1" layoutX="648.0" layoutY="185.0" onAction="#qtyUpdateTextTotal1" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
+                        <ComboBox fx:id="drinkQtyDropdown1" layoutX="648.0" layoutY="185.0" onAction="#qtyUpdateTextTotal1" prefHeight="37.0" prefWidth="118.0" promptText="Select Qty" />
                         <Label layoutX="648.0" layoutY="150.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
                            <font>
                               <Font size="24.0" />
@@ -95,7 +95,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="drinkQtyDropdown2" layoutX="649.0" layoutY="267.0" onAction="#qtyUpdateTextTotal2" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
+                        <ComboBox fx:id="drinkQtyDropdown2" layoutX="649.0" layoutY="267.0" onAction="#qtyUpdateTextTotal2" prefHeight="37.0" prefWidth="118.0" promptText="Select Qty" />
                         <Label fx:id="qtyText2" layoutX="649.0" layoutY="232.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
                            <font>
                               <Font size="24.0" />
@@ -118,7 +118,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="drinkQtyDropdown3" layoutX="650.0" layoutY="346.0" onAction="#qtyUpdateTextTotal3" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
+                        <ComboBox fx:id="drinkQtyDropdown3" layoutX="650.0" layoutY="346.0" onAction="#qtyUpdateTextTotal3" prefHeight="37.0" prefWidth="118.0" promptText="Select Qty" />
                         <Label fx:id="qtyText3" layoutX="650.0" layoutY="311.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
                            <font>
                               <Font size="24.0" />
@@ -141,7 +141,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="drinkQtyDropdown4" layoutX="650.0" layoutY="428.0" onAction="#qtyUpdateTextTotal4" prefHeight="37.0" prefWidth="118.0" promptText="Select Crust Type" />
+                        <ComboBox fx:id="drinkQtyDropdown4" layoutX="650.0" layoutY="428.0" onAction="#qtyUpdateTextTotal4" prefHeight="37.0" prefWidth="118.0" promptText="Select Qty" />
                         <Label fx:id="qtyText4" layoutX="650.0" layoutY="393.0" prefHeight="35.0" prefWidth="116.0" text="Qty">
                            <font>
                               <Font size="24.0" />
