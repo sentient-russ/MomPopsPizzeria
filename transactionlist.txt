@@ -1,3 +1,5 @@
 2022-14-15,Company Employee,$6.00
 2022-15-15,Russ Geary,$20.75
 2022-16-15,Company Employee,$8.25
+2022-47-15,Company Employee,$10.00
+2022-47-15,Russ que,$27.50

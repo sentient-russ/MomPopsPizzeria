@@ -19,8 +19,8 @@ public class CustomerModel {
 	public String cardNumber;
 	public String expDate;
 	public String CVV;
-	boolean isEmployee = false;
-	boolean isManager = false;
+	public boolean isEmployee = false;
+	public boolean isManager = false;
 	
 	//default constructor.  Sets customerId to -1 to indicate the customer is not in the database
 	public CustomerModel() {

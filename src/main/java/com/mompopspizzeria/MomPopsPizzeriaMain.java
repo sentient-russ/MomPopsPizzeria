@@ -35,11 +35,9 @@ public class MomPopsPizzeriaMain extends Application {
     static String guestPhoneNumber = "1112224444";
     static String guestPassword = "ESM1Po2M3t4H5i6N7g8CoMpLiCaTeD";
     public Stage parentStage;
-    public Scene parentScene;
 
     public void start(Stage stage) {
         parentStage = stage;
-        boolean employeeExists;
         CustomerModel employee = dataAccess.authenticateCustomer(emplyeePhoneNumber,employeePassword);
         if(employee.customerId == -1){
             employee.firstName = "COMPANY";
@@ -94,5 +92,12 @@ public class MomPopsPizzeriaMain extends Application {
         currentCustomer = customerIn;
         currentUserGlobal = " " + currentCustomer.firstName + " " + currentCustomer.lastName;
     }
+    public void  orderReset(){
+        //reset global order and customer instances
+        CustomerModel nextGuest = dataAccess.authenticateCustomer(guestPhoneNumber,guestPassword);
+        updateCurrentCustomer(nextGuest);
+        currentOrder = new OrderModel(currentCustomer);
+    }
+
 
 }

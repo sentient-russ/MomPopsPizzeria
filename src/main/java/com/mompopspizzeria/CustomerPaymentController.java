@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -24,9 +26,9 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
 
 
     @FXML
-    ListView<String> orderSummeryList;
+    protected ListView<String> orderSummeryList;
     @FXML
-    private Label currentUserTextGlobal;
+    protected Label currentUserTextGlobal;
     @FXML
     protected Label customerPaymentTotalText;
     @FXML
@@ -74,26 +76,11 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
         String city = cityCustPaymentTextField.getText();
         String state = stateCustPaymentTextField.getText();
         String zip = zipCustPaymentTextField.getText();
-
         if (cardIsValid(cardNum, expDate, cvvCode, firstName,
                 lastName, addr1, addr2, city,
                 state, zip)) {
-            //stub print receipt
-            //stub prompt to create account
-            //stub display success animation
-
-
-            //stub prompt to create account
-            boolean desiresAccount = false;
             String newPhoneNumber = "";
             String newPassword = "";
-
-            if(desiresAccount == true){
-                currentCustomer.phoneNumber = newPhoneNumber; //Stub add number from dialog
-                currentCustomer.password = newPassword; //Stub add number from dialog
-                dataAccess.addCustomer(currentCustomer);
-            }
-
             currentOrder.customerFirstName = firstName; //adding billing first name to transaction file
             currentOrder.customerLastName = lastName; //adding billing last name to transaction file
             lastCustomer = currentCustomer;
@@ -101,11 +88,7 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
             String orderTotalString = DecimalFormat.getCurrencyInstance().format(currentOrder.orderTotal);
             ccProcessor.merchantServicesConnector(firstName, lastName, cardNum, expDate, cvvCode, orderTotalString);
             dataAccess.saveOrder(currentOrder);
-
-            //reset global order and customer instances
-            CustomerModel nextGuest = dataAccess.authenticateCustomer(guestPhoneNumber,guestPassword);
-            updateCurrentCustomer(nextGuest);
-            currentOrder = new OrderModel(currentCustomer);
+            orderReset();
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("orderConfirmation-view.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -162,17 +145,37 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
      */
     @FXML
     private void homeBtnActionCuPaymentScene(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
-            Scene scene = new Scene(root, 1200, 750);
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle("Mom and Pop's Pizzeria - Home");
-            stage.setScene(scene);
-            stage.show();
+        JFrame jframe = new JFrame();
+        int result = JOptionPane.showConfirmDialog(jframe, "Do you want to reset this order? All selections will be lost!");
+        if (result == 0){
+            orderReset();
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setScene(scene);
+                stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        } else if(result == 1) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        }else {
+            //do nothing
         }
     }
     /*

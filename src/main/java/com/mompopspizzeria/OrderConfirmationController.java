@@ -12,6 +12,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+
+import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import java.awt.*;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.time.Duration;
@@ -30,14 +34,15 @@ public class OrderConfirmationController extends MomPopsPizzeriaMain implements 
 
     @FXML
     private void returnHomeAction(ActionEvent event){
-
         try {
+            orderReset();
             Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
             Scene scene = new Scene(root, 1200, 750);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setTitle("Mom and Pop's Pizzeria - Home");
             stage.setScene(scene);
             stage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();

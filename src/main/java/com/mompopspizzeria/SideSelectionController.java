@@ -10,6 +10,10 @@ package com.mompopspizzeria;
         import javafx.scene.control.ComboBox;
         import javafx.scene.control.Label;
         import javafx.stage.Stage;
+
+        import javax.swing.*;
+        import javax.swing.plaf.FontUIResource;
+        import java.awt.*;
         import java.net.URL;
         import java.text.DecimalFormat;
         import java.util.ResourceBundle;
@@ -40,17 +44,39 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
     private Stage stage;
     @FXML
     private void homeBtnActionSideSelectionScene(ActionEvent event){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
-            Scene scene = new Scene(root, 1200, 750);
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setTitle("Mom and Pop's Pizzeria - Home");
-            stage.setScene(scene);
-            stage.show();
+        UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 22));
+        UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("ARIAL",Font.PLAIN,35)));
+        JFrame jframe = new JFrame();
+        int result = JOptionPane.showConfirmDialog(jframe, "Do you want to reset this order? All selections will be lost!");
+        if (result == 0){
+            try {
+                orderReset();
+                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setScene(scene);
+                stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        } else if(result == 1) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        }else {
+            //do nothing
         }
     }
     @FXML

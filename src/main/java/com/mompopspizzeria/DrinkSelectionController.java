@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -18,17 +20,6 @@ import java.util.ResourceBundle;
 
 public class DrinkSelectionController extends MomPopsPizzeriaMain implements Initializable {
 
-    static String smallDrink = "Small";
-    static String mediumDrink = "Medium";
-    static String largeDrink = "Large";
-    static String pepsi = "Pepesi";
-    static String dietPepsi = "Diet Pepsi";
-    static String orange = "Orange";
-    static String dietOrange = "Diet Orange";
-    static String rootbeer = "Rootbeer";
-    static String dietRootbeer = "Diet Rootbeer";
-    static String sierraMist = "Sierra Mist";
-    static String lemonade = "Lemonade";
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
     @FXML
     protected Button addSingleBtnDrinkSelectionScene1;
@@ -44,7 +35,6 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
     protected Button removeSingleBtnDrinkSelectionScene3;
     @FXML
     protected Button removeSingleBtnDrinkSelectionScene4;
-
     @FXML
     protected ComboBox<String> drinkMenuDropdownAction1;
     @FXML
@@ -55,7 +45,6 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
     protected ComboBox<String> drinkMenuDropdownAction4;
     @FXML
     protected ComboBox<String> drinkSizeDropdown1;
-
     @FXML
     protected ComboBox<String> drinkSizeDropdown2;
     @FXML
@@ -96,9 +85,6 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
     protected Label qtyText4;
     @FXML
     private Stage stage;
-    @FXML
-    private Scene scene;
-
     static LineItemModel line1 = new LineItemModel();
     static LineItemModel line2 = new LineItemModel();
     static LineItemModel line3 = new LineItemModel();
@@ -107,27 +93,41 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
 
     private int totalDrinkQtyOrdered = 0;
     private double pricePerDrink = 1.00;
-   @FXML
-    private void updateDisplayedTotal(){
-        double currentDrinkTotal;
-        currentDrinkTotal = totalDrinkQtyOrdered * pricePerDrink;
-        String totalString = DecimalFormat.getCurrencyInstance().format(currentDrinkTotal);
-    }
 
 
     @FXML
     private void homeBtnActionDrinkSelectionScene(ActionEvent event){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
-            Scene scene = new Scene(root, 1200, 750);
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setTitle("Mom and Pop's Pizzeria - Home");
-            stage.setScene(scene);
-            stage.show();
+        JFrame jframe = new JFrame();
+        int result = JOptionPane.showConfirmDialog(jframe, "Do you want to reset this order? All selections will be lost!");
+        if (result == 0){
+            orderReset();
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setScene(scene);
+                stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        } else if(result == 1) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        }else {
+            //do nothing
         }
     }
     @FXML
@@ -384,9 +384,6 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         line4 = newline4;
         line4.drinkQuantity = 0;
         updateTextTotal();
-        //drinkMenuDropdownAction4.setValue(null);
-       // drinkSizeDropdown4.setValue(null);
-        //drinkQtyDropdown4.setValue("0");
         removeSingleBtnDrinkSelectionScene3.setDisable(false);
         drinkMenuDropdownAction4.setVisible(false);
         drinkMenuDropdownAction4.setDisable(true);

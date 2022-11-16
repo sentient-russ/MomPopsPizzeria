@@ -14,6 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+
+import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import java.awt.*;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -25,10 +29,11 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
     private final ToggleGroup orderTypeGroup = new ToggleGroup();//do not delete. Used by Gluon
 
     @FXML
-    ListView<String> orderSummeryList;
+    private ListView<String> orderSummeryList;
     @FXML
     private Label currentUserTextGlobal;
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
+
     private Stage stage;
     private Scene scene;
 
@@ -80,18 +85,42 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
     }
     @FXML
     private void returnHomeAction(ActionEvent event){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
-            Scene scene = new Scene(root, 1200, 750);
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setTitle("Mom and Pop's Pizzeria - Home");
-            stage.setScene(scene);
-            stage.show();
+        UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 22));
+        UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("ARIAL",Font.PLAIN,35)));
+        JFrame jframe = new JFrame();
+        int result = JOptionPane.showConfirmDialog(jframe, "Do you want to reset this order? All selections will be lost!");
+        if (result == 0){
+            orderReset();
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setScene(scene);
+                stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        } else if(result == 1) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        }else {
+            //do nothing
         }
+
+
     }
     @FXML
     private void completePayBtnOrderEntryAction(ActionEvent event){
@@ -128,7 +157,6 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
 public int removeIndex;
     @FXML
     public void removeSelectedItemPayBtnOrderEntryAction(ActionEvent event){
-        System.out.println(removeIndex);
         currentOrder.removeLine(removeIndex);
         orderEntryForm(event);
     }

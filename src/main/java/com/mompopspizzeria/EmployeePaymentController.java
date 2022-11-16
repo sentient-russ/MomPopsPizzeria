@@ -8,11 +8,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import java.awt.*;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
@@ -20,12 +26,10 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
-
 /*
  *This controller class provides functionality to the customer payment screen.
  */
 public class EmployeePaymentController extends MomPopsPizzeriaMain implements Initializable {
-
     @FXML
     private CheckBox cashEmployeePaymentSceneCheckBox;
     @FXML
@@ -267,17 +271,39 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
      */
     @FXML
     private void homeBtnActionEmployeePaymentScene(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("orderConfirmation-view.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root, 1200, 750);
-            stage.setTitle("Mom and Pop's Pizzeria - Success!  Here is your order confirmation");
-            stage.setScene(scene);
-            stage.show();
+        UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 22));
+        UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("ARIAL",Font.PLAIN,35)));
+        JFrame jframe = new JFrame();
+        int result = JOptionPane.showConfirmDialog(jframe, "Do you want to reset this order? All selections will be lost!");
+        if (result == 0){
+            try {
+                orderReset();
+                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setScene(scene);
+                stage.show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        } else if(result == 1) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Scene scene = new Scene(root, 1200, 750);
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("Mom and Pop's Pizzeria - Home");
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        }else {
+            //do nothing
         }
 
     }

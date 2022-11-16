@@ -417,7 +417,6 @@ public class Data<T> implements DataAccessInterface<T> {
 	 * @return ArrayList of Transactions containing ID, Date, Customer, Transaction
 	 * Total Amount
 	 */
-
 	public ArrayList<TransactionHistoryLineModel> getTransactionHistory() {
 		return transHistory;
 	}
@@ -426,18 +425,15 @@ public class Data<T> implements DataAccessInterface<T> {
 	 * Saves the transaction as Date, Customer, Amount to the transactionlist.txt record file.
 	 */
 	public void saveToTransactionFile(OrderModel orderIn){
-
 			Date date = Calendar.getInstance().getTime();  
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
 			String strDate = dateFormat.format(date); 
 			String outputText = strDate + "," + orderIn.customerFirstName + " " + orderIn.customerLastName + ","
 					+ DecimalFormat.getCurrencyInstance().format(orderIn.orderTotal) + "\n";
-			
 			try {
 				saveToFile("transactionlist.txt", outputText, true);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
-
+	}
 }
