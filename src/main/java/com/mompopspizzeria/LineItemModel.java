@@ -7,27 +7,24 @@ package com.mompopspizzeria;
 import java.util.ArrayList;
 
 public class LineItemModel extends MomPopsPizzeriaMain{
-	
+	public String pizza;
+	public String crust;
+	public ArrayList<String> toppings = new ArrayList<>();
+	public String side;
+	public String drink;
+	public String drinkSize;
+	private double pizzaPrice;
+	private double crustPrice;
+	private double toppingPrice;
+	private double sidePrice;
+	private double drinkPrice;
+	public double lineTotal;
+	public int drinkQuantity;
+	public int sideQuantity;
 
-	
-	String pizza;
-	String crust;
-	ArrayList<String> toppings = new ArrayList<>();
-	String side;
-	String drink;		
-	String drinkSize;		
-	double pizzaPrice;
-	double crustPrice;
-	double toppingPrice;
-	double sidePrice;
-	double drinkPrice;			
-	double lineTotal;
-	int drinkQuantity;
-	int sideQuantity;
-	
-	boolean isPizza = false;
-	boolean isDrink = false;
-	boolean isSide = false;
+	public boolean isPizza = false;
+	public boolean isDrink = false;
+	public boolean isSide = false;
 	
 	
 	public LineItemModel() {

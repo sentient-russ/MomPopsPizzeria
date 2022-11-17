@@ -27,11 +27,11 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                             <children>
-                                <Button layoutX="414.0" layoutY="576.0" mnemonicParsing="false" onAction="#addBtnActionSidSelectionScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add to Order">
+                                <Button defaultButton="true" layoutX="414.0" layoutY="576.0" mnemonicParsing="false" onAction="#addBtnActionSidSelectionScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add to Order">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
-                                <Button layoutX="610.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancelBtnActionSideSelectionScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                <Button cancelButton="true" layoutX="610.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancelBtnActionSideSelectionScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>

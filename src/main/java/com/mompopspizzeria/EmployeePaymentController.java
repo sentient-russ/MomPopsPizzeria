@@ -11,7 +11,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -49,8 +55,7 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
     @FXML
     protected Label empPayValidationText;
 
-    @FXML
-    protected DatePicker dateCustomerPaymentDatePicker;
+
     private Stage stage;
     private Scene scene;
     @FXML
@@ -62,7 +67,10 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
     @FXML
     private TextField checkStateEmployeePaymentSceneTextField;
     @FXML
-    protected DatePicker checkDateEmployeePaymentSceneTextField;
+    protected DatePicker expCCDateEmployeePaymentDatePicker;
+    @FXML
+    protected DatePicker checkDateEmployeePaymentSceneDateField;
+
     @FXML
     private TextField checkNumEmployeePaymentSceneTextField;
     @FXML
@@ -98,16 +106,18 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
     private double creditAmountReceivedDouble = 0.00;
     // private double currentAmountDueDouble;
     private double orderTotalDouble;
+    private double balanceDue;
 
     /*
      *This method initiates payment processing and prompts the user to save the cc information in a new account.
      */
     @FXML
     public void payNowBtnActionCuPaymentScene(ActionEvent event) {
-
+        //make sure that the order is paid in full
+        calcAmountDue(event);
 
         String cardNum = cardNumCustPaymentTextField.getText();
-        String expDate = String.valueOf(dateCustomerPaymentDatePicker.getValue());
+        String expDate = String.valueOf(expCCDateEmployeePaymentDatePicker.getValue());
         String cvvCode = cvvCodeCustPaymentTextField.getText();
         String firstName = firstNameCustPaymentTextField.getText();
         String lastName = lastNameCustPaymentTextField.getText();
@@ -120,40 +130,55 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         String cash = cashAmountEmployeePaymentSceneTextField.getText();
         String checkAmount = checkAmountEmployeePaymentSceneTextField.getText();
         String checkNum = checkNumEmployeePaymentSceneTextField.getText();
-        String checkDate = String.valueOf(checkDateEmployeePaymentSceneTextField.getValue());
+        String checkDate = String.valueOf(checkDateEmployeePaymentSceneDateField.getValue());
         String checkState = checkStateEmployeePaymentSceneTextField.getText();
         String checkDL = checkDLNumEmployeePaymentSceneTextField.getText();
 
         //field validation calls
-        if (cashEmployeePaymentSceneCheckBox.isSelected()) {
-            cashIsValid(cash);
-        }
-        if (checkEmployeePaymentSceneCheckBox.isSelected()) {
-            checkIsValid(checkAmount, checkNum, checkDate, checkState, checkDL);
-        }
-        if (creditCardEmployeePaymentSceneCheckBox.isSelected()) {
-            cardIsValid(cardNum, expDate, cvvCode, firstName,
-                    lastName, addr1, addr2, city,
-                    state, zip);
-        }
+        boolean allValid = false;
+            if (cashEmployeePaymentSceneCheckBox.isSelected()) {
+                boolean cashValid = cashIsValid(cash);
+                allValid = cashValid;
+            }
+            if (checkEmployeePaymentSceneCheckBox.isSelected()) {
+                boolean checkValid = checkIsValid(checkAmount, checkNum, checkDate, checkState, checkDL);
+                allValid = checkValid;
+            }
+            if (creditCardEmployeePaymentSceneCheckBox.isSelected()) {
+                boolean cardValid = cardIsValid(cardNum, expDate, cvvCode, firstName,
+                        lastName, addr1, addr2, city,
+                        state, zip);
+                allValid = cardValid;
+            }
 
-        currentCustomer.firstName = firstName;
-        currentCustomer.lastName = lastName;
-        currentCustomer.address1 = addr1;
-        currentCustomer.address2 = addr2;
-        currentCustomer.city = city;
-        currentCustomer.state = state;
-        currentCustomer.zip = zip;
-        currentCustomer.cardNumber = cardNum;
-        currentCustomer.expDate = expDate;
-        currentCustomer.CVV = cvvCode;
-        currentOrder.currentOrderChargeAmount = chargeAmount;
-        currentOrder.customerFirstName = firstName;
-        currentOrder.customerLastName = lastName;
-        currentOrderSaveAndClose(event);
-
+        if(allValid && orderPaidValidation()){
+            currentCustomer.firstName = firstName;
+            currentCustomer.lastName = lastName;
+            currentCustomer.address1 = addr1;
+            currentCustomer.address2 = addr2;
+            currentCustomer.city = city;
+            currentCustomer.state = state;
+            currentCustomer.zip = zip;
+            currentCustomer.cardNumber = cardNum;
+            currentCustomer.expDate = expDate;
+            currentCustomer.CVV = cvvCode;
+            currentOrder.currentOrderChargeAmount = chargeAmount;
+            currentOrder.customerFirstName = firstName;
+            currentOrder.customerLastName = lastName;
+            currentOrderSaveAndClose(event);
+        }
     }
-
+    @FXML
+    public boolean orderPaidValidation(){
+        boolean result = false;
+        if(balanceDue > 0){
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
+            empPayValidationText.setText("Order cannot be completed until the balance of " + DecimalFormat.getCurrencyInstance().format(balanceDue) + " is paid!");
+            return result;
+        }
+        result = true;
+        return result;
+    }
     @FXML
     public void currentOrderSaveAndClose(ActionEvent event){
 
@@ -171,27 +196,36 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
             ccProcessor.merchantServicesConnector(currentCustomer.firstName, currentCustomer.lastName,
                     currentCustomer.cardNumber, currentCustomer.expDate, currentCustomer.CVV, currentOrder.currentOrderChargeAmount);
         }
-
         //Stub open cash drawer here in future implementation.
-
-
-        //save current order
+        //makes sure transaction history matches the name on the card rather than the name on the customer account
         currentOrder.customerFirstName = currentCustomer.firstName;
         currentOrder.customerLastName = currentCustomer.lastName;
+        //process CC payment
+        String orderTotalString = DecimalFormat.getCurrencyInstance().format(currentOrder.orderTotal);
+        ccProcessor.merchantServicesConnector(currentOrder.customerFirstName,currentOrder.customerLastName,currentCustomer.cardNumber,
+                currentCustomer.expDate, currentCustomer.CVV, orderTotalString);
+        //save the order
+        dataAccess.saveOrder(currentOrder);
+        //reset global order and customer instances
         lastCustomer = currentCustomer;
         lastOrder = currentOrder;
-        dataAccess.saveOrder(currentOrder);
-
-        //reset global order and customer instances
         CustomerModel nextGuest = dataAccess.authenticateCustomer(guestPhoneNumber, guestPassword);
         updateCurrentCustomer(nextGuest);
-
         OrderModel newOrder = new OrderModel(nextGuest);
         currentOrder = newOrder;
-        homeBtnActionEmployeePaymentScene(event);
-
+        //proceed to order confirmation
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("orderConfirmation-view.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root, 1200, 750);
+            stage.setTitle("Mom and Pop's Pizzeria - Success!  Here is your order confirmation");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
-
 
     @FXML
     public void calcAmountDue(ActionEvent event){
@@ -215,19 +249,22 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         orderTotalEmpPaySceneText.setText(DecimalFormat.getCurrencyInstance().format(currentOrder.orderTotal));
         double totalPaid = cashAmountReceivedDouble + checkAmountReceivedDouble + creditAmountReceivedDouble;
         amountPaidEmpPaySceneText.setText(DecimalFormat.getCurrencyInstance().format(totalPaid));
-        double balanceDue = currentOrder.orderTotal - totalPaid;
+        balanceDue = currentOrder.orderTotal - totalPaid;
         balEmpPaySceneText.setText(DecimalFormat.getCurrencyInstance().format(balanceDue));
 
         if((cashAmountReceivedDouble + checkAmountReceivedDouble + creditAmountReceivedDouble) > tempAmountDueDouble){
-            double dueDouble = (cashAmountReceivedDouble + checkAmountReceivedDouble + creditAmountReceivedDouble) - tempAmountDueDouble;
-            String dueString = DecimalFormat.getCurrencyInstance().format(dueDouble);
+            double dueCustomerDouble = (cashAmountReceivedDouble + checkAmountReceivedDouble + creditAmountReceivedDouble) - tempAmountDueDouble;
+            String dueString = DecimalFormat.getCurrencyInstance().format(dueCustomerDouble);
             changeEmPaySceneText.setText(dueString);
             balEmpPaySceneText.setText("$0.00");
-        }else if ((cashAmountReceivedDouble + checkAmountReceivedDouble + creditAmountReceivedDouble)< tempAmountDueDouble){
+        }
+        if ((cashAmountReceivedDouble + checkAmountReceivedDouble + creditAmountReceivedDouble) <= tempAmountDueDouble){
             tempAmountDueDouble = tempAmountDueDouble - (cashAmountReceivedDouble + checkAmountReceivedDouble + creditAmountReceivedDouble);
             String dueString = DecimalFormat.getCurrencyInstance().format(tempAmountDueDouble);
             balEmpPaySceneText.setText(dueString);
+            changeEmPaySceneText.setText("$0.00");
         }
+
     }
 
     /*
@@ -317,7 +354,7 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         if(checkEmployeePaymentSceneCheckBox.isSelected()){
             checkAmountEmployeePaymentSceneTextField.setDisable(false);
             checkStateEmployeePaymentSceneTextField.setDisable(false);
-            checkDateEmployeePaymentSceneTextField.setDisable(false);
+            checkDateEmployeePaymentSceneDateField.setDisable(false);
             checkNumEmployeePaymentSceneTextField.setDisable(false);
             checkDLNumEmployeePaymentSceneTextField.setDisable(false);
             calcBtnEmployeePaymentSceneButton.setDisable(false);
@@ -332,7 +369,7 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
             addr1CustPaymentTextField.setDisable(false);
             addr2CustPaymentTextField.setDisable(false);
             cityCustPaymentTextField.setDisable(false);
-            dateCustomerPaymentDatePicker.setDisable(false);
+            expCCDateEmployeePaymentDatePicker.setDisable(false);
             stateCustPaymentTextField.setDisable(false);
             zipCustPaymentTextField.setDisable(false);
             calcBtnEmployeePaymentSceneButton.setDisable(false);
@@ -346,7 +383,7 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         if(!checkEmployeePaymentSceneCheckBox.isSelected()){
             checkAmountEmployeePaymentSceneTextField.setDisable(true);
             checkStateEmployeePaymentSceneTextField.setDisable(true);
-            checkDateEmployeePaymentSceneTextField.setDisable(true);
+            checkDateEmployeePaymentSceneDateField.setDisable(true);
             checkNumEmployeePaymentSceneTextField.setDisable(true);
             checkDLNumEmployeePaymentSceneTextField.setDisable(true);
             checkEnabled = false;
@@ -361,7 +398,7 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
             addr1CustPaymentTextField.setDisable(true);
             addr2CustPaymentTextField.setDisable(true);
             cityCustPaymentTextField.setDisable(true);
-            dateCustomerPaymentDatePicker.setDisable(true);
+            expCCDateEmployeePaymentDatePicker.setDisable(true);
             stateCustPaymentTextField.setDisable(true);
             zipCustPaymentTextField.setDisable(true);
             creditEnabled = false;
@@ -376,10 +413,15 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String todaysDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        checkDateEmployeePaymentSceneDateField.setValue(LocalDate.parse(todaysDate));
+        String todaysDate2 = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        expCCDateEmployeePaymentDatePicker.setValue(LocalDate.parse(todaysDate2));
+
+
         cashAmountEmployeePaymentSceneTextField.setText("0.00");
         checkAmountEmployeePaymentSceneTextField.setText("0.00");
         creditAmountAmountEmployeePaymentSceneTextField.setText("0.00");
-        dateCustomerPaymentDatePicker.setValue(LocalDate.parse(todaysDate));
+        checkDateEmployeePaymentSceneDateField.setValue(LocalDate.parse(todaysDate));
         orderTotalDouble = currentOrder.orderTotal;
         orderTotalString = DecimalFormat.getCurrencyInstance().format(orderTotalDouble);
         orderTotalEmpPaySceneText.setText(orderTotalString);
@@ -391,7 +433,7 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         calcBtnEmployeePaymentSceneButton.setDisable(true);
         checkAmountEmployeePaymentSceneTextField.setDisable(true);
         checkStateEmployeePaymentSceneTextField.setDisable(true);
-        checkDateEmployeePaymentSceneTextField.setDisable(true);
+        checkDateEmployeePaymentSceneDateField.setDisable(true);
         checkNumEmployeePaymentSceneTextField.setDisable(true);
         checkDLNumEmployeePaymentSceneTextField.setDisable(true);
         cardNumCustPaymentTextField.setDisable(true);
@@ -401,13 +443,10 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         addr1CustPaymentTextField.setDisable(true);
         addr2CustPaymentTextField.setDisable(true);
         cityCustPaymentTextField.setDisable(true);
-        dateCustomerPaymentDatePicker.setDisable(true);
+        expCCDateEmployeePaymentDatePicker.setDisable(true);
         stateCustPaymentTextField.setDisable(true);
         zipCustPaymentTextField.setDisable(true);
-
     }
-
-
     /*
      * Check validation method for the customer payment form
      * @param checkAmountIn
@@ -420,30 +459,36 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
     @FXML
     private boolean checkIsValid(String checkAmountIn, String checkNumIn, String checkDateIn, String stateIn, String DLIn){
         boolean result = false;
-        if (checkAmountIn.equals("") || checkAmountIn.length() < 6 || checkAmountIn.length() > 16) {
+        if (checkAmountIn.equals("") || checkAmountIn.length() > 16) {
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("The check amount is invalid.");
             return result;
         }
         if (checkNumIn.equals("") || checkNumIn.length() < 2 || checkNumIn.length() > 20) {
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("The check number is invalid.");
             return result;
         }
         if (DLIn.equals("") || DLIn.length() < 5 || DLIn.length() > 20) {
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("The drivers license number is invalid.");
             return result;
         }
         String upperCaseState = stateIn.toUpperCase();
         if (!upperCaseState.equals("GA")) {
-            empPayValidationText.setText("Unfortunately, out of state checks are not accepted.");
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
+            empPayValidationText.setText("Unfortunately, only Georgia checks are accepted");
             return result;
         }
         String todaysDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         LocalDate currentDate = LocalDate.parse(todaysDate);
         LocalDate inputDate = LocalDate.parse(checkDateIn);
-        if(currentDate.isAfter(inputDate)){
+        if(currentDate.isAfter(inputDate) || currentDate.isBefore(inputDate) || currentDate.equals("")){
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("Unfortunately, no pre or post dated checks are accepted.");
             return result;
         }
+        empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
         empPayValidationText.setText("Payment Accepted!");
         result = true;
         return result;
@@ -482,22 +527,28 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
 
 
         if(currentOrder.lineItems.size() == 0){
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("Please go back and add items to your order.");
             return result;
         }else if (cardNumIn.equals("") || cardNumIn.length() < 16 || cardNumIn.length() > 16) {
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("The credit card number is not invalid.");
             return result;
         } else if(cvvCodeIn.length() > 4 || cvvCodeIn.length() < 3 ) {
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("The CVV is not invalid. It is the 3 or 4 digits on the back of the card.");
             return result;
         } else if (firstNameIn.equals("") || firstNameIn.length() < 2 || firstNameIn.length() > 20) {
-                empPayValidationText.setText("Valid first name required.");
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
+            empPayValidationText.setText("Valid first name required.");
                 return result;
             } else if (lastNameIn.equals("") || lastNameIn.length() < 2 || lastNameIn.length() > 20) {
-                empPayValidationText.setText("Valid last name required.");
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
+            empPayValidationText.setText("Valid last name required.");
                 return result;
             }else if (addr1In.equals("") || addr1In.length() < 2 || addr1In.length() > 25) {
-                empPayValidationText.setText("Valid address line one required.");
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
+            empPayValidationText.setText("Valid address line one required.");
                 return result;
             }else try {
                 int number = Integer.parseInt(addrFirstCharacter);
@@ -508,10 +559,12 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
 
         if (addr2In != ""){
             if(addr2In.length() > 25){
+                empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
                 empPayValidationText.setText("Address line 2 in invalid.");
                 return result;
             }
         } else if (cityIn.length() < 1 || cityIn.length() > 25) {
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("The city name is invalid");
             return result;
         }
@@ -522,16 +575,19 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
             }
         }
         if (!stateFound) {
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("Valid state required.");
             return result;
         }else try {
             int numeral = Integer.parseInt(zipIn);
             } catch (NumberFormatException e) {
                 e.getCause();
+                empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
                 empPayValidationText.setText("Valid zipcode required.");
                 return result;
             }
         if(zipIn.length() < 5 || zipIn.length() > 5){
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("Valid zipcode required.");
             return result;
         }
@@ -539,9 +595,11 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         LocalDate currentDate = LocalDate.parse(todaysDate);
         LocalDate inputDate = LocalDate.parse(expDateIn);
         if(currentDate.isAfter(inputDate)){
+            empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
             empPayValidationText.setText("Expiration date must be in the future.");
             return result;
         }
+        empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
         empPayValidationText.setText("Payment Accepted!");
         result = true;
         return result;
@@ -554,9 +612,10 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
     @FXML
     public boolean cashIsValid(String cashIn){
         boolean result = false;
-        if (cashIn != "" || cashIn.length() < 2 || cashIn.length() > 6){
+        if (cashIn != "" || cashIn.length() > 6){
             return result;
         }
+        empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
         empPayValidationText.setText("Payment Accepted!");
         result = true;
      return result;

@@ -42,7 +42,7 @@
                                           <ListView fx:id="orderSummeryList" prefHeight="571.0" prefWidth="537.0" style="-fx-background-color: #267ed6;" />
                            </content>
                         </ScrollPane>
-                        <Button layoutX="319.0" layoutY="535.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="555.0" style="-fx-background-color: #ffffff;" text="PLACE NEW ORDER">
+                        <Button defaultButton="true" layoutX="319.0" layoutY="535.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="68.0" prefWidth="555.0" style="-fx-background-color: #ffffff;" text="PLACE NEW ORDER">
                            <font>
                               <Font size="24.0" />
                            </font>

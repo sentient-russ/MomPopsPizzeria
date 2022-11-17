@@ -75,11 +75,11 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                                <Button layoutX="653.0" layoutY="566.0" mnemonicParsing="false" onAction="#completePayBtnOrderEntryAction" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Complete / Pay">
+                                <Button defaultButton="true" layoutX="653.0" layoutY="566.0" mnemonicParsing="false" onAction="#completePayBtnOrderEntryAction" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Complete / Pay">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
-                                <Button layoutX="849.0" layoutY="566.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                <Button cancelButton="true" layoutX="849.0" layoutY="566.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>

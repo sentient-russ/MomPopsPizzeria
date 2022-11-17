@@ -27,11 +27,11 @@
                         <TextField fx:id="prefixCustLogin" layoutX="612.0" layoutY="360.0" prefHeight="40.0" prefWidth="45.0" promptText="Num" />
                         <TextField fx:id="postfixCustLogin" layoutX="662.0" layoutY="360.0" prefHeight="40.0" prefWidth="102.0" promptText="Num" />
                         <PasswordField fx:id="passwordCustLogin" layoutX="563.0" layoutY="411.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
-                        <Button fx:id="loginButton" layoutX="444.0" layoutY="469.0" mnemonicParsing="false" onAction="#loginBtnCustLogin" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Login">
+                        <Button fx:id="loginButton" defaultButton="true" layoutX="444.0" layoutY="469.0" mnemonicParsing="false" onAction="#loginBtnCustLogin" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Login">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Button>
-                        <Button layoutX="624.0" layoutY="469.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                        <Button cancelButton="true" layoutX="624.0" layoutY="469.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Button>

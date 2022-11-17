@@ -54,15 +54,15 @@
                         <TextField fx:id="stateCustPaymentTextField" layoutX="720.0" layoutY="253.0" prefHeight="36.0" prefWidth="58.0" promptText="State" />
                         <TextField fx:id="zipCustPaymentTextField" layoutX="829.0" layoutY="251.0" prefHeight="36.0" prefWidth="101.0" promptText="Zip Code" />
                         <TextField fx:id="cardNumCustPaymentTextField" layoutX="435.0" layoutY="295.0" prefHeight="36.0" prefWidth="174.0" promptText="Credit Card Number" />
-                        <DatePicker fx:id="dateCustomerPaymentDatePicker" layoutX="720.0" layoutY="296.0" prefHeight="36.0" prefWidth="100.0" promptText="Exp" />
+                        <DatePicker fx:id="expCCDateEmployeePaymentDatePicker" layoutX="720.0" layoutY="296.0" prefHeight="36.0" prefWidth="100.0" promptText="Exp" />
                         <TextField fx:id="cvvCodeCustPaymentTextField" layoutX="878.0" layoutY="296.0" prefHeight="36.0" prefWidth="53.0" promptText="CVV Code" />
                         <TextField fx:id="cashAmountEmployeePaymentSceneTextField" layoutX="437.0" layoutY="350.0" prefHeight="36.0" prefWidth="174.0" promptText="Cash Tendered" />
                         <TextField fx:id="checkAmountEmployeePaymentSceneTextField" layoutX="438.0" layoutY="394.0" prefHeight="36.0" prefWidth="173.0" promptText="Amount Written" />
                         <TextField fx:id="checkNumEmployeePaymentSceneTextField" layoutX="439.0" layoutY="439.0" prefHeight="36.0" prefWidth="172.0" promptText="Check Number" />
-                        <DatePicker fx:id="checkDateEmployeePaymentSceneTextField" layoutX="439.0" layoutY="483.0" prefHeight="36.0" prefWidth="173.0" promptText="Must Be Today's Date" />
+                        <DatePicker fx:id="checkDateEmployeePaymentSceneDateField" layoutX="439.0" layoutY="483.0" prefHeight="36.0" prefWidth="173.0" promptText="Must Be Today's Date" />
                         <TextField fx:id="checkStateEmployeePaymentSceneTextField" layoutX="439.0" layoutY="528.0" prefHeight="36.0" prefWidth="173.0" promptText="Must Be In State" />
                         <TextField fx:id="checkDLNumEmployeePaymentSceneTextField" layoutX="440.0" layoutY="572.0" prefHeight="36.0" prefWidth="172.0" promptText="In-State Drivers License Num." />
-                        <Button fx:id="calcBtnEmployeePaymentSceneButton" layoutX="625.0" layoutY="351.0" mnemonicParsing="false" onAction="#calcAmountDue" prefHeight="55.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" text="Calc Change">
+                        <Button fx:id="calcBtnEmployeePaymentSceneButton" defaultButton="true" layoutX="625.0" layoutY="351.0" mnemonicParsing="false" onAction="#calcAmountDue" prefHeight="55.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" text="Calc Change">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -71,7 +71,7 @@
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
-                                <Button layoutX="808.0" layoutY="553.0" mnemonicParsing="false" onAction="#cancelBtnActionEmployeePaymentScene" prefHeight="55.0" prefWidth="121.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                <Button cancelButton="true" layoutX="808.0" layoutY="553.0" mnemonicParsing="false" onAction="#cancelBtnActionEmployeePaymentScene" prefHeight="55.0" prefWidth="121.0" style="-fx-background-color: #ffffff;" text="Cancel">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
@@ -148,7 +148,7 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="balEmpPaySceneText" alignment="CENTER" layoutX="815.0" layoutY="482.0" prefHeight="35.0" prefWidth="166.0" text="\$0.00" textAlignment="CENTER" textFill="#a4beeb">
+                        <Label fx:id="balEmpPaySceneText" alignment="CENTER_RIGHT" layoutX="815.0" layoutY="482.0" prefHeight="35.0" prefWidth="114.0" text="\$0.00" textAlignment="CENTER" textFill="#a4beeb">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -186,7 +186,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="changeEmPaySceneText" alignment="CENTER" layoutX="813.0" layoutY="521.0" prefHeight="35.0" prefWidth="171.0" text="\$0.00" textFill="#a4beeb">
+                        <Label fx:id="changeEmPaySceneText" alignment="CENTER_RIGHT" layoutX="814.0" layoutY="521.0" prefHeight="35.0" prefWidth="115.0" text="\$0.00" textFill="#a4beeb">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -201,7 +201,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="orderTotalEmpPaySceneText" alignment="CENTER" layoutX="814.0" layoutY="412.0" prefHeight="35.0" prefWidth="166.0" text="\$0.00" textAlignment="CENTER" textFill="#a4beeb">
+                        <Label fx:id="orderTotalEmpPaySceneText" alignment="CENTER_RIGHT" layoutX="814.0" layoutY="412.0" prefHeight="35.0" prefWidth="115.0" text="\$0.00" textAlignment="CENTER" textFill="#a4beeb">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -211,7 +211,7 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="amountPaidEmpPaySceneText" alignment="CENTER" layoutX="815.0" layoutY="443.0" prefHeight="35.0" prefWidth="166.0" text="\$0.00" textAlignment="CENTER" textFill="#a4beeb">
+                        <Label fx:id="amountPaidEmpPaySceneText" alignment="CENTER_RIGHT" layoutX="815.0" layoutY="443.0" prefHeight="35.0" prefWidth="115.0" text="\$0.00" textAlignment="CENTER" textFill="#a4beeb">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>

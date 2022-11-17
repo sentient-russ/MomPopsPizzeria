@@ -74,11 +74,11 @@
                               <Font size="24.0" />
                            </font>
                         </CheckBox>
-                                <Button fx:id="addPizzaBtn" layoutX="420.0" layoutY="576.0" mnemonicParsing="false" onAction="#addPizzaBtnActionPizzaSelection" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add to Order">
+                                <Button fx:id="addPizzaBtn" defaultButton="true" layoutX="420.0" layoutY="576.0" mnemonicParsing="false" onAction="#addPizzaBtnActionPizzaSelection" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add to Order">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
-                                <Button fx:id="cancelBtnPizzaSelectionScene" layoutX="616.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancelBtnActionPizzaSelectionScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                <Button fx:id="cancelBtnPizzaSelectionScene" cancelButton="true" layoutX="616.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancelBtnActionPizzaSelectionScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>

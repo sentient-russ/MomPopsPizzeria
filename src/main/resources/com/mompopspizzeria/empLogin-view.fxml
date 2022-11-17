@@ -29,7 +29,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                             <children>
-                        <RadioButton fx:id="empLoginEmpRadioBtn" layoutX="436.0" layoutY="326.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" selected="true" text="Employee: ">
+                        <RadioButton fx:id="empLoginEmpRadioBtn" layoutX="435.0" layoutY="326.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" selected="true" text="Employee: ">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -37,17 +37,17 @@
                               <ToggleGroup fx:id="btnGroup" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="empLoginManagerRadioBtn" layoutX="611.0" layoutY="326.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Manager: " toggleGroup="$btnGroup">
+                        <RadioButton fx:id="empLoginManagerRadioBtn" layoutX="607.0" layoutY="326.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="Manager: " toggleGroup="$btnGroup">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
                                 <PasswordField fx:id="passwordEmployeeLogin" layoutX="555.0" layoutY="385.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
-                                <Button fx:id="empLoginButton" layoutX="436.0" layoutY="443.0" mnemonicParsing="false" onAction="#empLoginAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Login">
+                                <Button fx:id="empLoginButton" defaultButton="true" layoutX="441.0" layoutY="443.0" mnemonicParsing="false" onAction="#empLoginAction" prefHeight="55.0" prefWidth="150.0" style="-fx-background-color: #ffffff;" text="Login">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
-                                <Button layoutX="615.0" layoutY="443.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                <Button cancelButton="true" layoutX="603.0" layoutY="443.0" mnemonicParsing="false" onAction="#returnHomeAction" prefHeight="55.0" prefWidth="150.0" style="-fx-background-color: #ffffff;" text="Cancel">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>

@@ -29,11 +29,11 @@
                             <children>
                                 <ComboBox fx:id="drinkMenuDropdownAction1" layoutX="86.0" layoutY="186.0" prefHeight="37.0" prefWidth="327.0" promptText="Select Drink Flavor" />
                                 <ComboBox fx:id="drinkSizeDropdown1" layoutX="435.0" layoutY="185.0" prefHeight="37.0" prefWidth="188.0" promptText="Select Drink Size" />
-                                <Button fx:id="addPizzaBtn" layoutX="414.0" layoutY="576.0" mnemonicParsing="false" onAction="#addAllBtnActionDrinkSelectionScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add All Drinks">
+                                <Button fx:id="addPizzaBtn" defaultButton="true" layoutX="414.0" layoutY="576.0" mnemonicParsing="false" onAction="#addAllBtnActionDrinkSelectionScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Add All Drinks">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>
-                                <Button fx:id="cancelBtnPizzaSelectionScene" layoutX="610.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancelBtnActionDrinkSelectionScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
+                                <Button fx:id="cancelBtnPizzaSelectionScene" cancelButton="true" layoutX="610.0" layoutY="576.0" mnemonicParsing="false" onAction="#cancelBtnActionDrinkSelectionScene" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Cancel">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>

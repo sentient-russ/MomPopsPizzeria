@@ -1,6 +1,5 @@
 package com.mompopspizzeria;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +24,7 @@ public class EmployeeLoginController extends MomPopsPizzeriaMain implements Init
     @FXML
     private RadioButton empLoginManagerRadioBtn;
     @FXML
-    private final ToggleGroup btnGroup = new ToggleGroup();//do not delete. Used by Gluon
+    private ToggleGroup btnGroup = new ToggleGroup();//do not delete. Used by Gluon
     @FXML
     private PasswordField passwordEmployeeLogin;
     public EmployeeLoginController() {

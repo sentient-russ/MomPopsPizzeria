@@ -185,7 +185,6 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String todaysDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-
         dateCustomerPaymentDatePicker.setValue(LocalDate.parse(todaysDate));
         double orderTotalDouble = currentOrder.orderTotal;
         orderTotalString = DecimalFormat.getCurrencyInstance().format(orderTotalDouble);
