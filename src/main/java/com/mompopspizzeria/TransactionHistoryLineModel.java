@@ -5,8 +5,8 @@ package com.mompopspizzeria;
  * @version 1.1 10/24/2022
  */
 public class TransactionHistoryLineModel {
-	String transDate;
-	String cusName;
+	public String transDate;
+	public String cusName;
 	String lineTotal;
 	public TransactionHistoryLineModel() {
 		

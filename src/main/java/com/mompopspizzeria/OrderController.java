@@ -9,10 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -32,11 +31,17 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
     private ListView<String> orderSummeryList;
     @FXML
     private Label currentUserTextGlobal;
+    @FXML
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
-
+    @FXML
+    protected RadioButton carryOutRadioBtnOrderEntry;
+    @FXML
+    protected RadioButton deliveryRadioBtnOrderEntry;
+    @FXML
+    protected RadioButton pickupRadioBtnOrderEntry;
     private Stage stage;
     private Scene scene;
-
+    private String orderType = "";
 
     @FXML
     public void addPizzaBtnActionOrderScene(ActionEvent event)  {
@@ -154,7 +159,9 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
         }
 
     }
-public int removeIndex;
+
+
+    public int removeIndex;
     @FXML
     public void removeSelectedItemPayBtnOrderEntryAction(ActionEvent event){
         currentOrder.removeLine(removeIndex);
@@ -165,6 +172,24 @@ public int removeIndex;
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         loadOrderedList(url, resourceBundle);
+        carryOutRadioBtnOrderEntry.setToggleGroup(orderTypeGroup);
+        deliveryRadioBtnOrderEntry.setToggleGroup(orderTypeGroup);
+        pickupRadioBtnOrderEntry.setToggleGroup(orderTypeGroup);
+        orderTypeGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
+                if(carryOutRadioBtnOrderEntry.isSelected()){
+                    currentOrder.carryOut = true;
+                }
+                if (deliveryRadioBtnOrderEntry.isSelected()){
+                    currentOrder.delivery = true;
+                }
+                if (pickupRadioBtnOrderEntry.isSelected()){
+                    currentOrder.pickup = true;
+                }
+            }
+        });
+        getOrderType();
         orderSummeryList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -211,6 +236,16 @@ public int removeIndex;
             e.printStackTrace();
             e.getCause();
         }
+    }
+    @FXML String getOrderType(){
+        if(currentOrder.carryOut){
+            carryOutRadioBtnOrderEntry.setSelected(true);
+        } else if (currentOrder.pickup){
+            pickupRadioBtnOrderEntry.setSelected(true);
+        } else if (currentOrder.delivery){
+            deliveryRadioBtnOrderEntry.setSelected(true);
+        }
+        return this.orderType;
     }
 
 }

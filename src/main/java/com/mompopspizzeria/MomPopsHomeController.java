@@ -83,8 +83,5 @@ public class MomPopsHomeController extends MomPopsPizzeriaMain implements Initia
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
     }
-
-
 }

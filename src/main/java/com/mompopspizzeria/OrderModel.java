@@ -12,15 +12,15 @@ import java.util.ArrayList;
 @SuppressWarnings("rawtypes")
 public class OrderModel extends Data {
 	ArrayList<LineItemModel> lineItems = new ArrayList<>();
-	int orderId;
-	int customerId;
+	public int orderId;
+	public int customerId;
 	String customerFirstName;
 	String customerLastName;
 	String currentOrderChargeAmount;
-	double orderTotal;
-	boolean pickup = false;
-	boolean delivery = false;
-	boolean carryOut = false;
+	public double orderTotal;
+	public boolean pickup = false;
+	public boolean delivery = false;
+	public boolean carryOut = false;
 
 	public OrderModel(CustomerModel customerIn) {
 		orderId = getNextOrderId();
@@ -45,19 +45,7 @@ public class OrderModel extends Data {
 		resultsArray = lineItems;
 		return resultsArray;
 	}
-	public boolean isPickup(){
-		return  pickup;
-	}
-	public boolean isDelivery(){
-		return delivery;
-	}
-	public boolean isCarryOut() {
-		return carryOut;
-	}
-	public int getNextLineId(){
 
-		return lineItems.size() - 1;
-	}
 	public ArrayList<LineItemModel> removeLine(int indexToRemoveIn){
 		lineItems.remove(indexToRemoveIn);
 		return lineItems;

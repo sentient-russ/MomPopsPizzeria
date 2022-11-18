@@ -7,3 +7,5 @@
 2022-19-16,Company Employee,$0.00
 2022-19-16,Company Employee,$0.00
 2022-37-16,Russell Steele,$4.00
+2022-33-17,Russ Geary,$4.00
+2022-35-17,Company Employee,$8.00

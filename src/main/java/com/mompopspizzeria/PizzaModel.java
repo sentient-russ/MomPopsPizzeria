@@ -5,8 +5,8 @@ package com.mompopspizzeria;
  * @version 1.1 10/24/2022
  */
 public class PizzaModel {
-	String description;
-	double price;
+	public String description;
+	public double price;
 	public PizzaModel(String desc, double prc) {
 		this.description = desc;
 		this.price = prc;

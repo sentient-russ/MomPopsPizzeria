@@ -28,9 +28,11 @@ public class OrderConfirmationController extends MomPopsPizzeriaMain implements 
     ListView<String> orderSummeryList;
     @FXML
     private Label currentUserTextGlobal;
+    @FXML
+    private Label orderConfirmationText;
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
     private Stage stage;
-    private Scene scene;
+
 
     @FXML
     private void returnHomeAction(ActionEvent event){
@@ -77,12 +79,22 @@ public class OrderConfirmationController extends MomPopsPizzeriaMain implements 
             }
 
         }
-        String spaceLine = "------------------------------------------------------------------";
+        String spaceLine = "-------------------------------------------------------------------";
         String totalLine = "                                                                 Order Total: "
                 + DecimalFormat.getCurrencyInstance().format(lastOrder.orderTotal);
         orderSummeryList.getItems().add(spaceLine);
         orderSummeryList.getItems().add(totalLine);
         currentUserTextGlobal.setText(currentUserGlobal);
+        String orderType = "order";
+        if(lastOrder.carryOut){
+            orderType = "carry-Out order";
+        } else if (lastOrder.delivery){
+            orderType = "delivery order";
+        } else if (lastOrder.pickup){
+            orderType = "pick-Up order";
+        }
+
+        orderConfirmationText.setText("Thank you for your " + orderType + ", It will be in your hands shortly!");
     }
 }
 

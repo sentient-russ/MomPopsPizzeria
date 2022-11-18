@@ -46,7 +46,6 @@ public class RegistrationController extends MomPopsPizzeriaMain implements Initi
     @FXML
     private TextField regConfirmPassword;
     private Stage stage;
-    private Scene scene;
     @FXML
     protected void regSaveAction(ActionEvent event) {
 

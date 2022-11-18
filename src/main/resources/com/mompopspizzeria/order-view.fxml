@@ -29,7 +29,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                             <children>
-                        <RadioButton alignment="TOP_CENTER" layoutX="353.0" layoutY="66.0" mnemonicParsing="false" selected="true" text="Carry Out">
+                        <RadioButton fx:id="carryOutRadioBtnOrderEntry" alignment="TOP_CENTER" layoutX="353.0" layoutY="66.0" mnemonicParsing="false" selected="true" text="Carry Out">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -37,12 +37,12 @@
                               <ToggleGroup fx:id="orderTypeGroup" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton alignment="TOP_CENTER" layoutX="540.0" layoutY="66.0" mnemonicParsing="false" text="Delivery" toggleGroup="$orderTypeGroup">
+                        <RadioButton fx:id="deliveryRadioBtnOrderEntry" alignment="TOP_CENTER" layoutX="540.0" layoutY="66.0" mnemonicParsing="false" text="Delivery" toggleGroup="$orderTypeGroup">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton alignment="TOP_CENTER" layoutX="724.0" layoutY="66.0" mnemonicParsing="false" text="Pick-Up" toggleGroup="$orderTypeGroup">
+                        <RadioButton fx:id="pickupRadioBtnOrderEntry" alignment="TOP_CENTER" layoutX="724.0" layoutY="66.0" mnemonicParsing="false" text="Pick-Up" toggleGroup="$orderTypeGroup">
                            <font>
                               <Font size="24.0" />
                            </font>
