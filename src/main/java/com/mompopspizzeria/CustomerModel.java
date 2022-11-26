@@ -3,7 +3,7 @@ package com.mompopspizzeria;
  * This class is the customer object that is instantiated for each new customer.  It will also be passed
  * to and returned from the DataAccessInterface
  * @author Russell Geary
- * @version 1.1, 10/24/2022 
+ * @version 7.1 11/15/2022
  */
 public class CustomerModel {
 	public int customerId;
@@ -21,8 +21,10 @@ public class CustomerModel {
 	public String CVV;
 	public boolean isEmployee = false;
 	public boolean isManager = false;
-	
-	//default constructor.  Sets customerId to -1 to indicate the customer is not in the database
+	/*
+	 * Sets customerId to -1 to indicate the customer is not yet been entered into the customers data file
+	 * Once it has been entered the customerId will be adjusted to reflect its sequential placement in the file
+	 */
 	public CustomerModel() {
 		this.customerId = -1;
 	}

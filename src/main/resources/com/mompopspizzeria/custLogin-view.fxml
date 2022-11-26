@@ -23,11 +23,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="686.0" prefWidth="1177.0" style="-fx-background-color: #267ed6; -fx-border-color: #267ed6;">
                      <children>
-                        <TextField fx:id="areaCustLogin" layoutX="563.0" layoutY="360.0" prefHeight="40.0" prefWidth="45.0" promptText="Area" />
-                        <TextField fx:id="prefixCustLogin" layoutX="612.0" layoutY="360.0" prefHeight="40.0" prefWidth="45.0" promptText="Num" />
-                        <TextField fx:id="postfixCustLogin" layoutX="662.0" layoutY="360.0" prefHeight="40.0" prefWidth="102.0" promptText="Num" />
-                        <PasswordField fx:id="passwordCustLogin" layoutX="563.0" layoutY="411.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
-                        <Button fx:id="loginButton" defaultButton="true" layoutX="444.0" layoutY="469.0" mnemonicParsing="false" onAction="#loginBtnCustLogin" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Login">
+                        <TextField fx:id="areaCustomerLogin" layoutX="563.0" layoutY="360.0" prefHeight="40.0" prefWidth="45.0" promptText="Area" />
+                        <TextField fx:id="prefixCustomerLogin" layoutX="612.0" layoutY="360.0" prefHeight="40.0" prefWidth="45.0" promptText="Num" />
+                        <TextField fx:id="postfixCustomerLogin" layoutX="662.0" layoutY="360.0" prefHeight="40.0" prefWidth="102.0" promptText="Num" />
+                        <PasswordField fx:id="passwordCustomerLogin" layoutX="563.0" layoutY="411.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" />
+                        <Button fx:id="loginButton" defaultButton="true" layoutX="444.0" layoutY="469.0" mnemonicParsing="false" onAction="#loginBtnCustomerLogin" prefHeight="55.0" prefWidth="140.0" style="-fx-background-color: #ffffff;" text="Login">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Button>
@@ -60,7 +60,7 @@
                               <Image url="@MomAndPopsPizzeria.gif" />
                            </image>
                         </ImageView>
-                        <Label fx:id="custLoginValidationText" alignment="CENTER" layoutY="316.0" prefHeight="31.0" prefWidth="1171.0" textFill="#a4beeb" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Label fx:id="customerLoginValidationText" alignment="CENTER" layoutY="316.0" prefHeight="31.0" prefWidth="1171.0" textFill="#a4beeb" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <font>
                               <Font name="Book Antiqua" size="24.0" />
                            </font>

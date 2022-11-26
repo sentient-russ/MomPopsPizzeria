@@ -1,6 +1,6 @@
 package com.mompopspizzeria;
 
-        import javafx.event.ActionEvent;
+import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
         import javafx.fxml.Initializable;
@@ -10,23 +10,25 @@ package com.mompopspizzeria;
         import javafx.scene.control.ComboBox;
         import javafx.scene.control.Label;
         import javafx.stage.Stage;
-
         import javax.swing.*;
         import javax.swing.plaf.FontUIResource;
         import java.awt.*;
         import java.net.URL;
         import java.text.DecimalFormat;
         import java.util.ResourceBundle;
-
+/*
+ * This object class handles functionality for the side selection window
+ * @author Russell Geary
+ * @author Garrett Herrera
+ * @version 7.1 11/15/2022
+ */
 public class SideSelectionController extends MomPopsPizzeriaMain implements Initializable {
-
     static String breadBites = "Bread Stick Bites";
     static String breadSticks = "Bread Sticks";
     static String cookie = "Big Chocolate Chip Cookie";
     static double sideTotalDouble;
     static String sideTotalString = "$0.00";
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
-
     LineItemModel lineBreadSticks = new LineItemModel();
     LineItemModel lineBreadBites = new LineItemModel();
     LineItemModel lineBigCookie = new LineItemModel();
@@ -42,6 +44,9 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
     private Label currentUserTextGlobal;
     @FXML
     private Stage stage;
+    /*
+     * This method transports the user to the home screen and optionally resets the order
+     */
     @FXML
     private void homeBtnActionSideSelectionScene(ActionEvent event){
         UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 22));
@@ -75,10 +80,11 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
                 e.printStackTrace();
                 e.getCause();
             }
-        }else {
-            //do nothing
         }
     }
+    /*
+     * This method transports the user to the order summery screen without saving selections from the current screen
+     */
     @FXML
     private void backBtnActionSideSelectionScene(ActionEvent event){
         try {
@@ -94,6 +100,9 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
             e.getCause();
         }
     }
+    /*
+     * This method transports the user to the order summery screen without saving selections from the current screen
+     */
     @FXML
     private void cancelBtnActionSideSelectionScene(ActionEvent event){
         try {
@@ -109,6 +118,9 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
             e.getCause();
         }
     }
+    /*
+     * This method adds the side selections to the current order transports the user to the order summery screen
+     */
     @FXML
     private void addBtnActionSidSelectionScene(ActionEvent event){
         if(lineBreadSticks.lineTotal > 0){
@@ -135,6 +147,9 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
         }
 
     }
+    /*
+     * This method adds the side selections to the current order transports the user to the order summery screen
+     */
     @FXML
     protected void adjustSideQty(ActionEvent event){
         if(sideQtyDropdown1.getValue() >= 1){
@@ -163,13 +178,18 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
 
         updateTotalText();
     }
+    /*
+     * Updates the order total displayed on the screen
+     */
     @FXML
     public void updateTotalText(){
         sideTotalDouble = lineBreadSticks.lineTotal + lineBreadBites.lineTotal + lineBigCookie.lineTotal;
         sideTotalString = DecimalFormat.getCurrencyInstance().format(sideTotalDouble);
         sideTotalText.setText(sideTotalString);
-
     }
+    /*
+     * Loads the menu options into the quantity dropdown lists.
+     */
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -186,5 +206,4 @@ public class SideSelectionController extends MomPopsPizzeriaMain implements Init
         sideQtyDropdown3.setValue(0);
         currentUserTextGlobal.setText(currentUserGlobal);
     }
-
 }

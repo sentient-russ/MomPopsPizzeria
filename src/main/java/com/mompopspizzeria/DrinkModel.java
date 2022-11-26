@@ -3,7 +3,7 @@ package com.mompopspizzeria;
 /*
  * this object class is used to build the menu drinks ArrayList
  * @author Russell Geary
- * @version 1.0 10/07/2022
+ * @version 7.1 11/15/2022
  */
 public class DrinkModel {
 	String description;

@@ -1,3 +1,0 @@
-0,COMPANY,EMPLOYEE,680 Arntson Rd,suite 161,Marietta,GA,30060,1234567890,S1o2M3t4H5i6N7g8C9o0M1p2L3i4C5a6T7eD8
-1,Guest,Customer,680 Arntson Rd,suite 161,Marietta,GA,30060,1112224444,ESM1Po2M3t4H5i6N7g8CoMpLiCaTeD
-2,Russell,Geary,138 Northcutt St,,Marietta,GA,30360,4043227517,password

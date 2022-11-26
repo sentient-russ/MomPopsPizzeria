@@ -1,15 +1,14 @@
 package com.mompopspizzeria;
 /*
  * Object class to hold each historical transaction lines. This object is placed in an Array for reporting purposes.
- * @Author Russell Geary
- * @version 1.1 10/24/2022
+ * @author Russell Geary
+ * @version 7.1 11/15/2022
  */
 public class TransactionHistoryLineModel {
 	public String transDate;
 	public String cusName;
 	String lineTotal;
 	public TransactionHistoryLineModel() {
-		
 	}
 	/*
 	 * Default constructor to build out the transaction history line
@@ -19,4 +18,4 @@ public class TransactionHistoryLineModel {
 		cusName = cusNameIn;
 		lineTotal = lineTotalIn;
 	}
-}	
+}

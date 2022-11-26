@@ -16,9 +16,14 @@ import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/*
+ * This controller handles functionality for the new customer registration window
+ * @author Russell Geary
+ * @author Garrett Herrera
+ * @author Deja Hintzen
+ * @version 7.1 11/15/2022
+ */
 public class RegistrationController extends MomPopsPizzeriaMain implements Initializable{
-
     @FXML
     private Label custLoginValidationText;
     @FXML
@@ -46,6 +51,10 @@ public class RegistrationController extends MomPopsPizzeriaMain implements Initi
     @FXML
     private TextField regConfirmPassword;
     private Stage stage;
+    /*
+     * This method calls for validation of the registration form, calls to make sure the user phone number does not already
+     * exist and saves the new customer if applicable.
+     */
     @FXML
     protected void regSaveAction(ActionEvent event) {
 
@@ -84,6 +93,9 @@ public class RegistrationController extends MomPopsPizzeriaMain implements Initi
                 }
             }
         }
+        /*
+         * Transports the user to the order entry screen logged in if the registration is a success
+         */
         @FXML
         private void proceedToOrder(ActionEvent event){
             try {
@@ -99,6 +111,9 @@ public class RegistrationController extends MomPopsPizzeriaMain implements Initi
                 e.getCause();
             }
         }
+        /*
+         * Transports the user to the home screen and optionally resets the order if the home button is clicked
+         */
         @FXML
         private void returnHomeAction(ActionEvent event){
             UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 22));

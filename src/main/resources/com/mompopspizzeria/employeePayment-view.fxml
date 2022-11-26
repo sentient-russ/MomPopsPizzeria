@@ -46,16 +46,16 @@
                            </font>
                         </CheckBox>
                         <TextField fx:id="creditAmountAmountEmployeePaymentSceneTextField" layoutX="435.0" layoutY="117.0" prefHeight="36.0" prefWidth="172.0" promptText="Charged Amount" />
-                        <TextField fx:id="firstNameCustPaymentTextField" layoutX="436.0" layoutY="162.0" prefHeight="36.0" prefWidth="172.0" promptText="First Name" />
-                        <TextField fx:id="lastNameCustPaymentTextField" layoutX="737.0" layoutY="162.0" prefHeight="36.0" prefWidth="194.0" promptText="Last Name" />
-                        <TextField fx:id="addr1CustPaymentTextField" layoutX="436.0" layoutY="207.0" prefHeight="36.0" prefWidth="172.0" promptText="Address Line 1" />
-                        <TextField fx:id="addr2CustPaymentTextField" layoutX="737.0" layoutY="207.0" prefHeight="36.0" prefWidth="194.0" promptText="Address Line 2" />
-                        <TextField fx:id="cityCustPaymentTextField" layoutX="436.0" layoutY="251.0" prefHeight="36.0" prefWidth="172.0" promptText="City" />
-                        <TextField fx:id="stateCustPaymentTextField" layoutX="720.0" layoutY="253.0" prefHeight="36.0" prefWidth="58.0" promptText="State" />
-                        <TextField fx:id="zipCustPaymentTextField" layoutX="829.0" layoutY="251.0" prefHeight="36.0" prefWidth="101.0" promptText="Zip Code" />
-                        <TextField fx:id="cardNumCustPaymentTextField" layoutX="435.0" layoutY="295.0" prefHeight="36.0" prefWidth="174.0" promptText="Credit Card Number" />
+                        <TextField fx:id="firstNameEmployeePaymentTextField" layoutX="436.0" layoutY="162.0" prefHeight="36.0" prefWidth="172.0" promptText="First Name" />
+                        <TextField fx:id="lastNameEmployeePaymentTextField" layoutX="737.0" layoutY="162.0" prefHeight="36.0" prefWidth="194.0" promptText="Last Name" />
+                        <TextField fx:id="addr1EmployeePaymentTextField" layoutX="436.0" layoutY="207.0" prefHeight="36.0" prefWidth="172.0" promptText="Address Line 1" />
+                        <TextField fx:id="addr2EmployeePaymentTextField" layoutX="737.0" layoutY="207.0" prefHeight="36.0" prefWidth="194.0" promptText="Address Line 2" />
+                        <TextField fx:id="cityEmployeePaymentTextField" layoutX="436.0" layoutY="251.0" prefHeight="36.0" prefWidth="172.0" promptText="City" />
+                        <TextField fx:id="stateEmployeePaymentTextField" layoutX="720.0" layoutY="253.0" prefHeight="36.0" prefWidth="58.0" promptText="State" />
+                        <TextField fx:id="zipEmployeePaymentTextField" layoutX="829.0" layoutY="251.0" prefHeight="36.0" prefWidth="101.0" promptText="Zip Code" />
+                        <TextField fx:id="cardNumEmployeePaymentTextField" layoutX="435.0" layoutY="295.0" prefHeight="36.0" prefWidth="174.0" promptText="Credit Card Number" />
                         <DatePicker fx:id="expCCDateEmployeePaymentDatePicker" layoutX="720.0" layoutY="296.0" prefHeight="36.0" prefWidth="100.0" promptText="Exp" />
-                        <TextField fx:id="cvvCodeCustPaymentTextField" layoutX="878.0" layoutY="296.0" prefHeight="36.0" prefWidth="53.0" promptText="CVV Code" />
+                        <TextField fx:id="cvvCodeEmployeePaymentTextField" layoutX="878.0" layoutY="296.0" prefHeight="36.0" prefWidth="53.0" promptText="CVV Code" />
                         <TextField fx:id="cashAmountEmployeePaymentSceneTextField" layoutX="437.0" layoutY="350.0" prefHeight="36.0" prefWidth="174.0" promptText="Cash Tendered" />
                         <TextField fx:id="checkAmountEmployeePaymentSceneTextField" layoutX="438.0" layoutY="394.0" prefHeight="36.0" prefWidth="173.0" promptText="Amount Written" />
                         <TextField fx:id="checkNumEmployeePaymentSceneTextField" layoutX="439.0" layoutY="439.0" prefHeight="36.0" prefWidth="172.0" promptText="Check Number" />
@@ -67,7 +67,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                                <Button layoutX="622.0" layoutY="553.0" mnemonicParsing="false" onAction="#payNowBtnActionCuPaymentScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Finalize Payment">
+                                <Button layoutX="622.0" layoutY="553.0" mnemonicParsing="false" onAction="#payNowBtnActionEmpPaymentScene" prefHeight="55.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Finalize Payment">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font></Button>

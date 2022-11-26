@@ -1,7 +1,7 @@
 package com.mompopspizzeria;
 
-/**
- * This class is required for creating executable jars and is used as a work-around because JDK 7 and newer do not
+/*
+ * This class is required for creating executable jars and is used as a work-around because this JDK does not
  * fully support javafx
  * @author Russell Geary
  * @version 7.1 11/15/2022

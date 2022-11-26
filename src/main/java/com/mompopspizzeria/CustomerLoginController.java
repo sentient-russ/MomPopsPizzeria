@@ -11,66 +11,62 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import java.awt.*;
-import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 /*
- * this object class is used to build the menu crusts ArrayList
+ * this class contains the customer login functions
  * @author Russell Geary
+ * @author Garrett Herrera
  * @version 7.1 11/15/2022
  */
 public class CustomerLoginController extends MomPopsPizzeriaMain implements Initializable{
     @FXML
-    private Label custLoginValidationText;
+    private Label customerLoginValidationText;
     @FXML
-    private TextField areaCustLogin;
+    private TextField areaCustomerLogin;
     @FXML
-    private TextField prefixCustLogin;
+    private TextField prefixCustomerLogin;
     @FXML
-    private TextField postfixCustLogin;
+    private TextField postfixCustomerLogin;
     @FXML
-    private PasswordField passwordCustLogin;
+    private PasswordField passwordCustomerLogin;
     @FXML
-    private String custPhoneNum;
+    public String customerPhoneNum;
     @FXML
-    private String custPassword = "";
+    public String customerPassword = "";
     @FXML
     private Stage stage;
-    @FXML
-    private Scene scene;
     /*
-     *Action method for handling the login button on action click event
+     * This method handles customer login authentication when the login button is clicked
      */
     @FXML
-    protected void loginBtnCustLogin(ActionEvent event) {
-        if(!checkPhoneIsValid(areaCustLogin.getText(), prefixCustLogin.getText(), postfixCustLogin.getText())){
-            custLoginValidationText.setText("Invalid phone number. Please try again.");
+    protected void loginBtnCustomerLogin(ActionEvent event) {
+        if(!checkPhoneIsValid(areaCustomerLogin.getText(), prefixCustomerLogin.getText(), postfixCustomerLogin.getText())){
+            customerLoginValidationText.setText("Invalid phone number. Please try again.");
         }else{
-            custPhoneNum = areaCustLogin.getText() + prefixCustLogin.getText() + postfixCustLogin.getText();
-            custPassword = passwordCustLogin.getText();
-            CustomerModel currentCustomer = new CustomerModel();
-            currentCustomer = dataAccess.authenticateCustomer(custPhoneNum, custPassword);
+            customerPhoneNum = areaCustomerLogin.getText() + prefixCustomerLogin.getText() + postfixCustomerLogin.getText();
+            customerPassword = passwordCustomerLogin.getText();
+            CustomerModel currentCustomer = dataAccess.authenticateCustomer(customerPhoneNum, customerPassword);
             if(currentCustomer.customerId >= 0){
-                custLoginValidationText.setText("Customer Authenticated!");
+                customerLoginValidationText.setText("Customer Authenticated!");
                 updateCurrentCustomer(currentCustomer);
                 proceedToOrder(event);
             } else {
-                custLoginValidationText.setText("Invalid combination.  Please try again.");
+                customerLoginValidationText.setText("Invalid combination.  Please try again.");
             }
         }
     }
     /*
-     * Action method for handling the proceed to order action event.  It is called if the customer is authenticated
-     * @param event ActionEvent
+     * If authenticated this method is called to advance the customer to the ordering screen
      */
     @FXML
     private void proceedToOrder(ActionEvent event){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("order-view.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("order-view.fxml")));
             Scene scene = new Scene(root, 1200, 750);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setTitle("Mom and Pop's Pizzeria - Order Entry");
@@ -82,8 +78,7 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
         }
     }
     /*
-     * Action method for handling the home button onAction event.  Returns the user to the home screen.
-     * @param event FXML on ActionEvent
+     * Returns the user to the home screen and optionally resets the order
      */
     @FXML
     private void returnHomeAction(ActionEvent event){
@@ -91,10 +86,10 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
         UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("ARIAL",Font.PLAIN,35)));
         JFrame jframe = new JFrame();
         int result = JOptionPane.showConfirmDialog(jframe, "Do you want to reset this order? All selections will be lost!");
-        if (result == 0){
+        if (result == 0 || result == 1){
             orderReset();
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("home-view.fxml")));
                 Scene scene = new Scene(root, 1200, 750);
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 stage.setTitle("Mom and Pop's Pizzeria - Home");
@@ -105,79 +100,41 @@ public class CustomerLoginController extends MomPopsPizzeriaMain implements Init
                 e.printStackTrace();
                 e.getCause();
             }
-        } else if(result == 1) {
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
-                Scene scene = new Scene(root, 1200, 750);
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setTitle("Mom and Pop's Pizzeria - Home");
-                stage.setScene(scene);
-                stage.show();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                e.getCause();
-            }
-        }else {
-            //do nothing
         }
     }
     /*
-     * Method required in order to impliment initilizable class
-     * @param location the FXML URL object
-     * @param resources the ResourceBundle object
+     * Method required in order to implement initialize class
      */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-
-    }
+    public void initialize(URL location, ResourceBundle resources) {}
     /*
-     *Phone number validation. Checks the number of characters and makes sure they represent integers.
-     *@param area the area code
-     *@param prefix the second three characters of the number
-     *@param postfix the last four characters of the number
-     *@return true if the number is valid; false if not
+     * Phone number validation. Checks the number of characters and makes sure they represent integers.
+     * @param area the 3 numbers characters representing the area code
+     * @param prefix the second three characters of the number
+     * @param postfix the last four characters of the number
+     * @return true if the number is valid; false if not
      */
     static boolean checkPhoneIsValid(String areaIn, String preFixIn, String postFixIn ) {
-        boolean result = false;
-        int areaInAsInt;
-        int preFixInAsInt;
-        int postFixInAsInt;
-
         try{
-            areaInAsInt = Integer.parseInt(areaIn);
+            Integer.parseInt(areaIn);
         }catch (NumberFormatException e){
-            result = false;
-            return result;
+            return false;
         }
         try{
-            preFixInAsInt = Integer.parseInt(preFixIn);
+            Integer.parseInt(preFixIn);
         }catch (NumberFormatException e){
-            result = false;
-            return result;
+            return false;
         }
         try{
-            postFixInAsInt = Integer.parseInt(postFixIn);
+            Integer.parseInt(postFixIn);
         }catch (NumberFormatException e){
-            result = false;
-            return result;
+            return false;
         }
         if(areaIn.length() != 3){
-            result = false;
-            return result;
-        }
-        if(preFixIn.length() != 3){
-            result = false;
-            return result;
-        }
-        if(postFixIn.length() != 4){
-            result = false;
-            return result;
-        }
-        result = true;
-        return result;
+            return false;
+        } else if (preFixIn.length() != 3){
+            return false;
+        } else return postFixIn.length() == 4;
     }
-
 }
 

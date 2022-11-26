@@ -11,22 +11,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Shadow;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.FontWeight;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -34,6 +25,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 /*
  *This controller class provides functionality to the customer payment screen.
+ * @author Russell Geary
+ * @author Garrett Herrera
+ * @version 7.1 11/15/2022
  */
 public class EmployeePaymentController extends MomPopsPizzeriaMain implements Initializable {
     @FXML
@@ -78,23 +72,23 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
     @FXML
     private TextField creditAmountAmountEmployeePaymentSceneTextField;
     @FXML
-    private TextField cardNumCustPaymentTextField;
+    private TextField cardNumEmployeePaymentTextField;
     @FXML
-    private TextField cvvCodeCustPaymentTextField;
+    private TextField cvvCodeEmployeePaymentTextField;
     @FXML
-    private TextField firstNameCustPaymentTextField;
+    private TextField firstNameEmployeePaymentTextField;
     @FXML
-    private TextField lastNameCustPaymentTextField;
+    private TextField lastNameEmployeePaymentTextField;
     @FXML
-    private TextField addr1CustPaymentTextField;
+    private TextField addr1EmployeePaymentTextField;
     @FXML
-    private TextField addr2CustPaymentTextField;
+    private TextField addr2EmployeePaymentTextField;
     @FXML
-    private TextField cityCustPaymentTextField;
+    private TextField cityEmployeePaymentTextField;
     @FXML
-    private TextField stateCustPaymentTextField;
+    private TextField stateEmployeePaymentTextField;
     @FXML
-    private TextField zipCustPaymentTextField;
+    private TextField zipEmployeePaymentTextField;
 
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
     private String orderTotalString;
@@ -112,20 +106,20 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
      *This method initiates payment processing and prompts the user to save the cc information in a new account.
      */
     @FXML
-    public void payNowBtnActionCuPaymentScene(ActionEvent event) {
+    public void payNowBtnActionEmpPaymentScene(ActionEvent event) {
         //make sure that the order is paid in full
         calcAmountDue(event);
 
-        String cardNum = cardNumCustPaymentTextField.getText();
+        String cardNum = cardNumEmployeePaymentTextField.getText();
         String expDate = String.valueOf(expCCDateEmployeePaymentDatePicker.getValue());
-        String cvvCode = cvvCodeCustPaymentTextField.getText();
-        String firstName = firstNameCustPaymentTextField.getText();
-        String lastName = lastNameCustPaymentTextField.getText();
-        String addr1 = addr1CustPaymentTextField.getText();
-        String addr2 = addr2CustPaymentTextField.getText();
-        String city = cityCustPaymentTextField.getText();
-        String state = stateCustPaymentTextField.getText();
-        String zip = zipCustPaymentTextField.getText();
+        String cvvCode = cvvCodeEmployeePaymentTextField.getText();
+        String firstName = firstNameEmployeePaymentTextField.getText();
+        String lastName = lastNameEmployeePaymentTextField.getText();
+        String addr1 = addr1EmployeePaymentTextField.getText();
+        String addr2 = addr2EmployeePaymentTextField.getText();
+        String city = cityEmployeePaymentTextField.getText();
+        String state = stateEmployeePaymentTextField.getText();
+        String zip = zipEmployeePaymentTextField.getText();
         String chargeAmount = creditAmountAmountEmployeePaymentSceneTextField.getText();
         String cash = cashAmountEmployeePaymentSceneTextField.getText();
         String checkAmount = checkAmountEmployeePaymentSceneTextField.getText();
@@ -196,7 +190,6 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
             ccProcessor.merchantServicesConnector(currentCustomer.firstName, currentCustomer.lastName,
                     currentCustomer.cardNumber, currentCustomer.expDate, currentCustomer.CVV, currentOrder.currentOrderChargeAmount);
         }
-        //Stub open cash drawer here in future implementation.
         //makes sure transaction history matches the name on the card rather than the name on the customer account
         currentOrder.customerFirstName = currentCustomer.firstName;
         currentOrder.customerLastName = currentCustomer.lastName;
@@ -362,16 +355,16 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         }
         if(creditCardEmployeePaymentSceneCheckBox.isSelected()){
             creditAmountAmountEmployeePaymentSceneTextField.setDisable(false);
-            cardNumCustPaymentTextField.setDisable(false);
-            cvvCodeCustPaymentTextField.setDisable(false);
-            firstNameCustPaymentTextField.setDisable(false);
-            lastNameCustPaymentTextField.setDisable(false);
-            addr1CustPaymentTextField.setDisable(false);
-            addr2CustPaymentTextField.setDisable(false);
-            cityCustPaymentTextField.setDisable(false);
+            cardNumEmployeePaymentTextField.setDisable(false);
+            cvvCodeEmployeePaymentTextField.setDisable(false);
+            firstNameEmployeePaymentTextField.setDisable(false);
+            lastNameEmployeePaymentTextField.setDisable(false);
+            addr1EmployeePaymentTextField.setDisable(false);
+            addr2EmployeePaymentTextField.setDisable(false);
+            cityEmployeePaymentTextField.setDisable(false);
             expCCDateEmployeePaymentDatePicker.setDisable(false);
-            stateCustPaymentTextField.setDisable(false);
-            zipCustPaymentTextField.setDisable(false);
+            stateEmployeePaymentTextField.setDisable(false);
+            zipEmployeePaymentTextField.setDisable(false);
             calcBtnEmployeePaymentSceneButton.setDisable(false);
             creditEnabled = true;
         }
@@ -391,16 +384,16 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         }
         if(!creditCardEmployeePaymentSceneCheckBox.isSelected()){
             creditAmountAmountEmployeePaymentSceneTextField.setDisable(true);
-            cardNumCustPaymentTextField.setDisable(true);
-            cvvCodeCustPaymentTextField.setDisable(true);
-            firstNameCustPaymentTextField.setDisable(true);
-            lastNameCustPaymentTextField.setDisable(true);
-            addr1CustPaymentTextField.setDisable(true);
-            addr2CustPaymentTextField.setDisable(true);
-            cityCustPaymentTextField.setDisable(true);
+            cardNumEmployeePaymentTextField.setDisable(true);
+            cvvCodeEmployeePaymentTextField.setDisable(true);
+            firstNameEmployeePaymentTextField.setDisable(true);
+            lastNameEmployeePaymentTextField.setDisable(true);
+            addr1EmployeePaymentTextField.setDisable(true);
+            addr2EmployeePaymentTextField.setDisable(true);
+            cityEmployeePaymentTextField.setDisable(true);
             expCCDateEmployeePaymentDatePicker.setDisable(true);
-            stateCustPaymentTextField.setDisable(true);
-            zipCustPaymentTextField.setDisable(true);
+            stateEmployeePaymentTextField.setDisable(true);
+            zipEmployeePaymentTextField.setDisable(true);
             creditEnabled = false;
             creditAmountReceivedDouble = 0.00;
         }
@@ -436,16 +429,16 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         checkDateEmployeePaymentSceneDateField.setDisable(true);
         checkNumEmployeePaymentSceneTextField.setDisable(true);
         checkDLNumEmployeePaymentSceneTextField.setDisable(true);
-        cardNumCustPaymentTextField.setDisable(true);
-        cvvCodeCustPaymentTextField.setDisable(true);
-        firstNameCustPaymentTextField.setDisable(true);
-        lastNameCustPaymentTextField.setDisable(true);
-        addr1CustPaymentTextField.setDisable(true);
-        addr2CustPaymentTextField.setDisable(true);
-        cityCustPaymentTextField.setDisable(true);
+        cardNumEmployeePaymentTextField.setDisable(true);
+        cvvCodeEmployeePaymentTextField.setDisable(true);
+        firstNameEmployeePaymentTextField.setDisable(true);
+        lastNameEmployeePaymentTextField.setDisable(true);
+        addr1EmployeePaymentTextField.setDisable(true);
+        addr2EmployeePaymentTextField.setDisable(true);
+        cityEmployeePaymentTextField.setDisable(true);
         expCCDateEmployeePaymentDatePicker.setDisable(true);
-        stateCustPaymentTextField.setDisable(true);
-        zipCustPaymentTextField.setDisable(true);
+        stateEmployeePaymentTextField.setDisable(true);
+        zipEmployeePaymentTextField.setDisable(true);
     }
     /*
      * Check validation method for the customer payment form
@@ -612,7 +605,7 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
     @FXML
     public boolean cashIsValid(String cashIn){
         boolean result = false;
-        if (cashIn != "" || cashIn.length() > 6){
+        if (cashIn.length() < 1 || cashIn.length() > 6){
             return result;
         }
         empPayValidationText.setTextFill(Color.rgb(164,190,235,1));
@@ -620,13 +613,9 @@ public class EmployeePaymentController extends MomPopsPizzeriaMain implements In
         result = true;
      return result;
     }
-
     public void setValues(String newPhoneNumber, String newPassword) {
-
-        currentCustomer.phoneNumber = newPhoneNumber; //Stub add number from dialog
-        currentCustomer.password = newPassword; //Stub add number from dialog
+        currentCustomer.phoneNumber = newPhoneNumber;
+        currentCustomer.password = newPassword;
         dataAccess.addCustomer(currentCustomer);
-
-
     }
 }

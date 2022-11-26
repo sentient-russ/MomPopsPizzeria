@@ -3,20 +3,22 @@ package com.mompopspizzeria;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-
-public class MomPopsHomeController extends MomPopsPizzeriaMain implements Initializable {
+/*
+ * Controller class that handles the initial program screens buttons and scene changes
+ * @author Russell Geary
+ * @author Garrett Herrera
+ * @version 7.1 11/15/2022
+ */
+public class MomPopsHomeController extends MomPopsPizzeriaMain {
     private Stage stage;
     private Scene scene;
-
+    /*
+     * Advances the user to the order entry scene
+     */
     @FXML
     public void orderEntryForm(ActionEvent event) {
         try {
@@ -32,7 +34,9 @@ public class MomPopsHomeController extends MomPopsPizzeriaMain implements Initia
             e.getCause();
         }
     }
-
+    /*
+     * Advances the user to the customer login scene
+     */
     @FXML
     public void customerLoginForm(ActionEvent event) {
         try {
@@ -48,6 +52,9 @@ public class MomPopsHomeController extends MomPopsPizzeriaMain implements Initia
             e.getCause();
         }
     }
+    /*
+     * Advances the user to the new customer registration scene
+     */
     @FXML
     public void customerRegistrationForm(ActionEvent event) {
         try {
@@ -62,8 +69,10 @@ public class MomPopsHomeController extends MomPopsPizzeriaMain implements Initia
             e.printStackTrace();
             e.getCause();
         }
-
     }
+    /*
+     * Advances the user to the employee/manager login scene
+     */
     @FXML
     public void employeeLoginForm(ActionEvent event) {
         try {
@@ -78,10 +87,5 @@ public class MomPopsHomeController extends MomPopsPizzeriaMain implements Initia
             e.printStackTrace();
             e.getCause();
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 }

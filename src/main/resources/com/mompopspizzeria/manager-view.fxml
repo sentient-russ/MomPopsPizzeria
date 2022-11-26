@@ -51,7 +51,7 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                        <Button layoutX="869.0" layoutY="163.0" mnemonicParsing="false" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Monthly">
+                        <Button layoutX="869.0" layoutY="163.0" mnemonicParsing="false" prefHeight="119.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" text="Yearly">
                            <font>
                               <Font size="48.0" />
                            </font>

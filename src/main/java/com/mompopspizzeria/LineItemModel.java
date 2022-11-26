@@ -25,12 +25,18 @@ public class LineItemModel extends MomPopsPizzeriaMain{
 	public boolean isPizza = false;
 	public boolean isDrink = false;
 	public boolean isSide = false;
-	
-	
+	/*
+	 * Default constructor
+	 */
 	public LineItemModel() {
-
-		
 	}
+	/*
+	 * Adds a pizza to the current line. Calculates line total as the pizza is added.
+	 * @param pizzaIn the pizza size as a String
+	 * @param crustIn the crust size as a String
+	 * @param toppingsIn the crust type as a String
+	 * @param toppingsIn an ArrayList of toppings as Strings
+	 */
 	public void addPizza(String pizzaIn, String crustIn, ArrayList<String> toppingsIn) {
 		this.pizza = pizzaIn;
 		this.crust = crustIn;
@@ -58,6 +64,11 @@ public class LineItemModel extends MomPopsPizzeriaMain{
 		lineTotal = toppingsCount * this.toppingPrice + pizzaPrice;	
 		
 	}
+	/*
+	 * Adds a side to the current line. Calculates line total as the side is added.
+	 * @param sideIn the side description as a String
+	 * @param qtyIn the quantity as an integer
+	 */
 	public void addSide(String sideIn, int qtyIn) {
 		this.side = sideIn;
 		if(sideIn.equals("Bread Stick Bites")) {
@@ -75,6 +86,11 @@ public class LineItemModel extends MomPopsPizzeriaMain{
 		lineTotal = sidePrice * qtyIn;
 		isSide = true;
 	}
+	/*
+	 * Adds a side to the current line. Calculates line total as the side is added.
+	 * @param sideIn the side description as a String
+	 * @param qtyIn the quantity as an integer
+	 */
 	public double addDrink(String drinkIn, String drinkSizeIn, int drinkQuantityIn) {
 		this.drink = drinkIn;
 		this.drinkSize = drinkSizeIn;

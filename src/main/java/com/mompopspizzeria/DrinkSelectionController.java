@@ -17,7 +17,11 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
+/*
+ * This class provides functionality to the drink selection scene.
+ * @author Russell Geary
+ * @version 7.1 11/15/2022
+ */
 public class DrinkSelectionController extends MomPopsPizzeriaMain implements Initializable {
 
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
@@ -89,12 +93,11 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
     static LineItemModel line2 = new LineItemModel();
     static LineItemModel line3 = new LineItemModel();
     static LineItemModel line4 = new LineItemModel();
-
-
     private int totalDrinkQtyOrdered = 0;
     private double pricePerDrink = 1.00;
-
-
+    /*
+     * This method is called when the home button is pressed.  Optionally allows the user to reset the order.
+     */
     @FXML
     private void homeBtnActionDrinkSelectionScene(ActionEvent event){
         JFrame jframe = new JFrame();
@@ -130,6 +133,9 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             //do nothing
         }
     }
+    /*
+     * This method is called when the back button is pressed.  Takes the user back to the order entry scene.
+     */
     @FXML
     private void backBtnActionDrinkSelectionScene(ActionEvent event){
         try {
@@ -145,6 +151,10 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             e.getCause();
         }
     }
+    /*
+     * This method is called when the cancel button is pressed.  Takes the user back to the order entry scene without
+     * saving the current drink selections.
+     */
     @FXML
     private void cancelBtnActionDrinkSelectionScene(ActionEvent event){
         try {
@@ -160,6 +170,9 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             e.getCause();
         }
     }
+    /*
+     * This method is called when the quantity dropdowns are selected to reset the drink window total
+     */
     @FXML
     private void qtyUpdateTextTotal1(){
         String lineDrinkSize = drinkSizeDropdown1.getValue();
@@ -172,6 +185,9 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         this.line1 = line1;
         updateTextTotal();
     }
+    /*
+     * This method is called when the quantity dropdowns are selected to reset the drink window total
+     */
     @FXML
     private void qtyUpdateTextTotal2(){
         String lineDrinkSize = drinkSizeDropdown1.getValue();
@@ -184,6 +200,9 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         this.line2 = line2;
         updateTextTotal();
     }
+    /*
+     * This method is called when the quantity dropdowns are selected to reset the drink window total
+     */
     @FXML
     private void qtyUpdateTextTotal3(){
         String lineDrinkSize = drinkSizeDropdown3.getValue();
@@ -196,6 +215,9 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         this.line3 = line3;
         updateTextTotal();
     }
+    /*
+     * This method is called when the quantity dropdowns are selected to reset the drink window total
+     */
     @FXML
     private void qtyUpdateTextTotal4(){
         String lineDrinkSize = drinkSizeDropdown4.getValue();
@@ -208,7 +230,10 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         this.line4 = line4;
         updateTextTotal();
     }
-
+    /*
+     * This method is called when individual add buttons are clicked.  It handles adding a new line and disabling the
+     * unneeded buttons.
+     */
     @FXML
     private void addSingleBtnActionDrinkSelectionScene1(){
         if(drinkMenuDropdownAction1.getValue() == null || drinkSizeDropdown1.getValue() == null || drinkQtyDropdown1.getValue() == null) {
@@ -223,7 +248,6 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             line1.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
             this.line1 = line1;
             updateTextTotal();
-
             drinkMenuDropdownAction2.setVisible(true);
             drinkMenuDropdownAction2.setDisable(false);
             drinkSizeDropdown2.setVisible(true);
@@ -238,10 +262,12 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             sizeText2.setVisible(true);
             qtyText2.setVisible(true);
             drinkSelectionValidationText.setText("");
-
         }
     }
-
+    /*
+     * This method is called when individual add buttons are clicked.  It handles adding a new line and disabling the
+     * unneeded buttons.
+     */
     @FXML
     private void addSingleBtnActionDrinkSelectionScene2(){
         if(drinkMenuDropdownAction2.getValue() == null || drinkSizeDropdown2.getValue() == null || drinkQtyDropdown2.getValue() == null) {
@@ -273,7 +299,10 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             drinkSelectionValidationText.setText("");
         }
     }
-
+    /*
+     * This method is called when individual add buttons are clicked.  It handles adding a new line and disabling the
+     * unneeded buttons.
+     */
     @FXML
     private void addSingleBtnActionDrinkSelectionScene3(){
         if(drinkMenuDropdownAction3.getValue() == null || drinkSizeDropdown3.getValue() == null || drinkQtyDropdown3.getValue() == null) {
@@ -288,8 +317,6 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             line3.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
             this.line3 = line3;
             updateTextTotal();
-
-
             removeSingleBtnDrinkSelectionScene3.setDisable(true);
             drinkMenuDropdownAction4.setVisible(true);
             drinkMenuDropdownAction4.setDisable(false);
@@ -307,6 +334,10 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             drinkSelectionValidationText.setText("");
         }
     }
+    /*
+     * This method is called when individual add buttons are clicked.  It handles adding a new line and disabling the
+     * unneeded buttons.
+     */
     @FXML
     private void addSingleBtnActionDrinkSelectionScene4(){
         if(drinkMenuDropdownAction4.getValue() == null || drinkSizeDropdown4.getValue() == null || drinkQtyDropdown4.getValue() == null) {
@@ -324,6 +355,9 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             drinkSelectionValidationText.setText("");
         }
     }
+    /*
+     * This method handles updating the total.
+     */
     @FXML
     private void updateTextTotal(){
         double total;
@@ -331,15 +365,15 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         String stringTotal = DecimalFormat.getCurrencyInstance().format(total);
         drinkSelectionTotalText.setText(stringTotal);
     }
+    /*
+     * This method is called when individual remove line button is clicked.  It handles removing a line and enabling needed buttons.
+     */
     @FXML
     private void removesingelLineActionDrinkSelectionScene2(ActionEvent event){
         LineItemModel newline2 = new LineItemModel();
         line2 = newline2;
         line2.drinkQuantity = 0;
         updateTextTotal();
-        //drinkMenuDropdownAction2.setValue(null);
-        //drinkSizeDropdown2.setValue(null);
-        //drinkQtyDropdown2.setValue("0");
         drinkMenuDropdownAction2.setVisible(false);
         drinkMenuDropdownAction2.setDisable(true);
         drinkSizeDropdown2.setVisible(false);
@@ -354,15 +388,15 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         sizeText2.setVisible(false);
         qtyText2.setVisible(false);
     }
+    /*
+     * This method is called when individual remove line button is clicked.  It handles removing a line and enabling needed buttons.
+     */
     @FXML
     private void removesingelLineActionDrinkSelectionScene3(ActionEvent event){
         LineItemModel newline3 = new LineItemModel();
         line3 = newline3;
         line3.drinkQuantity = 0;
         updateTextTotal();
-        //drinkMenuDropdownAction3.setValue(null);
-        //drinkSizeDropdown3.setValue(null);
-        //drinkQtyDropdown3.setValue("0");
         removeSingleBtnDrinkSelectionScene2.setDisable(false);
         drinkMenuDropdownAction3.setVisible(false);
         drinkMenuDropdownAction3.setDisable(true);
@@ -378,6 +412,9 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         sizeText3.setVisible(false);
         qtyText3.setVisible(false);
     }
+    /*
+     * This method is called when individual remove line button is clicked.  It handles removing a line and enabling needed buttons.
+     */
     @FXML
     private void removesingelLineActionDrinkSelectionScene4(ActionEvent event){
         LineItemModel newline4 = new LineItemModel();
@@ -399,8 +436,10 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         sizeText4.setVisible(false);
         qtyText4.setVisible(false);
     }
-
-
+    /*
+     * This method is called when add all button is selected.  Calls validation and adds any completed drink selections
+     * to the current order.  Finally, returns the user to the order summery window.
+     */
     @FXML
     private void addAllBtnActionDrinkSelectionScene(ActionEvent event) {
         if(this.line1 == null){
@@ -434,8 +473,10 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             currentOrder.addLineItem(this.line4);
             backToOrderOptions(event);
         }
-
     }
+    /*
+     * Changes the view back to the order summery view without saving changes.
+     */
     @FXML
     public void backToOrderOptions(ActionEvent event){
 
@@ -452,6 +493,9 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             e.getCause();
         }
     }
+    /*
+     * This method sets up all the menu options when the scene is loaded.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         hideFields();
@@ -482,6 +526,9 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         }
         currentUserTextGlobal.setText(currentUserGlobal);
     }
+    /*
+     * This method hides and disables the fields that are not ready for input at the time the drink screen is loaded.
+     */
     @FXML
     private void hideFields(){
         drinkMenuDropdownAction2.setVisible(false);

@@ -13,11 +13,10 @@ import java.util.Date;
 import java.util.Scanner;
 
 /*
- * Please do not access this class directly. Use the interface methods to prevent unintended results.
  * This is a temporary class aimed at providing functionality to the pizza shop application using
  * text files to save data rather than AWS which is to be implemented in a future version.
  * @author Russell Geary
- * @version 1.1, 10/24/2022
+ * @version 7.1 11/15/2022
  */
 public class Data<T> implements DataAccessInterface<T> {
 	ArrayList<CustomerModel> customers = new ArrayList<CustomerModel>();
@@ -46,7 +45,7 @@ public class Data<T> implements DataAccessInterface<T> {
 	}
 
 	/*
-	 * Checks to see is data files exist and creates them if they do not
+	 * Checks to see if data files exist and creates them if not
 	 */
 	public void createSystemFiles() {
 		if (new File("customerlist.txt").isFile()) {
@@ -70,10 +69,9 @@ public class Data<T> implements DataAccessInterface<T> {
 	}
 
 	/*
-	 * pass in the phone number as a string to check to see if it is found in the database
+	 * takes in the customer phone number and password as a string to check to see if it is found in the database
 	 * @param the customers number as a string
-	 * @return the complete CustomerModel of the customer that was found if not
-	 * found customer id will be -1
+	 * @return the complete CustomerModel of the customer that was found; if not found customer id will be -1
 	 */
 	@Override
 	public CustomerModel authenticateCustomer(String customerPhoneNumber, String customerPassword) {
@@ -83,27 +81,30 @@ public class Data<T> implements DataAccessInterface<T> {
 				return evalCustomer;
 			}
 		}
-		// sends back a blant customer model with a customerId of -1 if not found
+		// sends back customer model with a customerId of -1 if not found
 		CustomerModel returnCustomerModel = new CustomerModel();
 		return returnCustomerModel;
 	}
+	/*
+	 * takes in the phone number as a string to check to see if it is found in the database
+	 * @param the customers number as a string
+	 * @return the complete CustomerModel of the customer that was found; if not found customer id will be -1
+	 */
 	@Override
 	public CustomerModel customerCheckPhoneNum(String customerPhoneNumberIn){
 		for (CustomerModel evalCustomer : customers) {
 			if (evalCustomer.getPhoneNumber().equals(customerPhoneNumberIn)) {
-				// returns the customer model for the customer if found with a customerId >= 1
 				return evalCustomer;
 			}
 		}
-		// sends back a blant customer model with a customerId of -1 if not found
 		CustomerModel returnCustomerModel = new CustomerModel();
 		return returnCustomerModel;
 	}
 
 	/*
-	 * pass in the customer model to add to the database
+	 * takes in the customer model to add to the database
 	 * @param complete CustomerModel to add to the database
-	 * @return complete CustomerModel with an updated customerId >= 0 If customerId < 0 the record was not added
+	 * @return complete CustomerModel with an updated customerId >= 0; If customerId == -1 the record was not added
 	 */
 	@Override
 	public CustomerModel addCustomer(CustomerModel customerIn) {
@@ -126,8 +127,8 @@ public class Data<T> implements DataAccessInterface<T> {
 			if (evalCustomer.getPhoneNumber().equals(customerIn.phoneNumber)) {
 
 				// save new record to file
-				String saveString = String.valueOf(evalCustomer.customerId) + "," + evalCustomer.firstName + ","
-						+ evalCustomer.lastName + "," + evalCustomer.address1 + "," + evalCustomer.address2 + ","
+				String saveString = String.valueOf(evalCustomer.customerId) + "," + evalCustomer.getFirstName() + ","
+						+ evalCustomer.getLastName() + "," + evalCustomer.address1 + "," + evalCustomer.address2 + ","
 						+ evalCustomer.city + "," + evalCustomer.state + "," + evalCustomer.zip + ","
 						+ evalCustomer.phoneNumber + "," + evalCustomer.password + "\n";
 				try {
@@ -145,8 +146,7 @@ public class Data<T> implements DataAccessInterface<T> {
 	}
 	
 	/*
-	 * this method imports the customerlist.txt into memory (customers Array) for
-	 * use in the program
+	 * this method imports the customerlist.txt into memory (customers Array) for use in the program
 	 */
 	public void loadCustomerData() {
 
@@ -176,8 +176,7 @@ public class Data<T> implements DataAccessInterface<T> {
 	}
 
 	/*
-	 * this method imports the transactionlist.txt into memory (transHistoryArray)
-	 * for reporting functions
+	 * this method imports the transactionlist.txt into memory (transHistoryArray) for reporting functions
 	 */
 	public void loadTransactionData() {
 
@@ -199,14 +198,13 @@ public class Data<T> implements DataAccessInterface<T> {
 		}
 	}
 	/*
-	 *retreives all transaction history from thransactionlist.txt 
+	 * retrieves all transaction history from transactionlist.txt
 	 * @return an array list of transaction history models containing Date, Customer Name, Amount
 	 */
 	public ArrayList<TransactionHistoryLineModel> getAllTransactionHistory(){
 		loadTransactionData();
 		return this.transHistory;
 	}
-	
 	/*
 	 * this method can be called to initiate a customer data save before closing the
 	 * application
@@ -220,7 +218,6 @@ public class Data<T> implements DataAccessInterface<T> {
 			saveToFile("customerlist.txt", outputText, true);
 		}
 	}
-
 	/*
 	 * This method is intended to save the customer list
 	 * @param the filename to save the data in, as a string
@@ -240,7 +237,6 @@ public class Data<T> implements DataAccessInterface<T> {
 			iox.printStackTrace();
 		}
 	}
-
 	/*
 	 * this object class is used to build the static menu pizzas ArrayList
 	 */
@@ -254,7 +250,6 @@ public class Data<T> implements DataAccessInterface<T> {
 		pizzas.add(large);
 		pizzas.add(xlarge);
 	}
-
 	/*
 	 * this object class is used to build the static menu crusts ArrayList
 	 */
@@ -414,8 +409,7 @@ public class Data<T> implements DataAccessInterface<T> {
 	}
 	/*
 	 * gets the current list of system transactions  
-	 * @return ArrayList of Transactions containing ID, Date, Customer, Transaction
-	 * Total Amount
+	 * @return ArrayList of Transactions containing ID, Date, Customer, Transaction, Total Amount
 	 */
 	public ArrayList<TransactionHistoryLineModel> getTransactionHistory() {
 		return transHistory;

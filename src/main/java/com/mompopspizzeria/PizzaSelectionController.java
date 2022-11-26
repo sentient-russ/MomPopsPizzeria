@@ -18,9 +18,13 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
+/*
+ * This controller handles functionality for the pizza selection window.
+ * @author Russell Geary
+ * @author Garrett Herrera
+ * @version 7.1 11/15/2022
+ */
 public class PizzaSelectionController extends MomPopsPizzeriaMain implements Initializable {
-
     static String cheese = "Extra Cheese";
     static String pepperoni = "Pepperoni";
     static String sausage = "Sausage";
@@ -60,7 +64,9 @@ public class PizzaSelectionController extends MomPopsPizzeriaMain implements Ini
     private ComboBox<String> pizzaMenuDropdown;
     @FXML
     private ComboBox<String> pizzaCrust;
-
+    /*
+     * Adds a pizza to the order when the add pizza button is clicked.
+     */
     @FXML
     protected void  addPizzaBtnActionPizzaSelection(ActionEvent event){
 
@@ -118,12 +124,10 @@ public class PizzaSelectionController extends MomPopsPizzeriaMain implements Ini
             e.getCause();
         }
     }
-
     /*
-     *Disables check boxes if called br a checkbox click to see if the dropdowns are null.  Displays
-     * message and sets all checkboxes to unselected if null.
-     *
-     *
+     * Ensures that the pizza and crust have been selected before a topping can be added.  This is necessary to make sure
+     * the app totals the toppings correctly.  Additionally, makes sure that only four toppings are selected and the
+     * first topping is free.
      */
     @FXML
     protected void checkboxValidationPizzaScene(){
@@ -138,16 +142,18 @@ public class PizzaSelectionController extends MomPopsPizzeriaMain implements Ini
             if (mushroomsToppingChkBox.isSelected()) {mushroomsToppingChkBox.setSelected(false);}
             if (pineappleToppingChkBox.isSelected()) {pineappleToppingChkBox.setSelected(false);}
             pizzaSelectionValidationText.setText("Please select a size and crust first.");
-
         }else {
             pizzaSelectionValidationText.setText("");
             pizzaPriceUpdate();
         }
     }
+    /*
+     * This method calculates the total for the pizza selection screen
+     */
     @FXML
     protected void pizzaPriceUpdate(){
         toppingsCount = 0;
-        //forces pizza and crust selection before calculating toppings price.  not doing so results in a null pointer exception
+        //forces pizza and crust selection before calculating toppings price.  Not doing so results in a null pointer exception
         if(pizzaMenuDropdown.getValue() != null || pizzaCrust.getValue() != null) {
             try {
                 if (extraCheeseToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
@@ -159,11 +165,8 @@ public class PizzaSelectionController extends MomPopsPizzeriaMain implements Ini
                 if (tomatoSlicesToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
                 if (mushroomsToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
                 if (pineappleToppingChkBox.isSelected()) {this.toppingsCount = this.toppingsCount + 1;}
-
-                //removing the price text from the dropdown menu
                 String pizzaWithPrice = pizzaMenuDropdown.getValue();
                 String pizzaDiscription = pizzaWithPrice.replace(" $4.00", "").replace(" $6.00", "").replace(" $8.00", "").replace(" $10.00", "");
-
                 //adjust toppings billed so the first topping is free.
                 if (toppingsCount == 4) {
                     pizzaSelectionValidationText.setText("You have arrived; at the maximum number of toppings!");
@@ -227,7 +230,6 @@ public class PizzaSelectionController extends MomPopsPizzeriaMain implements Ini
                     pizzaTotalText.setText(totalAsString);
                     pizzaSelectionValidationText.setText("");
                 }
-
             } catch (NullPointerException e) {
                 pizzaSelectionValidationText.setText("Select a pizza size and crust to see price updates.");
             }
@@ -235,6 +237,9 @@ public class PizzaSelectionController extends MomPopsPizzeriaMain implements Ini
     }
     @FXML
     private Stage stage;
+    /*
+     * Transports the user to the home screen and optionally resets the order.
+     */
     @FXML
     private void returnHomeAction(ActionEvent event){
         UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 22));
@@ -272,6 +277,9 @@ public class PizzaSelectionController extends MomPopsPizzeriaMain implements Ini
             //do nothing
         }
     }
+    /*
+     * Transports the user to the order entry screen without saving the current pizza selection
+     */
     @FXML
     private void backBtnActionPizzaSelectionScene(ActionEvent event){
         try {
@@ -287,6 +295,9 @@ public class PizzaSelectionController extends MomPopsPizzeriaMain implements Ini
             e.getCause();
         }
     }
+    /*
+     * Transports the user to the order entry screen without saving the current pizza selection
+     */
     @FXML
     protected void cancelBtnActionPizzaSelectionScene(ActionEvent event) {
         try {
@@ -296,12 +307,14 @@ public class PizzaSelectionController extends MomPopsPizzeriaMain implements Ini
             stage.setTitle("Mom and Pop's Pizzeria - Order Entry");
             stage.setScene(scene);
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
+    /*
+     * Initializes the dropdown menus on the pizza selection screen
+     */
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

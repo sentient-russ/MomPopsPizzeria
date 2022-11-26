@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /*
  * Instantiate this interface to interact with the system data
  * @author Russell Geary
- * @version 1.1, 10/24/2022
+ * @version 7.1 11/15/2022
  */
 public interface DataAccessInterface<T> {
 	
@@ -67,7 +67,7 @@ public interface DataAccessInterface<T> {
 	 */
 	public boolean saveOrder(OrderModel orderIn);
 	/*
-	 *retreives all transaction history from thransactionlist.txt. Note data stored as strings so they will need to be converted to be filtered and sorted
+	 * retrieves all transaction history from thransactionlist.txt. Note data stored as strings so they will need to be converted to be filtered and sorted
 	 * @return an array list of transaction history models containing Date, Customer Name, Amount
 	 */
 	public ArrayList<TransactionHistoryLineModel> getAllTransactionHistory();

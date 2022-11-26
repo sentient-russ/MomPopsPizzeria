@@ -10,74 +10,80 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
-
+/*
+ * Controller class that handles functions related to the order summery screen.
+ * @author Russell Geary
+ * @author Garrett Herrera
+ * @version 7.1 11/15/2022
+ */
 public class OrderController extends MomPopsPizzeriaMain implements Initializable {
-
     @FXML
     private final ToggleGroup orderTypeGroup = new ToggleGroup();//do not delete. Used by Gluon
-
     @FXML
     private ListView<String> orderSummeryList;
     @FXML
     private Label currentUserTextGlobal;
     @FXML
-    private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
+    private final String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
     @FXML
     protected RadioButton carryOutRadioBtnOrderEntry;
     @FXML
     protected RadioButton deliveryRadioBtnOrderEntry;
     @FXML
     protected RadioButton pickupRadioBtnOrderEntry;
-    private Stage stage;
-    private Scene scene;
-    private String orderType = "";
-
+    static Stage stage;
+    static Scene scene;
+    /*
+     * Transports the user to the pizza selection screen
+     */
     @FXML
     public void addPizzaBtnActionOrderScene(ActionEvent event)  {
-
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("pizzaSelection-view.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("pizzaSelection-view.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root,1200, 750);
             stage.setTitle("Mom and Pop's Pizzeria - Pizza Selection");
             stage.setScene(scene);
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
+    /*
+     * Transports the user to the drink selection screen
+     */
     @FXML
     public void addDrinkBtnActionOrderScene(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("drinkSelection-view.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("drinkSelection-view.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root,1200, 750);
             stage.setTitle("Mom and Pop's Pizzeria - Drink Selection");
             stage.setScene(scene);
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
+    /*
+     * Transports the user to the pizza selection screen
+     */
     @FXML
     public void addSideBtnActionOrderScene(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("sideSelection-view.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sideSelection-view.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root,1200, 750);
             stage.setTitle("Mom and Pop's Pizzeria - Side Selection");
@@ -88,6 +94,9 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
             e.getCause();
         }
     }
+    /*
+     * Transports the user to the home screen and optionally resets the order
+     */
     @FXML
     private void returnHomeAction(ActionEvent event){
         UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 22));
@@ -97,7 +106,7 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
         if (result == 0){
             orderReset();
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("home-view.fxml")));
                 Scene scene = new Scene(root, 1200, 750);
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 stage.setTitle("Mom and Pop's Pizzeria - Home");
@@ -110,7 +119,7 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
             }
         } else if(result == 1) {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("home-view.fxml"));
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("home-view.fxml")));
                 Scene scene = new Scene(root, 1200, 750);
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("Mom and Pop's Pizzeria - Home");
@@ -121,18 +130,16 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
                 e.printStackTrace();
                 e.getCause();
             }
-        }else {
-            //do nothing
         }
-
-
     }
+    /*
+     * Transports the user to the employee payment screen if they logged in as an employee
+     */
     @FXML
     private void completePayBtnOrderEntryAction(ActionEvent event){
-
         if(currentCustomer.isEmployee){
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("employeePayment-view.fxml"));
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("employeePayment-view.fxml")));
                 Scene scene = new Scene(root, 1200, 750);
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 stage.setTitle("Mom and Pop's Pizzeria - Employee Payment Terminal");
@@ -145,7 +152,7 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
             }
         }else{
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("customerPayment-view.fxml"));
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("customerPayment-view.fxml")));
                 Scene scene2 = new Scene(root, 1200, 750);
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 stage.setTitle("Mom and Pop's Pizzeria - Customer Payment");
@@ -157,17 +164,21 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
                 e.getCause();
             }
         }
-
     }
+    static private int removeIndex;
 
-
-    public int removeIndex;
+    /*
+     * This method is called when the remove item button is clicked.  It will remove the most recent entry if one
+     * has not been selected.
+     */
     @FXML
     public void removeSelectedItemPayBtnOrderEntryAction(ActionEvent event){
         currentOrder.removeLine(removeIndex);
         orderEntryForm(event);
     }
-
+    /*
+     * Initializes the order summery window with the retained current orders parameters
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -175,18 +186,15 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
         carryOutRadioBtnOrderEntry.setToggleGroup(orderTypeGroup);
         deliveryRadioBtnOrderEntry.setToggleGroup(orderTypeGroup);
         pickupRadioBtnOrderEntry.setToggleGroup(orderTypeGroup);
-        orderTypeGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
-                if(carryOutRadioBtnOrderEntry.isSelected()){
-                    currentOrder.carryOut = true;
-                }
-                if (deliveryRadioBtnOrderEntry.isSelected()){
-                    currentOrder.delivery = true;
-                }
-                if (pickupRadioBtnOrderEntry.isSelected()){
-                    currentOrder.pickup = true;
-                }
+        orderTypeGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
+            if(carryOutRadioBtnOrderEntry.isSelected()){
+                currentOrder.carryOut = true;
+            }
+            if (deliveryRadioBtnOrderEntry.isSelected()){
+                currentOrder.delivery = true;
+            }
+            if (pickupRadioBtnOrderEntry.isSelected()){
+                currentOrder.pickup = true;
             }
         });
         getOrderType();
@@ -194,11 +202,13 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 removeIndex =  orderSummeryList.getSelectionModel().getSelectedIndex();
-
             }
         });
         currentUserTextGlobal.setText(currentUserGlobal);
     }
+    /*
+     * Loads the summery list with the items that have been ordered.
+     */
     public void loadOrderedList(URL url, ResourceBundle resourceBundle){
         ArrayList<LineItemModel> lineArray = currentOrder.getLineItems();
         for (int i = 0; i < lineArray.size(); i++) {
@@ -222,6 +232,9 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
             }
         }
     }
+    /*
+     * Transports the user to the order entry screen
+     */
     @FXML
     public void orderEntryForm(ActionEvent event) {
         try {
@@ -231,12 +244,14 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
             stage.setTitle("Mom and Pop's Pizzeria - Order Entry");
             stage.setScene(scene);
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
+    /*
+     * Helper method that gets the current order type and sets it on the order controller view.
+     */
     @FXML String getOrderType(){
         if(currentOrder.carryOut){
             carryOutRadioBtnOrderEntry.setSelected(true);
@@ -245,8 +260,8 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
         } else if (currentOrder.delivery){
             deliveryRadioBtnOrderEntry.setSelected(true);
         }
-        return this.orderType;
+        String orderType = "";
+        return orderType;
     }
-
 }
 

@@ -20,7 +20,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 /*
- *This controller class provides functionality to the customer payment screen.
+ * This controller class provides functionality to the customer payment screen.
+ * @author Russell Geary
+ * @author Garrett Herrera
+ * @version 7.1 11/15/2022
  */
 public class CustomerPaymentController extends MomPopsPizzeriaMain implements Initializable {
 
@@ -179,7 +182,7 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
         }
     }
     /*
-     *Method populates the listview with the current order in addition to setting up the date field.
+     *Method populates the listview with the current order in addition too setting up the date field.
      */
     @FXML
     @Override
@@ -215,7 +218,7 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     }
 
     /*
-     *Validation method for the customer payment form
+     * Validation method for the customer payment form
      * @param cardNumIn card number to be validated as a string
      * @param expDateIn expiration date of the credit card as a string
      * @param cvvCodeIn 3-4 digit numerical value representing the cvv code per product specifications

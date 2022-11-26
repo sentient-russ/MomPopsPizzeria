@@ -14,12 +14,18 @@ import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-public class ManagerController extends MomPopsPizzeriaMain implements Initializable {
-
+/*
+ * This controller class is used by the manager view.
+ * @author Russell Geary
+ * @author Garrett Herrera
+ * @version 7.1 11/15/2022
+ */
+public class ManagerController extends MomPopsPizzeriaMain  {
     private Stage stage;
     private Scene scene;
-
+    /*
+     * This action method returns the manager to the home screen and optionally resets the order.
+     */
     @FXML
     private void returnHomeAction(ActionEvent event){
         UIManager.put("OptionPane.messageFont", new Font("Arial", Font.BOLD, 22));
@@ -61,18 +67,15 @@ public class ManagerController extends MomPopsPizzeriaMain implements Initializa
         }else {
             //do nothing
         }
-
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
+    /*
+     * This action method returns the manager to the home screen and optionally resets the order.
+     */
     @FXML
     public void jumpToorderEntryAction(ActionEvent event) {
         authenticatedEmployee.isEmployee = false;
         authenticatedEmployee.isManager = false;
-        CustomerModel employee = dataAccess.authenticateCustomer(emplyeePhoneNumber,employeePassword);
+        CustomerModel employee = dataAccess.authenticateCustomer(employeePhoneNumber,employeePassword);
         employee.isEmployee = true;
         updateCurrentCustomer(employee);
 
@@ -89,6 +92,5 @@ public class ManagerController extends MomPopsPizzeriaMain implements Initializa
             e.getCause();
         }
     }
-
 }
 

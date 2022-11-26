@@ -1,8 +1,8 @@
 package com.mompopspizzeria;
 /*
- * this object class is used to build the menu sides.  It is not used to build orders.
+ * This object class is used to build the menu sides list.  It is not used to build orders.
  * @author Russell Geary
- * @version 1.1 10/24/2022
+ * @version 7.1 11/15/2022
  */
 public class SideModel {
 	String description;
