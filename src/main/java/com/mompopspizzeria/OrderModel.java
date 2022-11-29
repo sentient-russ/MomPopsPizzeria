@@ -19,7 +19,7 @@ public class OrderModel extends Data {
 	public double orderTotal;
 	public boolean pickup = false;
 	public boolean delivery = false;
-	public boolean carryOut = true;
+	public boolean carryOut = false;
 	/*
 	 * Adds a current customer object so that it is associated with the current order.
 	 * @param customerIn The customer model associated with the order.
@@ -67,6 +67,7 @@ public class OrderModel extends Data {
 	 */
 	public ArrayList<LineItemModel> removeLine(int indexToRemoveIn){
 		lineItems.remove(indexToRemoveIn);
+		calcOrderTotal();
 		return lineItems;
 	}
 }

@@ -21,7 +21,7 @@ public class LineItemModel extends MomPopsPizzeriaMain{
 	public double lineTotal;
 	public int drinkQuantity;
 	public int sideQuantity;
-
+	public boolean drinkOrdered = false;
 	public boolean isPizza = false;
 	public boolean isDrink = false;
 	public boolean isSide = false;
@@ -61,8 +61,7 @@ public class LineItemModel extends MomPopsPizzeriaMain{
 		} 
 		int toppingsCount = toppingsIn.size() - 1;
 		isPizza = true;
-		lineTotal = toppingsCount * this.toppingPrice + pizzaPrice;	
-		
+		lineTotal = toppingsCount * this.toppingPrice + pizzaPrice;
 	}
 	/*
 	 * Adds a side to the current line. Calculates line total as the side is added.
@@ -98,7 +97,7 @@ public class LineItemModel extends MomPopsPizzeriaMain{
 			drinkQuantity = drinkQuantityIn;
 			isDrink = true;
 			lineTotal = drinkPrice * drinkQuantity;
+			drinkOrdered = true;
 			return lineTotal;
 	}
-
 }

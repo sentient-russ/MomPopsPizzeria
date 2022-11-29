@@ -180,9 +180,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         String lineFlavor = drinkMenuDropdownAction1.getValue();
         int lineQty = Integer.parseInt(drinkQtyDropdown1.getValue());
         totalDrinkQtyOrdered = totalDrinkQtyOrdered + lineQty;
-        LineItemModel line1 = new LineItemModel();
-        line1.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
-        this.line1 = line1;
+        this.line1.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
         updateTextTotal();
     }
     /*
@@ -195,9 +193,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         String lineFlavor = drinkMenuDropdownAction2.getValue();
         int lineQty = Integer.parseInt(drinkQtyDropdown2.getValue());
         totalDrinkQtyOrdered = totalDrinkQtyOrdered + lineQty;
-        LineItemModel line1 = new LineItemModel();
-        line2.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
-        this.line2 = line2;
+        this.line2.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
         updateTextTotal();
     }
     /*
@@ -210,9 +206,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         String lineFlavor = drinkMenuDropdownAction3.getValue();
         int lineQty = Integer.parseInt(drinkQtyDropdown3.getValue());
         totalDrinkQtyOrdered = totalDrinkQtyOrdered + lineQty;
-        LineItemModel line3 = new LineItemModel();
-        line3.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
-        this.line3 = line3;
+        this.line3.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
         updateTextTotal();
     }
     /*
@@ -225,9 +219,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         String lineFlavor = drinkMenuDropdownAction4.getValue();
         int lineQty = Integer.parseInt(drinkQtyDropdown4.getValue());
         totalDrinkQtyOrdered = totalDrinkQtyOrdered + lineQty;
-        LineItemModel line4 = new LineItemModel();
-        line4.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
-        this.line4 = line4;
+        this.line4.addDrink(lineFlavor, lineDrinkSizeWithoutPrice, lineQty);
         updateTextTotal();
     }
     /*
@@ -442,19 +434,19 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
      */
     @FXML
     private void addAllBtnActionDrinkSelectionScene(ActionEvent event) {
-        if(this.line1 == null){
-            //error enter a drink selection
-        }else if(this.line1  != null && this.line2 == null && this.line3 == null && this.line4 == null){
+        if(this.line1.drinkQuantity == 0){
+            drinkSelectionValidationText.setText("");
+        }else if(this.line1.drinkOrdered == true && this.line2.drinkOrdered == false  && this.line3.drinkOrdered == false && this.line4.drinkOrdered == false){
             addSingleBtnActionDrinkSelectionScene1();
             currentOrder.addLineItem(this.line1);
             backToOrderOptions(event);
-        }else if(this.line1  != null && this.line2 != null && this.line3 == null && this.line4 == null) {
+        }else if(this.line1.drinkOrdered == true && this.line2.drinkOrdered == true && this.line3.drinkOrdered == false && this.line4.drinkOrdered == false) {
             addSingleBtnActionDrinkSelectionScene1();
             addSingleBtnActionDrinkSelectionScene2();
             currentOrder.addLineItem(this.line1);
             currentOrder.addLineItem(this.line2);
             backToOrderOptions(event);
-        }else if(this.line1  != null && this.line2 != null && this.line3 != null && this.line4 == null) {
+        }else if(this.line1.drinkOrdered  == true && this.line2.drinkOrdered == true && this.line3.drinkOrdered == true && this.line4.drinkOrdered == false) {
             addSingleBtnActionDrinkSelectionScene1();
             addSingleBtnActionDrinkSelectionScene2();
             addSingleBtnActionDrinkSelectionScene3();
@@ -462,7 +454,7 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             currentOrder.addLineItem(this.line2);
             currentOrder.addLineItem(this.line3);
             backToOrderOptions(event);
-        }else if(this.line1  != null && this.line2 != null && this.line3 != null && this.line4 != null) {
+        }else if(this.line1.drinkOrdered  == true && this.line2.drinkOrdered == true && this.line3.drinkOrdered == true && this.line4.drinkOrdered == true)  {
             addSingleBtnActionDrinkSelectionScene1();
             addSingleBtnActionDrinkSelectionScene2();
             addSingleBtnActionDrinkSelectionScene3();
@@ -473,13 +465,16 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
             currentOrder.addLineItem(this.line4);
             backToOrderOptions(event);
         }
+        line1 = new LineItemModel();
+        line2 = new LineItemModel();
+        line3 = new LineItemModel();
+        line4 = new LineItemModel();
     }
     /*
      * Changes the view back to the order summery view without saving changes.
      */
     @FXML
     public void backToOrderOptions(ActionEvent event){
-
         try {
             Parent root = FXMLLoader.load(getClass().getResource("order-view.fxml"));
             Scene scene = new Scene(root, 1200, 750);
@@ -544,7 +539,6 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         drinkFlavorText2.setVisible(false);
         sizeText2.setVisible(false);
         qtyText2.setVisible(false);
-
         drinkMenuDropdownAction3.setVisible(false);
         drinkMenuDropdownAction3.setDisable(true);
         drinkSizeDropdown3.setVisible(false);
@@ -558,7 +552,6 @@ public class DrinkSelectionController extends MomPopsPizzeriaMain implements Ini
         drinkFlavorText3.setVisible(false);
         sizeText3.setVisible(false);
         qtyText3.setVisible(false);
-
         drinkMenuDropdownAction4.setVisible(false);
         drinkMenuDropdownAction4.setDisable(true);
         drinkSizeDropdown4.setVisible(false);

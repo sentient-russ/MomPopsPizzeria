@@ -139,7 +139,7 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
     private void completePayBtnOrderEntryAction(ActionEvent event){
         if(currentCustomer.isEmployee){
             try {
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("employeePayment-view.fxml")));
+                Parent root = FXMLLoader.load(getClass().getResource("employeePayment-view.fxml"));
                 Scene scene = new Scene(root, 1200, 750);
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 stage.setTitle("Mom and Pop's Pizzeria - Employee Payment Terminal");
@@ -166,7 +166,6 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
         }
     }
     static private int removeIndex;
-
     /*
      * This method is called when the remove item button is clicked.  It will remove the most recent entry if one
      * has not been selected.
@@ -186,22 +185,32 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
         carryOutRadioBtnOrderEntry.setToggleGroup(orderTypeGroup);
         deliveryRadioBtnOrderEntry.setToggleGroup(orderTypeGroup);
         pickupRadioBtnOrderEntry.setToggleGroup(orderTypeGroup);
+        getOrderType();
         orderTypeGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
             if(carryOutRadioBtnOrderEntry.isSelected()){
                 currentOrder.carryOut = true;
+                currentOrder.delivery = false;
+                currentOrder.pickup = false;
+                System.out.println("carry out selected");
             }
             if (deliveryRadioBtnOrderEntry.isSelected()){
+                currentOrder.carryOut = false;
                 currentOrder.delivery = true;
+                currentOrder.pickup = false;
+                System.out.println("delivery selected");
             }
             if (pickupRadioBtnOrderEntry.isSelected()){
+                currentOrder.carryOut = false;
+                currentOrder.delivery = false;
                 currentOrder.pickup = true;
+                System.out.println("pickup selected");
             }
         });
-        getOrderType();
         orderSummeryList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 removeIndex =  orderSummeryList.getSelectionModel().getSelectedIndex();
+
             }
         });
         currentUserTextGlobal.setText(currentUserGlobal);
@@ -255,9 +264,11 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
     @FXML String getOrderType(){
         if(currentOrder.carryOut){
             carryOutRadioBtnOrderEntry.setSelected(true);
-        } else if (currentOrder.pickup){
+        }
+        if (currentOrder.pickup){
             pickupRadioBtnOrderEntry.setSelected(true);
-        } else if (currentOrder.delivery){
+        }
+        if (currentOrder.delivery){
             deliveryRadioBtnOrderEntry.setSelected(true);
         }
         String orderType = "";

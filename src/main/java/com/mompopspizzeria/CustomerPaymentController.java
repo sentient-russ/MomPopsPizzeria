@@ -26,8 +26,6 @@ import java.util.ResourceBundle;
  * @version 7.1 11/15/2022
  */
 public class CustomerPaymentController extends MomPopsPizzeriaMain implements Initializable {
-
-
     @FXML
     protected ListView<String> orderSummeryList;
     @FXML
@@ -59,16 +57,13 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
     private TextField stateCustPaymentTextField;
     @FXML
     private TextField zipCustPaymentTextField;
-
     private String currentUserGlobal = MomPopsPizzeriaMain.currentUserGlobal;
     private String orderTotalString;
-
     /*
      *This method initiates payment processing and prompts the user to save the cc information in a new account.
      */
     @FXML
     public void payNowBtnActionCuPaymentScene(ActionEvent event) {
-
         String cardNum = cardNumCustPaymentTextField.getText();
         String expDate = String.valueOf(dateCustomerPaymentDatePicker.getValue());
         String cvvCode = cvvCodeCustPaymentTextField.getText();
@@ -99,13 +94,11 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
                 stage.setTitle("Mom and Pop's Pizzeria - Success!  Here is your order confirmation");
                 stage.setScene(scene);
                 stage.show();
-
             } catch (Exception e) {
                 e.printStackTrace();
                 e.getCause();
             }
         }
-
     }
     /*
      * Method causes the scene to change back to order entry from the customer payment scene
@@ -119,7 +112,6 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
             stage.setTitle("Mom and Pop's Pizzeria - Order Entry");
             stage.setScene(scene);
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
@@ -159,7 +151,6 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
                 stage.setTitle("Mom and Pop's Pizzeria - Home");
                 stage.setScene(scene);
                 stage.show();
-
             } catch (Exception e) {
                 e.printStackTrace();
                 e.getCause();
@@ -193,7 +184,6 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
         orderTotalString = DecimalFormat.getCurrencyInstance().format(orderTotalDouble);
         customerPaymentTotalText.setText(orderTotalString);
         ArrayList<LineItemModel> lineArray = currentOrder.getLineItems();
-
         for (int i = 0; i < lineArray.size(); i++) {
 
             if (lineArray.get(i).isPizza) {
@@ -216,7 +206,6 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
         }
         currentUserTextGlobal.setText(currentUserGlobal);
     }
-
     /*
      * Validation method for the customer payment form
      * @param cardNumIn card number to be validated as a string
@@ -246,8 +235,6 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
         boolean firstCharacterIsNumber = false;
         String addrFirstCharacter = addr1In.split("")[0];
         boolean stateFound = false;
-
-
         if(currentOrder.lineItems.size() == 0){
             custPaymentValidationText.setText("Please go back and add items to your order.");
             return result;
@@ -272,7 +259,6 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
             e.getCause();
             return result;
         }
-
         if (addr2In != ""){
             if(addr2In.length() > 25){
                 custPaymentValidationText.setText("Address line 2 in invalid.");
@@ -312,5 +298,4 @@ public class CustomerPaymentController extends MomPopsPizzeriaMain implements In
         result = true;
         return result;
     }
-
 }

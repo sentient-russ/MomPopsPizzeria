@@ -24,6 +24,27 @@ public class ManagerController extends MomPopsPizzeriaMain  {
     private Stage stage;
     private Scene scene;
     /*
+     * This method returns to the login screen while preserving any current order information
+     */
+    @FXML
+    private void goBack(ActionEvent event){
+        try {
+            authenticatedEmployee.isEmployee = false;
+            authenticatedEmployee.isManager = false;
+            Parent root = FXMLLoader.load(getClass().getResource("empLogin-view.fxml"));
+            Scene scene = new Scene(root, 1200, 750);
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setTitle("Mom and Pop's Pizzeria - Employee Login");
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    /*
      * This action method returns the manager to the home screen and optionally resets the order.
      */
     @FXML

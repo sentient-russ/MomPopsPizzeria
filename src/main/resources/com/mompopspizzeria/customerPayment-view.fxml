@@ -44,9 +44,9 @@
                                 </Label>
                                   <AnchorPane layoutX="248.0" layoutY="97.0" minHeight="0.0" minWidth="0.0" prefHeight="277.0" prefWidth="633.0">
                            <children>
-                                      <ScrollPane layoutX="3.0" layoutY="8.0" prefHeight="269.0" prefWidth="636.0">
+                                      <ScrollPane layoutX="3.0" layoutY="-4.0" prefHeight="289.0" prefWidth="644.0">
                                  <content>
-                                                <ListView fx:id="orderSummeryList" prefHeight="279.0" prefWidth="620.0" />
+                                                <ListView fx:id="orderSummeryList" prefHeight="287.0" prefWidth="642.0" />
                                  </content>
                                       </ScrollPane>
                            </children>

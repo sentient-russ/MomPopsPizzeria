@@ -41,7 +41,6 @@ public class OrderConfirmationController extends MomPopsPizzeriaMain implements 
             stage.setTitle("Mom and Pop's Pizzeria - Home");
             stage.setScene(scene);
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
@@ -84,11 +83,11 @@ public class OrderConfirmationController extends MomPopsPizzeriaMain implements 
         currentUserTextGlobal.setText(lastCustomer.getFirstName() + " " + lastCustomer.getLastName());
         String orderType = "order";
         if(lastOrder.carryOut){
-            orderType = "carry-Out order";
+            orderType = "carry-out order";
         } else if (lastOrder.delivery){
             orderType = "delivery order";
         } else if (lastOrder.pickup){
-            orderType = "pick-Up order";
+            orderType = "pick-up order";
         }
         orderConfirmationText.setText("Thank you for your " + orderType + ", It will be in your hands shortly!");
     }
