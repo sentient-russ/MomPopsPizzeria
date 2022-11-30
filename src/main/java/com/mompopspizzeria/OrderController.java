@@ -223,7 +223,7 @@ public class OrderController extends MomPopsPizzeriaMain implements Initializabl
         for (int i = 0; i < lineArray.size(); i++) {
 
             if (lineArray.get(i).isPizza) {
-                String newLine = (i + 1) + ".) Pizza: " + lineArray.get(i).pizza + ", ";
+                String newLine = (i + 1) + ".) Pizza: " + lineArray.get(i).pizza + ", " + lineArray.get(i).crust + ", ";
                 ArrayList<String> toppingsArray = new ArrayList<>();
                 toppingsArray = lineArray.get(i).toppings;
                 for (int t = 0; t < toppingsArray.size(); t++) {

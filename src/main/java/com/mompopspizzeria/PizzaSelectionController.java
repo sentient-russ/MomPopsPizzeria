@@ -75,7 +75,7 @@ public class PizzaSelectionController extends MomPopsPizzeriaMain implements Ini
                 .replace(" $6.00","").replace(" $8.00", "")
                 .replace(" $10.00","");
         String crustWithPrice = pizzaCrust.getValue();
-        String crustDiscription = pizzaWithPrice.replace(" $0.00", "");
+        String crustDiscription = crustWithPrice.replace(" $0.00", "");
 
         ArrayList<String> newOrderToppings = new ArrayList<>();
         if(extraCheeseToppingChkBox.isSelected()){
