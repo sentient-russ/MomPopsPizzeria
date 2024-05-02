@@ -1,12 +1,12 @@
 
 ### **Overview:**
->Designed for deployment on a kiosk, this java application can be used by pizza shop employees or their customers to enter and pay for orders.  Employee payment entry allows for cash and check >payments.  Managers have the abillity to run reports.
+Designed for deployment on a kiosk, this java application can be used by pizza shop employees or their customers to enter and pay for orders.  Employee payment entry allows for cash and check >payments.  Managers have the abillity to run reports.
 
 ### **High-level technologies:**
 >Java, JavaFX
 
 ### **Requirements-Based Features:**
->A full write up on the requirements along with UML diagrams are available at [https://www.MagnaDigi.com](https://www.magnadigi.com/Home/CaseStudyMomPop?area=CaseStudyMomPop)
+A full write up on the requirements along with UML diagrams are available at [https://www.MagnaDigi.com](https://www.magnadigi.com/Home/CaseStudyMomPop?area=CaseStudyMomPop)
 
 #### **Demo Screens:**
 <p align="center">
